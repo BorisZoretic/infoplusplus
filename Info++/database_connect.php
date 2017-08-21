@@ -1,5 +1,5 @@
 <?php
-$servername = "montambeault.duckdns.org/localhost";
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "infoplusplus";

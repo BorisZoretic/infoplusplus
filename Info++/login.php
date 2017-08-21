@@ -1,4 +1,4 @@
 <?php 
-    //include $_SERVER ["DOCUMENT_ROOT"] . '/Info++/database_connect.php';
+    include $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
     echo "<html><body><br>allo</br></body></html>";
 ?>
