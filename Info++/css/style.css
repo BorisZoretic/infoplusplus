@@ -15,3 +15,13 @@ background: linear-gradient(to bottom, #09aac1 0%,#ffffff 88%,#ffffff 100%,#ffff
 .logo{
 	margin:30px;
 }
+
+.buttonConnexion {
+    background-image: url('../images/icones/bouton.png');
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    width: 180px;
+    height: 57px;
+}
