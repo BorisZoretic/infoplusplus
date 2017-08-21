@@ -1,0 +1,17 @@
+
+.headerbg{
+	margin:auto;
+	width:max-width;
+	height:200px;
+	
+background: -moz-linear-gradient(top, #09aac1 0%, #ffffff 88%, #ffffff 100%, #ffffff 100%); /* FF3.6-15 */
+
+background: -webkit-linear-gradient(top, #09aac1 0%,#ffffff 88%,#ffffff 100%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+
+background: linear-gradient(to bottom, #09aac1 0%,#ffffff 88%,#ffffff 100%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+
+.logo{
+	margin:30px;
+}
