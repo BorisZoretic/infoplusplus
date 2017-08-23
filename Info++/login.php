@@ -28,10 +28,6 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
         		 <br><button class='buttonConnexion'>Connexion</button><button class='buttonConnexion'>S'inscrire</button>
         		 <br><button class='loginBtn loginBtn--facebook'>Login with facebook</button>
 
-        		 <br><button class='loginBtn loginBtn--facebook'>YOLO</button>
-
-        		 <br><button class='loginBtn loginBtn--facebook'>test</button>
-
         	</form>
     	</div>
 		  
