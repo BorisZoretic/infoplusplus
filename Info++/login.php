@@ -16,18 +16,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
                 echo "<a class='lien' href='login.php'>S'identifier</a>";
             }
             ?>
-    	</div>
-    	<div class='topliens'>
-            <?php
-            if (session_status() == PHP_SESSION_ACTIVE) {/*. '(' . count($_SESSION['panier']) . ')';*/
-                echo "<a class='lien' href='panier.php'>Mon panier</a>              
-                <a class='lien' href='logout.php'>Se déconnecter</a>";
-            } else {        
-                echo "<a class='lien' href='login.php'>S'identifier</a>";
-            }
-            ?>
-    	</div>
-    	
+    	</div>    	
 	</div>
 	
 	        <div class="center">
