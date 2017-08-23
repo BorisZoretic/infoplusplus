@@ -1,0 +1,43 @@
+
+
+form {
+	padding:10px;
+	
+	position:relative;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+form input[type=text] {
+	display: inline-block;
+}
+
+.formcenter {
+	width:500px;
+	margin:auto;	
+	border: 1px solid #FF9F07;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:50px;
+}
+
+select {
+	color: #FF9F07;
+}
+
+
+.buttonConfirmer {
+	background-size: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+    background-image: url('../images/icones/bouton.png');
+    background-color: transparent;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 10px;
+    float:right;
+    width: 115px;
+    height: 37px;
+} 
