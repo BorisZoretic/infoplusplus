@@ -11,5 +11,6 @@ echo " <link href='font-awesome/css/font-awesome.css' rel='stylesheet'>";*/
 echo " <link href='css/reset.css' rel='stylesheet'>";
 echo " <link href='css/style.css' rel='stylesheet'>";
 echo " <link href='css/style_alex.css' rel='stylesheet'>";
+echo " <link href='css/style_boris.css' rel='stylesheet'>";
 //echo "<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet'>";
 ?>
