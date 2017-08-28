@@ -109,7 +109,9 @@ class InfoAdresse extends InfoModel {
         return $this;
     }
 
-  
+    
+    
+    
     function getDynamicList(){
         $aListOfObjects = $this->getListOfActiveBDObjects();
         if ($aListOfObjects != null) {

@@ -7,7 +7,7 @@ class InfoModel {
 	public function addDBObject() {
 		$internalAttributes = get_object_vars ( $this );
 		
-		include $_SERVER ["DOCUMENT_ROOT"] . '/AcierBD/Acier/database_connect.php';
+		include $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 		
 		$definition = "INSERT INTO `" . $this->table_name . "`";
 		
@@ -46,6 +46,9 @@ class InfoModel {
 			exit ();
 		} else {
 			echo "success";
+			
+			//////////////////////////////////////TEST LINE BELOW BIATCH retour de primary key généré
+			return $this->$this->primary_key;
 		}
 		
 		$conn->close ();
@@ -76,7 +79,7 @@ class InfoModel {
 		
 		//echo "<br>" . $sql;
 		
-		include $_SERVER ["DOCUMENT_ROOT"] . '/AcierBD/Acier/database_connect.php';
+		include $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 		
 		if ($conn->query ( $sql ) === TRUE) {
 			echo "success";
@@ -93,7 +96,7 @@ class InfoModel {
 		
 		//echo "<br>" . $sql;
 		
-		include $_SERVER ["DOCUMENT_ROOT"] . '/AcierBD/Acier/database_connect.php';
+		include $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 		
 		if ($conn->query ( $sql ) === TRUE) {
 			echo "success";
@@ -110,7 +113,7 @@ class InfoModel {
 		SET `id_state` = '2'
 		WHERE  `" . $this->table_name . "`.`" . $this->primary_key . "` = '$anID' ";
 		
-		include $_SERVER ["DOCUMENT_ROOT"] . '/AcierBD/Acier/database_connect.php';
+		include $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 		
 		if ($conn->query ( $sql ) === TRUE) {
 			return "success";
@@ -151,7 +154,7 @@ class InfoModel {
 		return null;
 	}
 	function getListOfAllDBObjects() {
-		include $_SERVER ["DOCUMENT_ROOT"] . '/AcierBD/Acier/database_connect.php';
+		include $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 		
 		$internalAttributes = get_object_vars ( $this );
 		
