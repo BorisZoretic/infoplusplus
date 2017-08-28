@@ -1,18 +1,6 @@
 
 body {
 	font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
-	margin:0;
-}
-
-.topliens{
-	float:right;
-	margin:30px;
-}
-.lien {
-	color: white;
-	text-decoration:underline;	
-}
-body{
 	margin: auto;
 }
 
@@ -23,6 +11,15 @@ h4{
 h5{
 	font-size: 12px;
 	color:red;
+}
+
+.topliens{
+	float:right;
+	margin:30px;
+}
+.lien {
+	color: white;
+	text-decoration:underline;	
 }
 
 .headerbg{
@@ -149,4 +146,8 @@ background: linear-gradient(to bottom, #09aac1 0%,#ffffff 88%,#ffffff 100%,#ffff
     margin-right: 10px;
     width: 115px;
     height: 37px;
+}
+
+.divTable{
+	display: table;
 }

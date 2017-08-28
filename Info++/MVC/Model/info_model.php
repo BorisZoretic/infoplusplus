@@ -178,7 +178,7 @@ class InfoModel {
 		return null;
 	}
 	function getObjectFromDB($primary_key) {
-		include $_SERVER ["DOCUMENT_ROOT"] . '/AcierBD/Acier/database_connect.php';
+		include $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 		
 		$internalAttributes = get_object_vars ( $this );
 		

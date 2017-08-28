@@ -129,11 +129,33 @@ class InfoService extends InfoModel {
         if ($aListOfObjects != null) {
             foreach ( $aListOfObjects as $anObject ) {
                 
-                echo "<div class='border'>";
+                echo "<div class='border divTable'>";
                 echo "<img class='excel' src='images/services/coursexcel.png' title='excel' alt='excel'>";
                 echo "<h4>". $anObject['service_titre'] ."</h4><br>";
                 echo "<p class='textExcel'>" . $anObject['service_description'] . "</p>";
-                echo "<br><p class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</p><p class='dureeExcel'>Durée : " . $anObject['duree'] . "h</p><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'>";
+                echo "<br><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'><span class='dureeExcel'>Durï¿½e : " . $anObject['duree'] . "h</span><span class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</span>";
+                echo "</div>";
+            }
+        }
+    }
+    
+    function getDynamicAdminList(){
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_ta_promotion_service.php';
+        
+        $aPromotionService = new InfoTaPromotionService();
+        
+        $aListOfObjects = $this->getListOfActiveBDObjects();
+        if ($aListOfObjects != null) {
+            foreach ( $aListOfObjects as $anObject ) {
+                echo "<div class='border divTable'>";
+                echo "<h4>". $anObject['service_titre'] ."</h4><br>";
+                echo "<p class='textExcel'>" . $anObject['service_description'] . "</p>";
+                echo "<br><span class='dureeExcel'>DurÃ©e : " . $anObject['duree'] . "h</span><span class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</span>";
+                $aPromotionService->getDynamicPromotionService($anObject['pk_service']);
+                
+                echo "<p class='promotion'>Promotion: </p>";
+                echo "<img class='mediasSociaux' src='images/icones/medias sociaux.jpeg' title='mediasSociaux' alt='mediasSociaux'>";
+                
                 echo "</div>";
             }
         }
