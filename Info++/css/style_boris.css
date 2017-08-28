@@ -21,22 +21,41 @@
 }
 
 .tarifExcel{
-	float: left;
+	float: right;
 	font-size: 12px;
 	color: #09AAC1;
 	margin-top: -5px;
-	margin-right: 70px;
+	margin-right: 66px;
 }
 
 .dureeExcel{
-	float: left;
+	float: right;
 	font-size: 12px;
 	color: #FF9F07;
 	margin-top: -5px;
+	margin-right: 40px;
 }
 
 .panier{
+	float: right;
 	width: 6%;
 	margin-top: -12px;
-    margin-left: 40px;
+    margin-right: 20px;
+}
+
+.promotion{
+	color: #FF4A07;
+	margin-top:30px;
+	float: left;
+}
+
+.mediasSociaux{
+	width: 10%;
+	float: right;
+	margin-top: -40px;
+}
+
+.imgPromo{
+	width: 7%;
+	float: left;
 }

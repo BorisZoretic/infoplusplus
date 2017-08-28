@@ -2,7 +2,7 @@
 include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php';
 ?>
-<title>Catalogue</title>
+<title>Service</title>
 </head>
 <body>
 	<div class="headerbg">
@@ -22,7 +22,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 		<?php
             require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_service.php';
             $aService = new InfoService();
-            $aService->getDynamicList();
+            $aService->getDynamicAdminList();
         ?>
         <?php 
             require_once $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/footer.php';

@@ -1,16 +1,11 @@
 <?php
-echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Frameset//EN'>";
+echo "<!DOCTYPE HTML>";
 echo "<html>";
 echo "<head>";
-echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>";
-
-/*echo " <link href='Css/dataTables.bootstrap4.css' rel='stylesheet'>";
-echo " <link href='Css/bootstrap.min.css' rel='stylesheet'>";
-echo " <link href='font-awesome/css/font-awesome.css' rel='stylesheet'>";*/
+echo "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>";
 
 echo " <link href='css/reset.css' rel='stylesheet'>";
 echo " <link href='css/style.css' rel='stylesheet'>";
 echo " <link href='css/style_alex.css' rel='stylesheet'>";
 echo " <link href='css/style_boris.css' rel='stylesheet'>";
-//echo "<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet'>";
 ?>
