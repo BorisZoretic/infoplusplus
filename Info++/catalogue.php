@@ -1,7 +1,9 @@
 <?php
+session_start();
 include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php';
 ?>
+
 <title>Catalogue</title>
 </head>
 <body>

@@ -63,8 +63,10 @@ class utilisateur_controller
         //Ajout adresse
         $this->InfosAdresse->setPk_adresse($this->InfosAdresse->addDBObject());
         echo $this->InfosAdresse->getPk_adresse();
+        
         /* Infos Client #3*/
         $this->InfosClient->setFk_adresse($this->InfosAdresse->getPk_adresse());   
+        
         
     }
 
