@@ -26,8 +26,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 		<form class="inscription">
 			<input name='nom' class='inputMarginWidth' placeholder='Nom'></input>
 			<input name='prenom' class='inputMarginWidth' placeholder='Prénom'></input>
-			<br>
-			<input name='civic' class='inputMarginWidthCivic'
+			<br> <input name='civic' class='inputMarginWidthCivic'
 				placeholder='No civic'></input> <input name='rue'
 				class='inputMarginWidthRue' placeholder='Rue'></input> <select
 				class='inputMarginWidth'>
@@ -35,31 +34,49 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 				<option value="Montréal">Montréal</option>
 				<option value="Trois-Rivières">Trois-Rivières</option>
 				<option value="Chicoutimi">Chicoutimi</option>
-			</select> <br>
-			<input name='codepostal' class='inputMarginWidth'
+			</select> <br> <input name='codepostal' class='inputMarginWidth'
 				placeholder='Code postale'></input> <input name='telephone'
 				class='inputMarginWidth' placeholder='Numéro de téléphone'></input>
 
-			<br>
-			<br>
-			<br>
+			<br> <br> <br>
 			<h4>Votre courriel servira à vous identifier lors de votre prochaine
 				visite</h4>
 			<h5>Le mot de passe doit contenir un chiffre, une lettre et 8
 				caractères au mininum</h5>
-			<input name='email' class='inputMarginWidth'
-				placeholder='Adresse courriel'></input> <input name='emailconfirm'
-				class='inputMarginWidth' placeholder='Confirmez adresse courriel'></input>
-			<br>
-			<input type='password' name='password' class='inputMarginWidth'
+			<input name='email' id="ema" class='inputMarginWidth'
+				placeholder='Adresse courriel'></input> <input name='emailconfirm' id="emailconf"
+				class='inputMarginWidth' placeholder='Confirmez adresse courriel' onBlur="confirmEmail()"></input>
+			<br> <input type='password' id="pass" name='password' class='inputMarginWidth'
 				placeholder='Mot de passe'></input> <input type='password'
-				name='passwordconfirm' class='inputMarginWidth'
-				placeholder='Confirmer mot de passe'></input> <br>
+				name='passwordconfirm' id="passwordconf" class='inputMarginWidth'
+				placeholder='Confirmer mot de passe' onBlur="confirmPass()"></input> <br>
 			<button class='buttonConfirmer'>Confirmer</button>
 		</form>
 	</div>
-		  
-       
+
+	<script type="text/javascript">
+    function confirmEmail() {
+        var email = document.getElementById("ema").value;
+        var confemail = document.getElementById("emailconf").value;
+        if(email != confemail) {
+            alert('Les adresses courriels sont différentes.');
+            document.getElementById("ema").value = "";
+            document.getElementById("emailconf").value = "";
+            document.getElementById("ema").focus(); 
+        }
+    }
+
+    function confirmPass() {
+        var pwd = document.getElementById("pass").value;
+        var confpwd = document.getElementById("passwordconf").value;
+        if(pwd != confpwd) {
+            alert('Les mots de passe sont différents.');
+            document.getElementById("pass").value = "";
+            document.getElementById("passwordconf").value = "";
+            document.getElementById("pass").focus(); 
+        }
+    }
+	</script>
       
         <?php
         require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/footer.php';

@@ -1,5 +1,5 @@
 <?php
-require_once'info_client.php';
+require_once'info_model.php';
 
 class InfoClient extends InfoModel {
 	protected $table_name = 'client';

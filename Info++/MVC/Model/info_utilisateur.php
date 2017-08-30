@@ -1,5 +1,5 @@
 <?php
-require_once'info_utilisateur.php';
+require_once'info_model.php';
 
 class InfoUtilisateur extends InfoModel {
 	protected $table_name = 'utilisateur';
@@ -10,7 +10,7 @@ class InfoUtilisateur extends InfoModel {
 	protected $mot_de_passe = '';
 	protected $administration = 0;
 	
-	function __construct() {
+	function __construct() {  
 	}
 	
 
@@ -86,8 +86,6 @@ class InfoUtilisateur extends InfoModel {
         return $this;
     }
     
-    
-
   
     function getDynamicList(){
         $aListOfObjects = $this->getListOfActiveBDObjects();
