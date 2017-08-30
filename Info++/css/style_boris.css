@@ -11,8 +11,9 @@
 
 .excel{
 	position: relative;
-	width: 40%;
-	float: left;
+    width: 30%;
+    float: left;
+    margin: 10px;
 }
 
 .textExcel{
@@ -52,10 +53,28 @@
 .mediasSociaux{
 	width: 10%;
 	float: right;
-	margin-top: -40px;
+	margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .imgPromo{
-	width: 7%;
-	float: left;
+	width: 9%;
+	margin-top: 34px;
+	margin-left: 10px;
+}
+
+.divMarginTop{
+	margin-top: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.buttonPlus{
+	color: #09AAC1;
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }

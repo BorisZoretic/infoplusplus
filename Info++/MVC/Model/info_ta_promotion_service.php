@@ -132,7 +132,6 @@ class InfoTaPromotionService extends InfoModel {
         $compt = 1;
         if ($aListOfObjects != null) {
             foreach ( $aListOfObjects as $anObject ) {
-                echo "<div>";
                 
                 if($anObject['fk_service'] == $pk_service){
                     $aPromotion = $aPromotion->getObjectFromDB($anObject['fk_promotion']);
@@ -147,7 +146,6 @@ class InfoTaPromotionService extends InfoModel {
                     }
                 }
                 
-                echo "</div>";
             }
         }
     }

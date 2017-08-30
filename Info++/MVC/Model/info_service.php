@@ -130,7 +130,7 @@ class InfoService extends InfoModel {
             foreach ( $aListOfObjects as $anObject ) {
                 
                 echo "<div class='border divTable'>";
-                echo "<img class='excel' src='images/services/coursexcel.png' title='excel' alt='excel'>";
+                echo "<img class='excel' src='" . $anObject['image'] . "' title='" . $anObject['image'] . "' alt='" . $anObject['image'] . "'>";
                 echo "<h4>". $anObject['service_titre'] ."</h4><br>";
                 echo "<p class='textExcel'>" . $anObject['service_description'] . "</p>";
                 echo "<br><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'><span class='dureeExcel'>Dur�e : " . $anObject['duree'] . "h</span><span class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</span>";
@@ -148,13 +148,19 @@ class InfoService extends InfoModel {
         if ($aListOfObjects != null) {
             foreach ( $aListOfObjects as $anObject ) {
                 echo "<div class='border divTable'>";
+                echo "<img class='excel' src='" . $anObject['image'] . "' title='" . $anObject['image'] . "' alt='" . $anObject['image'] . "'>";
                 echo "<h4>". $anObject['service_titre'] ."</h4><br>";
                 echo "<p class='textExcel'>" . $anObject['service_description'] . "</p>";
                 echo "<br><span class='dureeExcel'>Durée : " . $anObject['duree'] . "h</span><span class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</span>";
-                $aPromotionService->getDynamicPromotionService($anObject['pk_service']);
                 
+                echo "<div class='divMarginTop'>";
                 echo "<p class='promotion'>Promotion: </p>";
+                $aPromotionService->getDynamicPromotionService($anObject['pk_service']);
+                echo "<img class='imgPromo' src='images/promotions/grid.png' title='grid' alt='grid'>";
+                echo "<button class='buttonPlus'>+</button>";
                 echo "<img class='mediasSociaux' src='images/icones/medias sociaux.jpeg' title='mediasSociaux' alt='mediasSociaux'>";
+                
+                echo "</div>";
                 
                 echo "</div>";
             }
