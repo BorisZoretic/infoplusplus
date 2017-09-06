@@ -13,7 +13,7 @@ class InfoModel {
 		
 		//echo "table name : " . $this->table_name . "<br>";
 		//echo "primary_key name : " . $this->primary_key . "<br>";
-		
+		$compt = 0;
 		$attributes = " ( ";
 		$values = " VALUES (";
 		$lastElement = end ( $internalAttributes );
@@ -29,6 +29,11 @@ class InfoModel {
 					$values .= "'" . $value . "'";
 				}
 				
+				$compt++;
+				if($compt != sizeof($internalAttributes)){
+				    $attributes .= ", ";
+				    $values .= ", ";
+				}
 			}
 		}
 		
