@@ -1,4 +1,5 @@
 <?php
+session_start();
 include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php';
 ?>
@@ -10,10 +11,13 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 		<div class='topliens'>
             <?php
             if (session_status() == PHP_SESSION_ACTIVE) { /* . '(' . count($_SESSION['panier']) . ')'; */
-                echo "<a class='lien' href='panier.php'>Mon panier</a>              
+                echo "<a class='lien' href='panier.php'>Mon panier</a>
+                <a class='lien' href='profile.php'>Mon profil</a>              
                 <a class='lien' href='logout.php'>Se déconnecter</a>";
             } else {
                 echo "<a class='lien' href='login.php'>S'identifier</a>";
+                header("Location: http://localhost/infoplusplus/Info++/login.php");
+                exit();
             }
             
             ?>
@@ -24,39 +28,28 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 		<h4>Remplissez le formulaire pour créer votre profil</h4>
 		<h5>Tous les champs sont obligatoires</h5>
 
-		<form class="inscription" method="post"
+		<form class="inscription" id="formProfile" method="post"
 			action="http://localhost/infoplusplus/Info++/MVC/Controller/utilisateur_controller.php">
-			<input name='nom' class='inputMarginWidth' placeholder='Nom'></input>
-			<input name='prenom' class='inputMarginWidth' placeholder='Prénom'></input>
-			<br> <input name='civic' class='inputMarginWidthCivic'
-				placeholder='No civic'></input> <input name='rue'
-				class='inputMarginWidthRue' placeholder='Rue'></input> <select
-				name="ville" id="villes" class='inputMarginWidth'>
-				
-			</select> <br> <input name='codepostal' class='inputMarginWidth'
-				placeholder='Code postale'></input> <input name='telephone'
-				class='inputMarginWidth' placeholder='Numéro de téléphone'></input>
-
-			<br> <br> <br>
-			<h4>Votre courriel servira à vous identifier lors de votre prochaine
-				visite</h4>
-			<h5>Le mot de passe doit contenir un chiffre, une lettre et 8
-				caractères au mininum</h5>
-			<input name='email' id="ema" class='inputMarginWidth'
-				placeholder='Adresse courriel'></input> <input name='emailconfirm'
-				id="emailconf" class='inputMarginWidth'
-				placeholder='Confirmez adresse courriel' onBlur="confirmEmail()"></input>
-			<br> <input type='password' id="pass" name='password'
-				class='inputMarginWidth' placeholder='Mot de passe'></input> <input
-				type='password' name='passwordconfirm' id="passwordconf"
-				class='inputMarginWidth' placeholder='Confirmer mot de passe'
-				onBlur="confirmPass()"></input> <br>
-			<button class='buttonConfirmer'>Confirmer</button>
+			
 		</form>
 	</div>
+	
 <script>
 $(document).ready(function() {
 	$("#villes").load("MVC/view/getVilleSelect.php");
+	$("#formProfile").load("MVC/view/getUtilisateurSelect.php")
+	
+	//var infosClient =
+// 	$('#lname').value(infosClient['nom']);
+// 	$('#fname').value(infosClient['prenom']);
+// 	$('#streetadd').value(infosClient['no_civique']);
+// 	$('#sname').value(infosClient['rue']);
+// 	$('#villes').value(infosClient['fk_ville']);
+// 	$('#zip').value(infosClient['code_postal']);
+// 	$('#ema').value(infosClient['courriel']);
+// 	$('#emailconf').value(infosClient['courriel']);
+// 	$('#pass').value(infosClient['mot_de_passe']);
+// 	$('#passwordconf').value(infosClient['mot_de_passe']);
 });
 </script>
 

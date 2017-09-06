@@ -55,6 +55,14 @@ class login_controller
             }
         }
     }
+    
+    function getInfosUtilisateur(){
+        return $this->InfosUtilisateur;
+    }
+    
+    function getInfosLogin(){
+        return $this->infosLogin;
+    }
 
     function getHs()
     {
@@ -66,6 +74,8 @@ $loginControl = new login_controller();
 $loginControl->login();
 
 if ($loginControl->getHs() == true) {
+    $value = $loginControl->getInfosUtilisateur()->getPk($loginControl->getInfosLogin()[0]);
+    $_SESSION['id'] = $value;
     header("Location: http://localhost/infoplusplus/Info++/catalogue.php");
     exit();
 }

@@ -8,7 +8,7 @@ class InfoUtilisateur extends InfoModel {
 	protected $pk_utilisateur = 0;
 	protected $courriel = '';
 	protected $mot_de_passe = '';
-	protected $administration = 0;
+	protected $administrateur = 0;
 	
 	function __construct() {  
 	}
@@ -69,21 +69,49 @@ class InfoUtilisateur extends InfoModel {
     }
 
     /**
-     * administration
+     * administrateur
      * @return int
      */
     public function getAdministration(){
-        return $this->administration;
+        return $this->administrateur;
     }
 
     /**
-     * administration
-     * @param int $administration
+     * administrateur
+     * @param int $administrateur
      * @return InfoService
      */
-    public function setAdministration($administration){
-        $this->administration = $administration;
+    public function setAdministration($administrateur){
+        $this->administrateur = $administrateur;
         return $this;
+    }
+    
+    function getPk($email_client)
+    {
+        include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
+        
+        $internalAttributes = get_object_vars($this);
+        
+        $sql = "SELECT pk_client FROM client c JOIN utilisateur u ON c.fk_utilisateur = u.pk_utilisateur WHERE u.courriel = '". $email_client ."'";
+        
+        
+        
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+            $anObject = Array();
+            while ($row = $result->fetch_assoc()) {
+                foreach ($row as $aRowName => $aValue) {
+                    $anObject[$aRowName] = $aValue;
+                }
+                
+            }
+            
+            $conn->close();
+            return $anObject['pk_client'];
+        }
+        $conn->close();
+        return null;
     }
     
   
@@ -96,7 +124,7 @@ class InfoUtilisateur extends InfoModel {
                 echo "<img class='excel' src='images/services/coursexcel.png' title='excel' alt='excel'>";
                 echo "<h4>". $anObject['courriel'] ."</h4><br>";
                 echo "<p class='textExcel'>" . $anObject['mot_de_passe'] . "</p>";
-                echo "<br><p class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</p><p class='administrationExcel'>Durée : " . $anObject['administration'] . "h</p><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'>";
+                echo "<br><p class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</p><p class='administrateurExcel'>Durée : " . $anObject['administrateur'] . "h</p><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'>";
                 echo "</div>";
             }
         }

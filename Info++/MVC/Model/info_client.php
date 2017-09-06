@@ -162,6 +162,40 @@ class InfoClient extends InfoModel {
             }
         }
     }
+    
+    function getInscription($pk_client)
+    {
+        include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
+        
+        $internalAttributes = get_object_vars($this);
+        
+        $sql = "SELECT c.nom, c.prenom, c.telephone, c.infolettre, u.courriel, u.mot_de_passe, u.administrateur, a.fk_ville, a.no_civique, a.rue, a.code_postal
+FROM client c
+JOIN utilisateur u ON u.pk_utilisateur = c.fk_utilisateur
+
+JOIN adresse a ON c.fk_adresse = a.pk_adresse
+JOIN ville v ON v.pk_ville = a.fk_ville
+
+WHERE c.pk_client = '". $pk_client ."'";
+        
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+            $anObject = Array();    
+            
+            while ($row = $result->fetch_assoc()) {
+                foreach ($row as $aRowName => $aValue) {
+                    $anObject[$aRowName] = $aValue;
+                }
+            }            
+            $conn->close();
+            return $anObject;
+        }
+        $conn->close();
+        return null;
+    }
+    
+    
 
 }
 

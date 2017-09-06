@@ -110,22 +110,6 @@ class InfoAdresse extends InfoModel {
     }
 
     
-    
-    
-    function getDynamicList(){
-        $aListOfObjects = $this->getListOfActiveBDObjects();
-        if ($aListOfObjects != null) {
-            foreach ( $aListOfObjects as $anObject ) {
-                
-                echo "<div class='border'>";
-                echo "<img class='excel' src='images/services/coursexcel.png' title='excel' alt='excel'>";
-                echo "<h4>". $anObject['rue'] ."</h4><br>";
-                echo "<p class='textExcel'>" . $anObject['code_postal'] . "</p>";
-                echo "<br><p class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</p><p class='telephoneExcel'>Durée : " . $anObject['telephone'] . "h</p><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'>";
-                echo "</div>";
-            }
-        }
-    }
 
 }
 
