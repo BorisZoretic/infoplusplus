@@ -114,6 +114,34 @@ class InfoUtilisateur extends InfoModel {
         return null;
     }
     
+    function getAdmin($email_client)
+    {
+        include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
+        
+        $internalAttributes = get_object_vars($this);
+        
+        $sql = "SELECT administrateur FROM utilisateur u WHERE u.courriel = '". $email_client ."'";
+        
+        
+        
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+            $anObject = Array();
+            while ($row = $result->fetch_assoc()) {
+                foreach ($row as $aRowName => $aValue) {
+                    $anObject[$aRowName] = $aValue;
+                }
+                
+            }
+            
+            $conn->close();
+            return $anObject['administrateur'];
+        }
+        $conn->close();
+        return null;
+    }
+    
   
     function getDynamicList(){
         $aListOfObjects = $this->getListOfActiveBDObjects();
@@ -124,7 +152,7 @@ class InfoUtilisateur extends InfoModel {
                 echo "<img class='excel' src='images/services/coursexcel.png' title='excel' alt='excel'>";
                 echo "<h4>". $anObject['courriel'] ."</h4><br>";
                 echo "<p class='textExcel'>" . $anObject['mot_de_passe'] . "</p>";
-                echo "<br><p class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</p><p class='administrateurExcel'>Durée : " . $anObject['administrateur'] . "h</p><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'>";
+                echo "<br><p class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</p><p class='administrateurExcel'>DurÃ©e : " . $anObject['administrateur'] . "h</p><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'>";
                 echo "</div>";
             }
         }

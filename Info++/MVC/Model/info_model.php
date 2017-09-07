@@ -60,7 +60,7 @@ class InfoModel
             echo "success";           
             return  $conn->insert_id;
             
-            // ////////////////////////////////////TEST LINE BELOW BIATCH retour de primary key généré
+            // ////////////////////////////////////TEST LINE BELOW BIATCH retour de primary key gÃ©nÃ©rÃ©
            
         }
         
@@ -399,7 +399,7 @@ class InfoModel
         }
         $aListOfObjects = $this->getListOfActiveBDObjects();
         if ($selected == null) {
-            echo "<option value='Choisissez un $this->table_name'>Choisissez une $this->table_name</option>";
+            echo "<option value='Choisissez une $this->table_name'>Choisissez une $this->table_name</option>";
         }
         if ($aListOfObjects != null) {
             foreach ($aListOfObjects as $anObject) {

@@ -2,12 +2,12 @@
 /****************************************************************
  Fichier : utilisateur_controller.php
  Auteur : 
- Fonctionnalité : 
- Vérification:
+ FonctionnalitÃ© : 
+ VÃ©rification:
  
  ======================================================
  
- Dernière modification:
+ DerniÃ¨re modification:
  
  *****************************************************************/
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_client.php';

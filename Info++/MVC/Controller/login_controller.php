@@ -2,12 +2,12 @@
 /****************************************************************
  Fichier : login_controller.php
  Auteur :
- Fonctionnalité :
- Vérification:
+ FonctionnalitÃ© :
+ VÃ©rification:
  
  ======================================================
  
- Dernière modification:
+ DerniÃ¨re modification:
  
  *****************************************************************/
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_client.php';
@@ -18,7 +18,7 @@ session_start();
 echo $_GET['erreur'];
 if(isset($_GET['erreur']))
 {
-    $message = "Le nom d\'utilisateur ou le mot de passe est erronné.";
+    $message = "Le nom d\'utilisateur ou le mot de passe est erronnÃ©.";
     echo "<script type='text/javascript'>alert('$message');</script>";
 }
 
@@ -74,9 +74,11 @@ $loginControl = new login_controller();
 $loginControl->login();
 
 if ($loginControl->getHs() == true) {
-    $value = $loginControl->getInfosUtilisateur()->getPk($loginControl->getInfosLogin()[0]);
-    $_SESSION['id'] = $value;
-    header("Location: http://localhost/infoplusplus/Info++/catalogue.php");
+    $iduser = $loginControl->getInfosUtilisateur()->getPk($loginControl->getInfosLogin()[0]);
+    $typeuser = $loginControl->getInfosUtilisateur()->getAdmin($loginControl->getInfosLogin()[0]);
+    $_SESSION['id'] = $iduser;
+    $_SESSION['admin'] = $typeuser;
+    header("Location: http://localhost/infoplusplus/Info++/catalogue.php?admin". $_SESSION['admin']);
     exit();
 }
 else{

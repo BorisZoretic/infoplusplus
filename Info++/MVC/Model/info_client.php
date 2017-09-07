@@ -157,7 +157,7 @@ class InfoClient extends InfoModel {
                 echo "<img class='excel' src='images/services/coursexcel.png' title='excel' alt='excel'>";
                 echo "<h4>". $anObject['prenom'] ."</h4><br>";
                 echo "<p class='textExcel'>" . $anObject['nom'] . "</p>";
-                echo "<br><p class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</p><p class='telephoneExcel'>Durée : " . $anObject['telephone'] . "h</p><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'>";
+                echo "<br><p class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</p><p class='telephoneExcel'>DurÃ©e : " . $anObject['telephone'] . "h</p><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'>";
                 echo "</div>";
             }
         }
