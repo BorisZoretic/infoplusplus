@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (isset($_SESSION['admin']) == false){
+    header("Location: http://localhost/infoplusplus/Info++/login.php?erreur=2");
+    exit();
+}
 include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php';
 ?>

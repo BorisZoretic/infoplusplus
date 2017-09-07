@@ -78,7 +78,10 @@ if ($loginControl->getHs() == true) {
     $typeuser = $loginControl->getInfosUtilisateur()->getAdmin($loginControl->getInfosLogin()[0]);
     $_SESSION['id'] = $iduser;
     $_SESSION['admin'] = $typeuser;
-    header("Location: http://localhost/infoplusplus/Info++/catalogue.php?admin". $_SESSION['admin']);
+    if ($_SESSION['admin'] == 1)
+        header("Location: http://localhost/infoplusplus/Info++/service.php");
+    else 
+        header("Location: http://localhost/infoplusplus/Info++/catalogue.php");
     exit();
 }
 else{
