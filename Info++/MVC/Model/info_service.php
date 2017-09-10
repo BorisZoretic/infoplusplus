@@ -133,7 +133,7 @@ class InfoService extends InfoModel {
                 echo "<img class='excel' src='" . $anObject['image'] . "' title='" . $anObject['image'] . "' alt='" . $anObject['image'] . "'>";
                 echo "<h4>". $anObject['service_titre'] ."</h4><br>";
                 echo "<p class='textExcel'>" . $anObject['service_description'] . "</p>";
-                echo "<br><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'><span class='dureeExcel'>Dur�e : " . $anObject['duree'] . "h</span><span class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</span>";
+                echo "<br><img class='panier' src='images/icones/panier.png' title='panier' alt='panier'><span class='dureeExcel'>Durée : " . $anObject['duree'] . "h</span><span class='tarifExcel'>Tarif :" . $anObject['tarif'] . "$</span>";
                 echo "</div>";
             }
         }

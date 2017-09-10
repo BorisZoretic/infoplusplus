@@ -58,18 +58,18 @@ echo "<br>";
 $sql = "INSERT INTO `infoplusplus`.`adresse` (`pk_adresse`, `no_civique`, `rue`, `fk_ville`, `code_postal`) VALUES
     (1, '335', 'King Ouest', 1, 'J1H3P9'),
     (2, '1418', 'Bachand', 2, 'J2P3L4'),
-    (3, '140', 'de la rivière', 3, 'J5K7N6'),
-    (4, '25', 'Després', 4, 'J9S8K5'),
+    (3, '140', 'de la riviÃ¨re', 3, 'J5K7N6'),
+    (4, '25', 'DesprÃ©s', 4, 'J9S8K5'),
     (5, '75', 'Laurier', 5, 'J4F6H8'),
     (6, '180', 'Lafontaine', 6, 'J4F6H8'),
     (7, '1414', 'Davignon', 4, 'J4F6H8'),
     (8, '1587', 'Cartier', 4, 'J4F6H8'),
     (9, '35', 'Savage', 5, 'J4F6H8'),
     (10, '11', 'Bernier', 6, 'J4F6H8'),
-    (11, '26', 'Crémazie', 2, 'J4F6H8'),
+    (11, '26', 'CrÃ©mazie', 2, 'J4F6H8'),
     (12, '56', 'Pie IX', 6, 'J4F6H8'),
     (13, '98', '9e  rang', 3, 'J4F6H8'),
-    (14, '157', 'Fréchette', 3, 'J4F6H8'),
+    (14, '157', 'FrÃ©chette', 3, 'J4F6H8'),
     (15, '123', 'rue des lilas', 7, 'J4F6H8'),
     (16, '147', 'Ste-Catherine', 5, 'J4F6H8'),
     (17, '359', 'Papineau', 4, 'J4F6H8'),
@@ -83,10 +83,10 @@ $sql = "INSERT INTO `infoplusplus`.`adresse` (`pk_adresse`, `no_civique`, `rue`,
     (25, '651', 'Argil', 1, 'J4F6H8'),
     (26, '3532', 'Durham', 1, 'J4F6H8'),
     (27, '2415', 'Victoria', 1, 'J4F6H8'),
-    (28, '167', 'Montréal', 1, 'J4F6H8'),
+    (28, '167', 'MontrÃ©al', 1, 'J4F6H8'),
     (29, '154', 'Terril', 1, 'J4F6H8'),
     (30, '1489', '12e Avenue', 1, 'J4F6H8'),
-    (31, '1674', 'Codère', 5, 'J4F6H8'),
+    (31, '1674', 'CodÃ¨re', 5, 'J4F6H8'),
     (32, '598', 'John', 6, 'J4F6H8'),
     (33, '24', 'Abot', 2, 'J4F6H8'),
     (34, '59', 'Pricipale', 4, 'J4F6H8'),
@@ -128,20 +128,20 @@ $sql = "INSERT INTO `infoplusplus`.`client` (`pk_client`, `fk_utilisateur`, `pre
         (1, 4, 'Didier', 'Desrosiers', 1, '819-565-1425', 0),
         (2, 5, 'Marc', 'Beaudoin', 1, '819-475-2142', 1),
         (3, 6, 'Carlos', 'Gendron', 2, '819-658-6325', 1),
-        (4, 7, 'Geneviève', 'Pommerleau', 3, '819-145-5865', 0),
+        (4, 7, 'GeneviÃ¨ve', 'Pommerleau', 3, '819-145-5865', 0),
         (5, 8, 'Ronald', 'Caron', 4, '819-145-5774', 0),
         (6, 9, 'Karine', 'Thibault', 25, '819-335-6585', 0),
         (7, 10, 'Paul', 'Robert', 24, '819-993-5685', 1),
         (8, 11, 'Thierry', 'Robitaille', 23, '819-991-2541', 1),
         (9, 12, 'Line', 'Lauzon', 22, '819-474-2365', 1),
         (10, 13, 'Roger', 'Bouchard', 21, '819-147-2586', 0),
-        (11, 14, 'Pascale', 'Larivère', 20, '819-145-3252', 1),
+        (11, 14, 'Pascale', 'LarivÃ¨re', 20, '819-145-3252', 1),
         (12, 15, 'Michel', 'Desautels', 19, '819-787-5899', 0),
-        (13, 16, 'Paul', 'Ménard', 18, '819-414-6355', 0),
+        (13, 16, 'Paul', 'MÃ©nard', 18, '819-414-6355', 0),
         (14, 17, 'Christian', 'Bournival', 17, '819-885-2475', 1),
-        (15, 18, 'Carole', 'Coté', 16, '819-992-5821', 1),
+        (15, 18, 'Carole', 'CotÃ©', 16, '819-992-5821', 1),
         (16, 19, 'Kim', 'Bergeron', 15, '819-586-5874', 1),
-        (17, 20, 'Alex', 'Labbé', 14, '819-444-7777', 0),
+        (17, 20, 'Alex', 'LabbÃ©', 14, '819-444-7777', 0),
         (18, 21, 'Samuel', 'Tremblay', 31, '819-352-6698', 0),
         (19, 22, 'Fancis', 'Lamothe', 12, '819-919-2525', 1),
         (20, 23, 'Laurie', 'Landry', 11, '819-266-2525', 1),
@@ -149,7 +149,7 @@ $sql = "INSERT INTO `infoplusplus`.`client` (`pk_client`, `fk_utilisateur`, `pre
         (22, 25, 'Isabelle', 'Bellehumeur', 9, '819-888-9999', 1),
         (23, 26, 'Martin', 'Marin', 8, '819-254-7474', 0),
         (24, 27, 'Claude', 'Lapointe', 7, '819-695-8747', 1),
-        (25, 28, 'Matthew', 'Fréchette', 6, '819-222-2424', 0),
+        (25, 28, 'Matthew', 'FrÃ©chette', 6, '819-222-2424', 0),
         (26, 29, 'Steve', 'Gates', 5, '819-666-6666', 1);";
 if (!$result = $conn->query($sql)) {
     // Oh no! The query failed.
@@ -225,11 +225,11 @@ else{
 echo "<br>";
 
 $sql = "INSERT INTO `infoplusplus`.`promotion` (`pk_promotion`, `promotion_titre`, `rabais`) VALUES
-                (1, 'Rabais de la rentrée', 0.15),
-                (2, 'Rabais fidélité', 0.25),
+                (1, 'Rabais de la rentrÃ©e', 0.15),
+                (2, 'Rabais fidÃ©litÃ©', 0.25),
                 (3, 'Rabais du printemps', 0.10),
-                (4, 'Rabais de Noël', 0.20),
-                (5, 'Besoin d\'une mise à niveau', 0.25);";
+                (4, 'Rabais de NoÃ«l', 0.20),
+                (5, 'Besoin d\'une mise Ã  niveau', 0.25);";
 if (!$result = $conn->query($sql)) {
     // Oh no! The query failed.
     echo "<span style='color:red;'>Could not insert into table promotion</span>";
@@ -262,18 +262,18 @@ else{
 echo "<br>";
 
 $sql = "INSERT INTO `infoplusplus`.`service` (`pk_service`, `service_titre`, `service_description`, `duree`, `tarif`, `actif`, `image`) VALUES
-                    (1, 'Access 2016', 'Apprenez à créer des bases de données simple et à créer des applications personnalisées pour vous aider à gérer votre entreprise.', 16, 320.00, 1, NULL),
-                    (2, 'Excel débutant', 'Ce cours a pour objectif de vous initier au chiffrier Excel, pour vous permettre de créer des classeurs et de les mettre en forme professionnellement.', 25, 200.00, 1, NULL),
-                    (3, 'Initiation à la photographie numérique', 'Étudiez les concepts de base en photographie tel que les différentes prises de vue, le cadrage et l\'éclairage. Apprenez à utiliser les différents modes de votre appareil photo numérique et commencez à faire de la retouche photo avec Photoshop. La formation comprend des exercices en studio et à l’extérieur. ', 14, 280.00, 1, NULL),
-                    (4, 'Matériel informatique', 'Étudiez les composantes d’un ordinateur PC compatible. Effectuez le montage et la configuration d’un ordinateur. Apprenez à établir un diagnostic et à réparer un ordinateur. La formation comprend des laboratoires pratiques.', 16, 320.00, 1, NULL),
-                    (5, 'Linux', 'Apprenez à installer et à utiliser le système d\'exploitation Linux, une alternative gratuite et performante à Windows.', 12, 240.00, 1, NULL),
-                    (6, 'Outlook 2016', 'Communiquez de manière plus efficace et centralisée la gestion de vos contacts, votre calendrier et vos tâches facilement avec Outlook.', 4, 80.00, 1, NULL),
-                    (7, 'Windows 7', 'Découvrez comment naviguer sur votre ordinateur avec la formation Windows. Démystifiez les menus et apprenez comment gérer vos fichiers et vos dossiers. Devenez un utilisateur éclairé en comprenant comment gérer les paramètres de votre système d’exploitation et comment naviguer sécuritairement sur Internet.', 18, 360.00, 1, NULL),
-                    (8, 'Windows 10', 'Découvrez comment naviguer sur votre ordinateur avec la formation Windows. Démystifiez les menus et apprenez comment gérer vos fichiers et vos dossiers. Devenez un utilisateur éclairé en comprenant comment gérer les paramètres de votre système d’exploitation et comment naviguer sécuritairement sur Internet.', 18, 360.00, 1, NULL),
-                    (9, 'Office 365', 'Suivez la formation sur Microsoft Office 365 dont vous avez besoin. Développez les compétences nécessaires pour configurer et gérer Microsoft Office 365 pour votre organisation.', 12, 360.00, 1, NULL),
-                    (10, 'Word 2016', 'Apprenez à créer des documents soignés avec Word en utilisant efficacement les outils de mise en forme et les tableaux. Gérez la rédaction de plusieurs lettres et l’impression d’étiquettes à différents destinataires et apprenez à créer des modèles pour simplifier votre travail ou pour créer des formulaires personnalisés.', 320, 160.00, 1, NULL),
-                    (11, 'Initiation à internet et aux courriels', 'Apprenez à naviguer sur Internet. Vous y découvrirez une source d\'information incroyable. De plus, apprenez à communiquer avec vos amis avec des courriels.', 5, 75.00, 1, NULL),
-                    (12, 'Excel intermédiaire', 'Ce cours a pour objectif d\'approfondir vos acquis en Excel, introduire les fonctions, les graphiques et les fonctionnalités plus pointues du logiciel.', 25, 200.00, 1, NULL);";
+                    (1, 'Access 2016', 'Apprenez Ã  crÃ©er des bases de donnÃ©es simple et Ã  crÃ©er des applications personnalisÃ©es pour vous aider Ã  gÃ©rer votre entreprise.', 16, 320.00, 1, NULL),
+                    (2, 'Excel dÃ©butant', 'Ce cours a pour objectif de vous initier au chiffrier Excel, pour vous permettre de crÃ©er des classeurs et de les mettre en forme professionnellement.', 25, 200.00, 1, NULL),
+                    (3, 'Initiation Ã  la photographie numÃ©rique', 'Ã‰tudiez les concepts de base en photographie tel que les diffÃ©rentes prises de vue, le cadrage et l\'Ã©clairage. Apprenez Ã  utiliser les diffÃ©rents modes de votre appareil photo numÃ©rique et commencez Ã  faire de la retouche photo avec Photoshop. La formation comprend des exercices en studio et Ã  lâ€™extÃ©rieur. ', 14, 280.00, 1, NULL),
+                    (4, 'MatÃ©riel informatique', 'Ã‰tudiez les composantes dâ€™un ordinateur PC compatible. Effectuez le montage et la configuration dâ€™un ordinateur. Apprenez Ã  Ã©tablir un diagnostic et Ã  rÃ©parer un ordinateur. La formation comprend des laboratoires pratiques.', 16, 320.00, 1, NULL),
+                    (5, 'Linux', 'Apprenez Ã  installer et Ã  utiliser le systÃ¨me d\'exploitation Linux, une alternative gratuite et performante Ã  Windows.', 12, 240.00, 1, NULL),
+                    (6, 'Outlook 2016', 'Communiquez de maniÃ¨re plus efficace et centralisÃ©e la gestion de vos contacts, votre calendrier et vos tÃ¢ches facilement avec Outlook.', 4, 80.00, 1, NULL),
+                    (7, 'Windows 7', 'DÃ©couvrez comment naviguer sur votre ordinateur avec la formation Windows. DÃ©mystifiez les menus et apprenez comment gÃ©rer vos fichiers et vos dossiers. Devenez un utilisateur Ã©clairÃ© en comprenant comment gÃ©rer les paramÃ¨tres de votre systÃ¨me dâ€™exploitation et comment naviguer sÃ©curitairement sur Internet.', 18, 360.00, 1, NULL),
+                    (8, 'Windows 10', 'DÃ©couvrez comment naviguer sur votre ordinateur avec la formation Windows. DÃ©mystifiez les menus et apprenez comment gÃ©rer vos fichiers et vos dossiers. Devenez un utilisateur Ã©clairÃ© en comprenant comment gÃ©rer les paramÃ¨tres de votre systÃ¨me dâ€™exploitation et comment naviguer sÃ©curitairement sur Internet.', 18, 360.00, 1, NULL),
+                    (9, 'Office 365', 'Suivez la formation sur Microsoft Office 365 dont vous avez besoin. DÃ©veloppez les compÃ©tences nÃ©cessaires pour configurer et gÃ©rer Microsoft Office 365 pour votre organisation.', 12, 360.00, 1, NULL),
+                    (10, 'Word 2016', 'Apprenez Ã  crÃ©er des documents soignÃ©s avec Word en utilisant efficacement les outils de mise en forme et les tableaux. GÃ©rez la rÃ©daction de plusieurs lettres et lâ€™impression dâ€™Ã©tiquettes Ã  diffÃ©rents destinataires et apprenez Ã  crÃ©er des modÃ¨les pour simplifier votre travail ou pour crÃ©er des formulaires personnalisÃ©s.', 320, 160.00, 1, NULL),
+                    (11, 'Initiation Ã  internet et aux courriels', 'Apprenez Ã  naviguer sur Internet. Vous y dÃ©couvrirez une source d\'information incroyable. De plus, apprenez Ã  communiquer avec vos amis avec des courriels.', 5, 75.00, 1, NULL),
+                    (12, 'Excel intermÃ©diaire', 'Ce cours a pour objectif d\'approfondir vos acquis en Excel, introduire les fonctions, les graphiques et les fonctionnalitÃ©s plus pointues du logiciel.', 25, 200.00, 1, NULL);";
 if (!$result = $conn->query($sql)) {
     // Oh no! The query failed.
     echo "<span style='color:red;'>Could not insert into table service</span>";

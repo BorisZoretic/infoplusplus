@@ -18,7 +18,7 @@ if (isset($_GET['erreur']) && $_GET['erreur']==2 ) {
 include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php';
 ?>
-<title>Connexion</title>
+<title>Info++ - Connexion</title>
 </head>
 <body>
 	<div class="headerbg">

@@ -295,7 +295,7 @@ class InfoModel
             }
         }
     }
-
+    
     // TODO: create intercation with css classes
     function getObjectListAsStaticTableString()
     {
@@ -398,10 +398,16 @@ class InfoModel
             $this->primary_key = "name";
         }
         $aListOfObjects = $this->getListOfActiveBDObjects();
+        
         if ($selected == null) {
             echo "<option value='Choisissez une $this->table_name'>Choisissez une $this->table_name</option>";
         }
+        else {
+            echo "<select name='ville' id='villes' class='inputMarginWidth'>"; 
+        }        
+        
         if ($aListOfObjects != null) {
+            
             foreach ($aListOfObjects as $anObject) {
                 
                 echo "<option ";
@@ -412,6 +418,10 @@ class InfoModel
                 echo " class='editable' value='" . $anObject[$this->primary_key] . "'>" . $anObject["ville"] . "</option>";
             }
         }
+        if ($selected != null) {
+            echo "</select><br>";
+        }
+        
     }
 
     /**

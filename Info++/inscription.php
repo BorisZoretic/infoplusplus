@@ -2,7 +2,7 @@
 include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php';
 ?>
-<title>Inscription</title>
+<title>Info++ - Inscription</title>
 </head>
 <body>
 	<div class="headerbg">
