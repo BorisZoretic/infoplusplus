@@ -4,7 +4,7 @@ echo "<div class='headerbg'>
 <div class='topliens'>";
 
 if(!isset($_SESSION['admin'])) {
-    header("Location: http://localhost/infoplusplus/Info++/login.php?erreur=2");
+    header("Location: http://localhost/infoplusplus/Info++/index.php?erreur=2");
     exit();
 }
 if (session_status() == PHP_SESSION_ACTIVE && $_SESSION['admin']==0) {/*. '(' . count($_SESSION['panier']) . ')';*/

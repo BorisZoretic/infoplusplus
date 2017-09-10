@@ -11,7 +11,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 		<div class='topliens'>
             <?php
        
-                echo "<a class='lien' href='login.php'>S'identifier</a>";
+                echo "<a class='lien' href='index.php'>S'identifier</a>";
             
             ?>
     	</div>
