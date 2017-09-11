@@ -18,7 +18,7 @@ else if(session_status() == PHP_SESSION_ACTIVE && $_SESSION['admin']==1)
 {
     echo "<a class='lien' href='logout.php'>Se déconnecter</a><br>
                 <a class='navigation1' href='service.php'>Service</a>
-                <a class='navigation2' href='404.php'>Facture</a>
+                <a class='navigation2' href='facture.php'>Facture</a>
                 <input type='text' class='searchTerm' placeholder='Recherche'>
                 <button type='submit' class='searchButton'><label>S</label></button></div>";
 }
