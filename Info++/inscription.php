@@ -21,7 +21,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 		<h4>Remplissez le formulaire pour créer votre profil</h4>
 		<h5>Tous les champs sont obligatoires</h5>
 
-		<form class="inscription" method="post"
+		<form id="formIns" class="inscription" onsubmit="return validate()" method="post"
 			action="http://localhost/infoplusplus/Info++/MVC/Controller/utilisateur_controller.php">
 			<input name='nom' class='inputMarginWidth' placeholder='Nom'></input>
 			<input name='prenom' class='inputMarginWidth' placeholder='Prénom'></input>
@@ -48,7 +48,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 				type='password' name='passwordconfirm' id="passwordconf"
 				class='inputMarginWidth' placeholder='Confirmer mot de passe'
 				onBlur="confirmPass()"></input> <br>
-			<button class='buttonConfirmer'>Confirmer</button>
+			<input type="submit" id="add" class='buttonConfirmer' value="Confirmer">
 		</form>
 	</div>
 
@@ -79,6 +79,86 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
             document.getElementById("pass").focus(); 
         }
     }
+
+
+
+    
+    	
+   
+    	function validate(){
+    	 	var ck_name = /^[A-Z]'?[-a-zA-Z]+$/;
+    		var ck_fname = /^[A-Z]'?[-a-zA-Z]+$/;
+    		var ck_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+    		var ck_rue = /^[A-Z]'?[-a-zA-Z]+$/;
+    		var ck_civic = /^[0-9]*$/;
+    		var ck_phone = /^\(?(?:[0-9]{3})\)?(?:[ .-]?)(?:[0-9]{3})(?:[ .-]?)(?:[0-9]{4}$)/;
+    		var ck_password = /^([a-zA-Z0-9@*#]{8,15})$/;
+    		var ck_zip = /^[a-zA-Z][0-9][a-zA-Z]\s?[0-9][a-zA-Z][0-9]$/;
+    		
+    	var name = document.getElementsByName("name").value;
+    	var fname = document.getElementsByName("fname").value;
+    	var rue = document.getElementsByName("rue").value;
+    	var civic = document.getElementsByName("civic").value;
+    	var phone = document.getElementsByName("telephone").value;
+    	var zip = document.getElementsByName("codepostal").value;
+    	var email = document.getElementsByName("email").value;   	
+    	var password = document.getElementsByName("password").value;
+    	var villes = document.getElementsByName("ville").value;
+    	var errors = [];
+    	 
+    	 if (!ck_name.test(name)) {
+    	  errors[errors.length] = "Votre nom ne peut contenir de chiffres ou symboles autres que '-'.";
+    	  
+    	 }
+    	 if (!ck_fname.test(fname)) {
+       	  errors[errors.length] = "Votre prénom ne peut contenir de chiffres ou symboles autres que '-'.";
+       	
+        	 }
+    	 if (!ck_rue.test(rue)) {
+          	  errors[errors.length] = "La rue ne doit contenir que des lettres.";
+          	
+          	 }
+    	 if (!ck_civic.test(civic)) {
+         	  errors[errors.length] = "Le numéro civique ne doit contenir que des chiffres.";
+         	
+         	 }
+    	 if (!ck_phone.test(phone)) {
+          	  errors[errors.length] = "Le numéro de téléphone doit être de format '819-123-4567'.";
+          	
+          	 }
+    	 if (!ck_zip.test(zip)) {
+        	  errors[errors.length] = "Le code postale doit être de format 'J1E 2R4'.";
+        	 
+        	 }
+    	 if (!ck_email.test(email)) {
+    	  errors[errors.length] = "Votre courriel contient des caractères interdits.";
+    	  
+    	 }    	 
+    	 if (!ck_password.test(password)) {
+    	  errors[errors.length] = "Votre mot de passe ne respecte pas les conditions.";
+    	 
+    	 }
+    	 if (villes==0) {
+    	  errors[errors.length] = "Sélectionnez une ville.";
+    	  
+    	 }
+    	 if (errors.length > 0) {
+
+    	  reportErrors(errors);
+    	  return false;
+    	 }
+    	  return true;
+    	}
+    	
+    	function reportErrors(errors){
+    	 var msg = "Entrez des données valides...\n";
+    	 for (var i = 0; i<errors.length; i++) {
+    	 var numError = i + 1;
+    	  msg += "\n" + numError + ". " + errors[i];
+    	}
+    	 alert(msg);
+    	}
+        
    
       
 	</script>
