@@ -1,3 +1,10 @@
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    transition: max-height 0.2s ease-out;
+}
+
 .border{
 	border-style: solid;
     border-width: 1px;
@@ -6,7 +13,6 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
-    height: 160px;
 }
 
 .excel{
@@ -79,4 +85,53 @@
     border: none;
     background: transparent;
     cursor: pointer;
+}
+
+.borderFacture{
+	border-style: solid;
+    border-width: 1px;
+    border-color: #FF9F07;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.idFacture{
+	color: #FF4A07;
+	margin: 19px;
+	float: left;
+}
+
+.nameFacture{
+	text-decoration: underline;
+}
+
+.confirmationFacture{
+	color: #09AAC1;
+	margin-left: 45px;
+	margin-top: -12px;
+}
+
+.dateFacture{
+	color: #FF9F07;
+	float: right;
+	margin-right: 200px;
+}
+
+.tarifFacture{
+	color: #09AAC1;
+	float: right;
+	margin-right: 200px;
+	margin-top: -35px;
+}
+
+.detailFacture{
+    font-size: 12px;
+    color: black;
+    float: right;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: -30px;
 }
