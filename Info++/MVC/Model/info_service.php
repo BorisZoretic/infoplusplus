@@ -129,7 +129,7 @@ class InfoService extends InfoModel {
         if ($aListOfObjects != null) {
             foreach ( $aListOfObjects as $anObject ) {
                 
-                echo "<div class='border divTable'>";
+                echo "<div class='border divTable' onclick='drop()'>";
                 echo "<img class='excel' src='" . $anObject['image'] . "' title='" . $anObject['image'] . "' alt='" . $anObject['image'] . "'>";
                 echo "<h4>". $anObject['service_titre'] ."</h4><br>";
                 echo "<p class='textExcel'>" . $anObject['service_description'] . "</p>";
@@ -147,7 +147,11 @@ class InfoService extends InfoModel {
         $aListOfObjects = $this->getListOfActiveBDObjects();
         if ($aListOfObjects != null) {
             foreach ( $aListOfObjects as $anObject ) {
-                echo "<div class='border divTable'>";
+                echo "<div id='tab' class='border divTable service dropdown'>";
+                echo "<div id='myDropdown' class='dropdown-content'>
+                        <a href='#'>Modifier le service</a>
+                        <a href='#'>Désactiver le service</a>
+                        </div>";
                 echo "<img class='excel' src='" . $anObject['image'] . "' title='" . $anObject['image'] . "' alt='" . $anObject['image'] . "'>";
                 
                 echo "<h4>". $anObject['service_titre'] ."</h4><br>";

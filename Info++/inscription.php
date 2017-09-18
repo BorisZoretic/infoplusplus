@@ -2,6 +2,12 @@
 session_start();
 include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php';
+
+if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
+    $message = "L\'adresse courriel est déjà utilisé par un autre utilisateur.";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+    session_abort();
+}
 ?>
 <title>Info++ - Inscription</title>
 </head>
@@ -23,15 +29,15 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 
 		<form id="formIns" class="inscription" onsubmit="return validate()" method="post"
 			action="http://localhost/infoplusplus/Info++/MVC/Controller/utilisateur_controller.php">
-			<input name='nom' class='inputMarginWidth' placeholder='Nom'></input>
-			<input name='prenom' class='inputMarginWidth' placeholder='Prénom'></input>
-			<br> <input name='civic' class='inputMarginWidthCivic'
-				placeholder='No'></input> <input name='rue'
+			<input id="nom" name='nom' class='inputMarginWidth' placeholder='Nom'></input>
+			<input id="pnom" name='prenom' class='inputMarginWidth' placeholder='Prénom'></input>
+			<br> <input name='civic' id="streetnum" class='inputMarginWidthCivic'
+				placeholder='No'></input> <input id="street" name='rue'
 				class='inputMarginWidthRue' placeholder='Rue'></input> <select
 				name="ville" id="villes" class='inputMarginWidth'>
 
-			</select> <br> <input name='codepostal' class='inputMarginWidth'
-				placeholder='Code postale'></input> <input name='telephone'
+			</select> <br> <input name='codepostal' id='postal' class='inputMarginWidth'
+				placeholder='Code postale'></input> <input name='telephone' id='phone'
 				class='inputMarginWidth' placeholder='Numéro de téléphone'></input>
 
 			<br> <br> <br>
@@ -86,24 +92,24 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
     	
    
     	function validate(){
-    	 	var ck_name = /^[A-Z]'?[-a-zA-Z]+$/;
-    		var ck_fname = /^[A-Z]'?[-a-zA-Z]+$/;
+    	 	var ck_name = /^[a-zA-Z]+$/;
+    		var ck_fname = /^[a-zA-Z]+$/;
     		var ck_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-    		var ck_rue = /^[A-Z]'?[-a-zA-Z]+$/;
+    		var ck_rue = /^[a-zA-Z]+$/;
     		var ck_civic = /^[0-9]*$/;
     		var ck_phone = /^\(?(?:[0-9]{3})\)?(?:[ .-]?)(?:[0-9]{3})(?:[ .-]?)(?:[0-9]{4}$)/;
-    		var ck_password = /^([a-zA-Z0-9@*#]{8,15})$/;
+    		var ck_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$/;
     		var ck_zip = /^[a-zA-Z][0-9][a-zA-Z]\s?[0-9][a-zA-Z][0-9]$/;
     		
-    	var name = document.getElementsByName("name").value;
-    	var fname = document.getElementsByName("fname").value;
-    	var rue = document.getElementsByName("rue").value;
-    	var civic = document.getElementsByName("civic").value;
-    	var phone = document.getElementsByName("telephone").value;
-    	var zip = document.getElementsByName("codepostal").value;
-    	var email = document.getElementsByName("email").value;   	
-    	var password = document.getElementsByName("password").value;
-    	var villes = document.getElementsByName("ville").value;
+    	var name = document.getElementById("nom").value;
+    	var fname = document.getElementById("pnom").value;
+    	var rue = document.getElementById("street").value;
+    	var civic = document.getElementById("streetnum").value;
+    	var phone = document.getElementById("phone").value;
+    	var zip = document.getElementById("postal").value;
+    	var email = document.getElementById("ema").value;   	
+    	var password = document.getElementById("pass").value;
+    	var villes = document.getElementById("villes").value;
     	var errors = [];
     	 
     	 if (!ck_name.test(name)) {

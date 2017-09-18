@@ -16,12 +16,23 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 ?>
 	
 		<?php
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/gestion_service.php';
             require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_service.php';
             $aService = new InfoService();
             $aService->getDynamicAdminList();
         ?>
+
         <?php 
             require_once $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/footer.php';
         ?>
+        <script> 
+$(document).on("click", ".divTable", function(){
+	$(this).closest(".divTable").find("#myDropdown").toggleClass("show");
+	});
+
+</script>
     </body>
+    
+    
+
 </html>

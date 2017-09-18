@@ -42,7 +42,7 @@ class login_controller
         $this->infosLogin[1] = isset($_POST['mot_de_passe']) ? $_POST['mot_de_passe'] : "suce";
         $this->InfosUtilisateur = new InfoUtilisateur();
         $this->allUsers = $this->InfosUtilisateur->getListOfAllDBObjects();
-        echo $_POST['courriel'] . " et " . $_POST['mot_de_passe'];
+       
     }
 
     function login()
