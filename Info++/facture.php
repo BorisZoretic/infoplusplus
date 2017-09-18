@@ -32,8 +32,10 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
             /* Toggle between hiding and showing the active panel */
             if (div.css("display") === "block") {
             	div.slideUp();
+            	$(this).text("Détail");
             } else {
             	div.slideDown();
+            	$(this).text("Réduire");
             }
     
         });

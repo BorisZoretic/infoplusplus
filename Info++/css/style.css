@@ -13,6 +13,25 @@ h5{
 	color:red;
 }
 
+.br {
+   display: block; /* makes it have a width */
+   content: ""; /* clears default height */
+   margin-top: 21px; /* change this to whatever height you want it */
+}
+
+.br2 {
+   display: block; /* makes it have a width */
+   content: ""; /* clears default height */
+   margin-top: -5px; /* change this to whatever height you want it */
+}
+
+.br3 {
+   display: block; /* makes it have a width */
+   content: ""; /* clears default height */
+   margin-top: 5px; /* change this to whatever height you want it */
+}
+
+
 .topliens{
 	position:absolute;
 	top:0;
