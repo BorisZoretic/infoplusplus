@@ -149,13 +149,13 @@ class InfoModel
         $internalAttributes = get_object_vars($this);
         
         $sql = "SELECT * FROM `" . $this->table_name . "`";
-        if ($this->primary_key == "order") {
-            $sql .= " order by `order`";
+        if ($this->table_name == "facture") {
+            $sql .= " order by `date_service` DESC";
         }
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0) {
-            $fastechObjects = array();
+            $infoObjects = array();
             while ($row = $result->fetch_assoc()) {
                 $anObject = Array();
                 $anObject["primary_key"] = $this->primary_key;
@@ -164,11 +164,11 @@ class InfoModel
                     $anObject[$aRowName] = $aValue;
                 }
                 
-                $fastechObjects[$row[$this->primary_key]] = $anObject;
+                $infoObjects[$row[$this->primary_key]] = $anObject;
             }
             
             $conn->close();
-            return $fastechObjects;
+            return $infoObjects;
         }
         $conn->close();
         return null;
