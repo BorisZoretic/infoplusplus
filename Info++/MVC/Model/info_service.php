@@ -139,6 +139,22 @@ class InfoService extends InfoModel {
         }
     }
     
+    function getService($idservice){
+        $aListOfObjects = $this->getObjectFromDB($idservice);
+        if ($aListOfObjects != null) {
+            foreach ( $aListOfObjects as $anObject ) {
+                echo "<img src=''>";
+                echo " <input type='file' name='fileToUpload' id='fileToUpload'>";
+                echo "<input id='titre' name='title' class='inputMarginWidth' placeholder='Titre'></input>
+                <br>";
+                echo "<input type='messagebox' id='desc' name='description' class='inputMarginWidth' placeholder='Description'></input>
+                <br>"; 
+                echo "<input name='duree' id='dur' class='inputMarginWidth' placeholder='Durée'></input>";
+                echo "<input id='tar' name='tarif' class='inputMarginWidth' placeholder='Tarif'></input>";
+            }
+        }
+    }
+    
     function getDynamicAdminList(){
         require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_ta_promotion_service.php';
         
@@ -148,6 +164,9 @@ class InfoService extends InfoModel {
         if ($aListOfObjects != null) {
             foreach ( $aListOfObjects as $anObject ) {
                 echo "<div id='tab' class='border divTable service dropdown'>";
+                echo "<div id='tool' class='imgTool'>                        
+                        <img class='imgTool' src='../images/icones/sys.png'>
+                        </div>";
                 echo "<div id='myDropdown' class='dropdown-content'>
                         <a href='#'>Modifier le service</a>
                         <a href='#'>Désactiver le service</a>

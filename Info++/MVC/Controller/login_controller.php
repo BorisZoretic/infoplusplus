@@ -38,8 +38,8 @@ class login_controller
 
     function __construct()
     {
-        $this->infosLogin[0] = isset($_POST['courriel']) ? $_POST['courriel'] : "suce";
-        $this->infosLogin[1] = isset($_POST['mot_de_passe']) ? $_POST['mot_de_passe'] : "suce";
+        $this->infosLogin[0] = isset($_POST['courriel']) ? $_POST['courriel'] : null;
+        $this->infosLogin[1] = isset($_POST['mot_de_passe']) ? $_POST['mot_de_passe'] : null;
         $this->InfosUtilisateur = new InfoUtilisateur();
         $this->allUsers = $this->InfosUtilisateur->getListOfAllDBObjects();
        

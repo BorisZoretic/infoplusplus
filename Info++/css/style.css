@@ -83,6 +83,25 @@ background: linear-gradient(to bottom, #09aac1 0%,#ffffff 88%,#ffffff 100%,#ffff
 	margin-left: 20px;	
 }
 
+.inputMarginWidthService{
+	width: 300px;
+	margin-bottom:10px;
+	margin-left:10px;
+	display:inline-block;
+}
+
+
+.inputMarginWidthServiceDesc{
+	width: 300px;
+	margin-bottom:10px;
+	margin-left:10px;
+	display:inline-block;
+}
+
+.inputMarginWidthServiceDesc::placeholder{
+	font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+}
+
 .inputMarginWidthCivic{
 	width: 30px;
 	margin-bottom: 10px;

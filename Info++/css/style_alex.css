@@ -99,3 +99,46 @@ select {
 	margin-left:300px;
 	border: 1px solid #FF9F07;
 }
+
+.imgTool{
+	width:10px;
+	height:10px;
+	display:block;
+	float:right;
+}
+
+.imgHolder{
+	width:100px;
+	height:70px;
+	display:block;
+	border:1px solid #000000;
+	margin-bottom:1px;
+}
+
+
+input[type='file'] {
+  color: transparent;
+  visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.btnUpdate{
+	background-color:#ffffff;
+	width:100px;
+	height:50px;
+	text-align:left;
+	white-space: normal;
+	border:1px solid #000000;
+	
+}
+
+#uploads{
+	width:105px;
+	display:inline-block;
+}
+
+#formServ{	
+	width:350px;
+	display:inline-block;
+}

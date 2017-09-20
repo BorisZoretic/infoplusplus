@@ -16,7 +16,8 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 ?>
 	
 		<?php
-		require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/gestion_service.php';
+		echo "<a href='ajoutservice.php'class='ajoutService'>Ajouter un service</a>";
+		
             require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_service.php';
             $aService = new InfoService();
             $aService->getDynamicAdminList();
@@ -26,8 +27,9 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
             require_once $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/footer.php';
         ?>
         <script> 
-$(document).on("click", ".divTable", function(){
+$(document).on("click", "#tool", function(){
 	$(this).closest(".divTable").find("#myDropdown").toggleClass("show");
+	$(this).closest(".divTable").find("#tool").toggleClass("show");
 	});
 
 </script>
