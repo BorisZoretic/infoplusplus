@@ -108,10 +108,9 @@ select {
 }
 
 .imgHolder{
-	width:100px;
+	width:105px;
 	height:70px;
 	display:block;
-	border:1px solid #000000;
 	margin-bottom:1px;
 }
 
@@ -125,7 +124,7 @@ input[type='file'] {
 
 .btnUpdate{
 	background-color:#ffffff;
-	width:100px;
+	
 	height:50px;
 	text-align:left;
 	white-space: normal;

@@ -11,6 +11,7 @@ class InfoService extends InfoModel {
 	protected $duree = 0;
 	protected $tarif = 0;
 	protected $actif = 1;
+	protected $image = '';
 	
 	function __construct() {
 	}
@@ -41,6 +42,7 @@ class InfoService extends InfoModel {
     public function getService_titre(){
         return $this->service_titre;
     }
+    
 
     /**
      * service_titre
@@ -50,6 +52,24 @@ class InfoService extends InfoModel {
     public function setService_titre($service_titre){
         $this->service_titre = $service_titre;
         return $this;
+    }
+    
+    /**
+     * image
+     * @param string $image
+     * @return InfoService
+     */
+    public function setImage($image){
+        $this->image = $image;
+        return $this;
+    }
+    
+    /**
+     * image
+     * @return string
+     */
+    public function getImage(){
+        return $this->image;
     }
 
     /**
