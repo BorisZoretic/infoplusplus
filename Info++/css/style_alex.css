@@ -64,6 +64,7 @@ select {
 .dropdown {
 	padding:5px;
 }
+
 .dropdown-content {
     display:none;
     
@@ -91,13 +92,29 @@ select {
     font-weight:bold;
 }
 
-
+.showBob{
+	display: block;
+    width: 110px;
+    font-size: 8px;
+    position: absolute;
+    margin-left: 45px;
+    margin-top: 45px;
+    border: 1px solid #FF9F07;
+}
 
 .show {
 	display:block;
-	width:auto;
+	width: 180px;
 	margin-left:300px;
 	border: 1px solid #FF9F07;
+}
+
+.showAbsolute{
+	display:block;
+	width: 180px;
+	margin-left:300px;
+	border: 1px solid #FF9F07;
+	position: absolute;
 }
 
 .imgTool{

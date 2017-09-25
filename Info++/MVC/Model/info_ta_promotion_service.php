@@ -135,6 +135,12 @@ class InfoTaPromotionService extends InfoModel {
                 
                 if($anObject['fk_service'] == $pk_service){
                     $aPromotion = $aPromotion->getObjectFromDB($anObject['fk_promotion']);
+                    echo "<div class='imagePromo'>";
+                    echo "<img id='toolBob' class='imgToolBob' src='../images/icones/sys.png'>";
+                    echo "<div id='myDropdownBob' class='dropdown-content'>
+                        <a class='paddingContent' href='modifTaPromo.php?pk_promotion_service=" . $anObject['pk_promotion_service'] . "'>Modifier la promotion</a>
+                        <a class='paddingContent' href='#'>Supprimer la promotion</a>
+                        </div>";
                     if($aPromotion['rabais'] == 0.10){
                         echo "<img class='imgPromo' src='images/promotions/10.png' title='imgPromo10' alt='imgPromo10'>";
                     }else if($aPromotion['rabais'] == 0.15){
@@ -144,10 +150,54 @@ class InfoTaPromotionService extends InfoModel {
                     }else if($aPromotion['rabais'] == 0.25){
                         echo "<img class='imgPromo' src='images/promotions/25.png' title='imgPromo25' alt='imgPromo25'>";
                     }
+                    echo "</div>";
                 }
                 
             }
         }
+    }
+    
+    function formPromotionService($pk_promotion_service){
+        $laPromo = $this->getObjectFromDB($pk_promotion_service);
+        
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_promotion.php';
+        
+        $aPromo = new InfoPromotion();
+        $promo = $aPromo->getObjectFromDB($laPromo["fk_promotion"]);
+        
+        $format = 'Y-m-d H:i:s';
+        $date_debut = DateTime::createFromFormat($format, $laPromo['date_debut']);
+        $date_fin = DateTime::createFromFormat($format, $laPromo['date_fin']);
+        
+        echo "<div class='formcenter'>
+        <h4>Ajouter la période et un code pour appliquer la promotion choisie</h4>
+        <h5 class='h5modif'>Le code n'est pas obligatoire et ne sera pas exigé si le champ est vide</h5>
+            
+		<form id='formIns' class='inscription' onsubmit='return validate()' method='post'
+			action='http://localhost/infoplusplus/Info++/MVC/Controller/service_controller.php'>
+			<div id='uploads'>";
+                if($promo['rabais'] == 0.10){
+                    echo "<img class='imgPromoModif' src='images/promotions/10.png' title='imgPromo10' alt='imgPromo10'>";
+                }else if($promo['rabais'] == 0.15){
+                    echo "<img class='imgPromoModif' src='images/promotions/15.png' title='imgPromo15' alt='imgPromo15'>";
+                }else if($promo['rabais'] == 0.20){
+                    echo "<img class='imgPromoModif' src='images/promotions/20.png' title='imgPromo20' alt='imgPromo20'>";
+                }else if($promo['rabais'] == 0.25){
+                    echo "<img class='imgPromoModif' src='images/promotions/25.png' title='imgPromo25' alt='imgPromo25'>";
+                }
+		echo "<select id='selectPromo' class='selectPromo'>
+              </select></div>
+			    
+			<div class='formPromo'>
+				<label class='labelPromo' for='date_debut'>Période de la promotion</label></br>
+    			<input type='date' name='date_debut' placeholder='Date de début' value='" . $date_debut->format('Y-m-d') . "'></input>
+    			<input type='date' name='date_fin' placeholder='Date de fin' value='" . $date_fin->format('Y-m-d') . "'></input></br></br>
+    			<label class='labelPromo' for='code'>Entre un code s'il est requis pour appliquer<br>la promotion lors de la création de la facture</label></br>
+    			<input name='code' value='".$laPromo['code']."'></input>
+    			</div>
+    			<input type='submit' id='add' class='buttonConfirmer' value='Confirmer'>
+    			</form>
+			</div>";
     }
 
 }

@@ -28,8 +28,13 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
         ?>
         <script> 
 $(document).on("click", "#tool", function(){
-	$(this).closest(".divTable").find("#myDropdown").toggleClass("show");
+	$(this).closest(".divTable").find("#myDropdown").toggleClass("showAbsolute");
 	$(this).closest(".divTable").find("#tool").toggleClass("show");
+	});
+
+$(document).on("click", "#toolBob", function(){
+	$(this).closest(".divMarginTop").find("#myDropdownBob").toggleClass("showBob");
+	$(this).closest(".divMarginTop").find("#toolBob").toggleClass("showBob");
 	});
 
 </script>

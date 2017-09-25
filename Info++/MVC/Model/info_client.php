@@ -226,7 +226,7 @@ WHERE c.pk_client = '" . $pk_client . "'";
             echo "<input name='prenom' id='fname' class='inputMarginWidth' placeholder='Prénom' value='" . $anObject['prenom'] . "'></input><br>";
             echo "<input name='civic' id='streetadd' class='inputMarginWidthCivic' placeholder='No civic' value='" . $anObject['no_civique'] . "'></input>";
             echo "<input name='rue' id='sname' class='inputMarginWidthRue' placeholder='Rue' value='" . $anObject['rue'] . "'></input>";
-            echo $Villes->getActiveObjectsAsSelect($anObject['fk_ville']);
+            echo $Villes->getActiveVillesAsSelect($anObject['fk_ville']);
             echo "<input name='codepostal' id='zip' class='inputMarginWidth' placeholder='Code postale' value='" . $anObject['code_postal'] . "'></input>";
             echo "<input name='telephone' class='inputMarginWidth' placeholder='Numéro de téléphone' value='" . $anObject['telephone'] . "'></input>";
             echo "<div id='selector' class='invisible'>" . $anObject['fk_ville'] . "</div>";

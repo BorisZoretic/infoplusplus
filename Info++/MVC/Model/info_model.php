@@ -392,22 +392,13 @@ class InfoModel
         return $table;
     }
 
-    function getActiveObjectsAsSelect($selected = null)
+    function getActiveObjectsAsSelect($selected = null, $name)
     {
-        if ($this->primary_key == "order") {
-            $this->primary_key = "name";
-        }
         $aListOfObjects = $this->getListOfActiveBDObjects();
         
-        if ($selected == null) {
-            echo "<option value='Choisissez une $this->table_name'>Choisissez une $this->table_name</option>";
-        }
-        else {
-            echo "<select name='ville' id='villes' class='inputMarginWidth'>"; 
-        }        
         
         if ($aListOfObjects != null) {
-            
+            echo "<option value='Choisissez une $this->table_name'>Choisissez une $this->table_name</option>";
             foreach ($aListOfObjects as $anObject) {
                 
                 echo "<option ";
@@ -415,11 +406,8 @@ class InfoModel
                 if (preg_replace('/\s+/', '', $selected) == preg_replace('/\s+/', '', $anObject[$this->primary_key])) {
                     echo " selected='selected' ";
                 }
-                echo " class='editable' value='" . $anObject[$this->primary_key] . "'>" . $anObject["ville"] . "</option>";
+                echo " class='editable' value='" . $anObject[$this->primary_key] . "'>" . $anObject["$name"] . "</option>";
             }
-        }
-        if ($selected != null) {
-            echo "</select><br>";
         }
         
     }
