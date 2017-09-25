@@ -94,6 +94,25 @@ background: linear-gradient(to bottom, #09aac1 0%,#ffffff 88%,#ffffff 100%,#ffff
 	display:inline-block;
 }
 
+.inputMarginWidthService2{
+	width: 140px;
+	margin-bottom:10px;
+	margin-left:10px;
+	display:inline-block;
+	color:#00B4CC;
+}
+
+.inputMarginWidthService2::placeholder{
+	color:#00B4CC;
+}
+
+.inputMarginWidthService3{
+	font-size:14px;
+	margin-bottom:10px;
+	margin-left:10px;
+	display:inline-block;
+	color:#00B4CC;
+}
 
 .inputMarginWidthServiceDesc{
 	width: 300px;
