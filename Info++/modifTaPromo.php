@@ -35,7 +35,7 @@ if (isset($_SESSION['admin']) == false){
     ?>
 	<script>
         $(document).ready(function() {
-        	$("#selectPromo").load("MVC/view/getPromoSelect.php");
+        	//$("#selectPromo").load("MVC/view/getPromoSelect.php");
         });
     	$('.btnUpdate').click(function(){
     	    $('input').click();

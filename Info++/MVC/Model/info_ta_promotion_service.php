@@ -185,8 +185,9 @@ class InfoTaPromotionService extends InfoModel {
                 }else if($promo['rabais'] == 0.25){
                     echo "<img class='imgPromoModif' src='images/promotions/25.png' title='imgPromo25' alt='imgPromo25'>";
                 }
-		echo "<select id='selectPromo' class='selectPromo'>
-              </select></div>
+		echo "<select id='selectPromo' class='selectPromo'>";
+		$aPromo->getActiveObjectsAsSelect($promo['pk_promotion'], "promotion_titre");
+              echo "</select></div>
 			    
 			<div class='formPromo'>
 				<label class='labelPromo' for='date_debut'>Période de la promotion</label></br>
