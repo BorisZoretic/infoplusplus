@@ -115,6 +115,8 @@ background: linear-gradient(to bottom, #09aac1 0%,#ffffff 88%,#ffffff 100%,#ffff
 }
 
 .inputMarginWidthServiceDesc{
+	font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+	font-size:12px;
 	width: 300px;
 	margin-bottom:10px;
 	margin-left:10px;

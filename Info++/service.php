@@ -37,6 +37,19 @@ $(document).on("click", "#toolBob", function(){
 	$(this).closest(".divMarginTop").find("#toolBob").toggleClass("showBob");
 	});
 
+$(document).on("click", "#mod", function(){
+	var idService = $(this).closest(".divTable").find("#pk").text(); 
+	$(location).attr('href', 'modifservice.php?id='+idService);
+});
+
+$(document).on("click", "#deac", function(){
+	var idService = $(this).closest(".divTable").find("#pk").text(); 
+	$(location).attr('href', 'MVC/view/getService.php?id='+idService+'&deac=1');
+});
+
+
+
+
 </script>
     </body>
     

@@ -148,8 +148,9 @@ class InfoService extends InfoModel {
         $aListOfObjects = $this->getListOfActiveBDObjects();
         if ($aListOfObjects != null) {
             foreach ( $aListOfObjects as $anObject ) {
-                
+               
                 echo "<div class='border divTable' onclick='drop()'>";
+                
                 echo "<img class='excel' src='" . $anObject['image'] . "' title='" . $anObject['image'] . "' alt='" . $anObject['image'] . "'>";
                 echo "<h4>". $anObject['service_titre'] ."</h4><br>";
                 echo "<p class='textExcel'>" . $anObject['service_description'] . "</p>";
@@ -160,19 +161,30 @@ class InfoService extends InfoModel {
     }
     
     function getService($idservice){
-        $aListOfObjects = $this->getObjectFromDB($idservice);
-        if ($aListOfObjects != null) {
-            foreach ( $aListOfObjects as $anObject ) {
-                echo "<img src=''>";
-                echo " <input type='file' name='fileToUpload' id='fileToUpload'>";
-                echo "<input id='titre' name='title' class='inputMarginWidth' placeholder='Titre'></input>
-                <br>";
-                echo "<input type='messagebox' id='desc' name='description' class='inputMarginWidth' placeholder='Description'></input>
-                <br>"; 
-                echo "<input name='duree' id='dur' class='inputMarginWidth' placeholder='Durée'></input>";
-                echo "<input id='tar' name='tarif' class='inputMarginWidth' placeholder='Tarif'></input>";
-            }
-        }
+        $anObject = $this->getObjectFromDB($idservice);       
+                echo "<div name='imageUpload' id='uploads'><img class='imgHolder' src='". $anObject['image'] ."'>";
+                echo "<input type='file' name='fileToUpload' class='imgUpload' id='fileToUp'>";
+                echo "<input type='button' class='btnUpdate' value='Mettre à jour la photo'></div>";
+                echo "<div id='formServ'>";
+                echo "<input id='titre' name='title' class='inputMarginWidthService' value='". $anObject['service_titre'] ."'></input>";
+                echo "<br>";
+                echo "<textarea type='textarea' id='desc' name='description' class='inputMarginWidthServiceDesc' placeholder='Description'>" . $anObject['service_description'] . "</textarea>
+                <br> ";
+                echo "<input type='number' min='1' max='1000' name='duree' id='dur' class='inputMarginWidthService2'
+                    value='" . $anObject['duree'] . "'></input>";
+                echo "<input type='number' min='1' max='1000' id='tar' name='tarif'
+                        class='inputMarginWidthService2' value='" . $anObject['tarif'] . "'></input><br>";
+                if ($anObject['actif']=='1'){
+                    echo "<div class='inputMarginWidthService3' ><input type='checkbox' id='act' checked='checked' name='active'></input><label>Activer dans le catalogue</label></div>";
+                }
+                else{
+                echo "<div class='inputMarginWidthService3' ><input type='checkbox' id='act' name='active'></input><label>Activer dans le catalogue</label></div>
+                        
+                        </div>";
+                }
+                echo "<input type='submit' id='add' name='submit' class='buttonConfirmer' value='Modifier'>";
+            
+        
     }
     
     function getDynamicAdminList(){
@@ -184,12 +196,13 @@ class InfoService extends InfoModel {
         if ($aListOfObjects != null) {
             foreach ( $aListOfObjects as $anObject ) {
                 echo "<div id='tab' class='border divTable service dropdown'>";
+                echo "<label id='pk' class='none'>". $anObject['pk_service'] ."</label>";
                 echo "<div id='tool' class='imgTool'>                        
                         <img class='imgTool' src='../images/icones/sys.png'>
                         </div>";
                 echo "<div id='myDropdown' class='dropdown-content'>
-                        <a href='#'>Modifier le service</a>
-                        <a href='#'>Désactiver le service</a>
+                        <a id='mod' href='#'>Modifier le service</a>
+                        <a id='deac'href='#'>Désactiver le service</a>
                         </div>";
                 echo "<img class='excel' src='" . $anObject['image'] . "' title='" . $anObject['image'] . "' alt='" . $anObject['image'] . "'>";
                 

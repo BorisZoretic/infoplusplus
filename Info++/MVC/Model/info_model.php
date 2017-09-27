@@ -111,7 +111,7 @@ class InfoModel
 		SET `$aField` = '$aValue'
 		WHERE `" . $this->table_name . "`.`" . $this->primary_key . "` = '$anID' ";
         
-        // echo "<br>" . $sql;
+        echo "<br>" . $sql;
         
         include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
         
