@@ -33,9 +33,10 @@ $(document).on("click", "#tool", function(){
 	});
 
 $(document).on("click", "#toolBob", function(){
-	$(this).closest(".divMarginTop").find("#myDropdownBob").toggleClass("showBob");
-	$(this).closest(".divMarginTop").find("#toolBob").toggleClass("showBob");
+	$(this).closest(".imagePromo").find("#myDropdownBob").toggleClass("showBob");
+	$(this).closest(".imagePromo").find("#toolBob").toggleClass("showBob");
 	});
+
 
 $(document).on("click", "#mod", function(){
 	var idService = $(this).closest(".divTable").find("#pk").text(); 
@@ -47,6 +48,30 @@ $(document).on("click", "#deac", function(){
 	$(location).attr('href', 'MVC/view/getService.php?id='+idService+'&deac=1');
 });
 
+
+$(document).on("click", "#deletePromoService", function(){
+	console.log($(this).attr('idPromoService'));
+	data = '';
+	$.ajax({method : "POST",
+		url : "AjaxRelated/delete-object_process.php?pk_promotion_service=" + $(this).attr('idPromoService'),
+		data : data,
+		beforeSend : function() {
+			// TO INSERT - loading animation
+		},
+		success : function(response) {
+			$(location).attr('href', 'service.php');
+		}
+	
+	});
+	});
+
+
+
+
+
+$(document).on("click", ".buttonPlus", function(){
+	$(location).attr('href', 'ajoutTaPromo.php?fk_service=' + $(this).attr('id'));
+	});
 
 
 

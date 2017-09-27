@@ -17,17 +17,31 @@ if (isset($_SESSION['admin']) == false){
 <title>Info++ - Modification Promotion</title>
 </head>
 <body>
-	<label id='pk' class='none'><?php echo $_GET['pk_promotion_service']?></label>
+	<label id='fk' class='none'><?php echo $_GET['fk_service']?></label>
     <?php
-
         require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigateur.php';
-        require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/model/info_ta_promotion_service.php';
-        
-        $ta_promo = new InfoTaPromotionService();
-        $ta_promo->formPromotionService($_GET['pk_promotion_service']);
-    
     ?>
 	
+	<div class='formcenter'>
+        <h4>Ajouter la période et un code pour appliquer la promotion choisie</h4>
+        <h5 class='h5modif'>Le code n'est pas obligatoire et ne sera pas exigé si le champ est vide</h5>
+            
+		<form id='formModifPromo' class='inscription' method='post'>
+			<div id='uploads'>
+			<img class='imgPromoModif' src='images/promotions/10.png' title='imgPromo10' alt='imgPromo10'>
+		<select id='selectPromo' class='selectPromo'></select>
+		</div>
+			    
+			<div class='formPromo'>
+				<label class='labelPromo' for='date_debut'>Période de la promotion</label></br>
+    			<input id='date_debut' type='date' name='date_debut' placeholder='Date de début' value=''></input>
+    			<input id='date_fin' type='date' name='date_fin' placeholder='Date de fin' value=''></input></br></br>
+    			<label class='labelPromo' for='code'>Entre un code s'il est requis pour appliquer<br>la promotion lors de la création de la facture</label></br>
+    			<input id='code' name='code' value=''></input>
+			</div>
+			<a class='buttonConfirmer'>Ajouter</a>
+		</form>
+	</div>
 	
 	
     <?php
@@ -35,7 +49,7 @@ if (isset($_SESSION['admin']) == false){
     ?>
 	<script>
         $(document).ready(function() {
-        	//$("#selectPromo").load("MVC/view/getPromoSelect.php");
+        	$("#selectPromo").load("MVC/view/getPromoSelect.php");
         	
         });
     	$('.btnUpdate').click(function(){
@@ -67,7 +81,7 @@ if (isset($_SESSION['admin']) == false){
     		var self = $(this);
     		var form = self.closest("#formModifPromo");
 
-    		var primary_key = self.closest("body").find("#pk");
+    		var fk_service = self.closest("body").find("#fk");
     		var promo = form.find("#selectPromo");
     		
     		var date_debut = form.find("#date_debut");
@@ -78,16 +92,16 @@ if (isset($_SESSION['admin']) == false){
     		if(promo.val() != "Choisissez une promotion" && date_debut.val() != '' &&  date_fin.val() != ''){
     		
         		var data = "";
-        		var lol = "promo=" + promo.val() + "&date_debut=" + date_debut.val() + "&date_fin=" + date_fin.val() + "&code=" + code.val() + "&primary_key=" + primary_key.text();
-            	console.log(lol);
+        		/*var lol = "promo=" + promo.val() + "&date_debut=" + date_debut.val() + "&date_fin=" + date_fin.val() + "&code=" + code.val() + "&primary_key=" + primary_key.text();
+            	console.log(lol);*/
         		$.ajax({method : "POST",
-        			url : "AjaxRelated/edit-object_process.php?promo=" + promo.val() + "&date_debut=" + date_debut.val() + "&date_fin=" + date_fin.val() + "&code=" + code.val() + "&primary_key=" +  primary_key.text(),
+        			url : "AjaxRelated/ajout-object_process.php?promo=" + promo.val() + "&date_debut=" + date_debut.val() + "&date_fin=" + date_fin.val() + "&code=" + code.val() + "&fk_service=" +  fk_service.text(),
         			data : data,
         			beforeSend : function() {
         				// TO INSERT - loading animation
         			},
         			success : function(response) {
-    					$(location).attr('href', 'modifTaPromo.php?pk_promotion_service=' + primary_key.text());
+    					//$(location).attr('href', 'service.php');
         			}
         		
     			});

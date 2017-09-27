@@ -214,7 +214,7 @@ class InfoService extends InfoModel {
                 echo "<p class='promotion'>Promotion: </p>";
                 $aPromotionService->getDynamicPromotionService($anObject['pk_service']);
                 //echo "<img class='imgPromo' src='images/promotions/grid.png' title='grid' alt='grid'>";
-                echo "<button class='buttonPlus'>+</button>";
+                echo "<button class='buttonPlus' id='". $anObject['pk_service'] ."'>+</button>";
                 echo "<img class='mediasSociaux' src='images/icones/medias sociaux.jpeg' title='mediasSociaux' alt='mediasSociaux'>";
                 
                 echo "</div>";
