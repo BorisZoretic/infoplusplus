@@ -43,23 +43,24 @@ if (isset($_SESSION['admin']) == false){
     	});
 
     	$('#selectPromo').change(function(){
-    		/*var self = $(this);
+    		var self = $(this);
 
     		var newValue = $(this).val();
     		
-			var image = self.closest("#formModifPromo").find(".imgPromoModif");
+			var span = self.closest("#formModifPromo").find(".spanRabais");
 
-			if(newValue == 0.10){
-				image.attr('src', 'images/promotions/10.png');
-            }else if(newValue == 0.15){
-            	image.attr('src', 'images/promotions/15.png');
-            }else if(newValue == 0.20){
-            	image.attr('src', 'images/promotions/20.png');
-            }else if(newValue == 0.25){
-            	image.attr('src', 'images/promotions/25.png');
-            }*/
-
-			//alert(newValue);
+			var data = '';
+			$.ajax({method : "POST",
+    			url : "MVC/view/getRabais.php?id=" + newValue,
+    			data : data,
+    			beforeSend : function() {
+    				// TO INSERT - loading animation
+    			},
+    			success : function(response) {
+    				span.html(response + "%");
+    			}
+    		
+			});
     		
     	});
 
@@ -75,7 +76,7 @@ if (isset($_SESSION['admin']) == false){
 
     		var code = form.find("#code");
 
-    		if(promo.val() != "Choisissez une promotion" && date_debut.val() != '' &&  date_fin.val() != ''){
+    		if(promo.val() != "Choisissez une promotion" && date_debut.val() != '' &&  date_fin.val() != '' && date_debut.val() < date_fin.val()){
     		
         		var data = "";
         		var lol = "promo=" + promo.val() + "&date_debut=" + date_debut.val() + "&date_fin=" + date_fin.val() + "&code=" + code.val() + "&primary_key=" + primary_key.text();
@@ -87,12 +88,12 @@ if (isset($_SESSION['admin']) == false){
         				// TO INSERT - loading animation
         			},
         			success : function(response) {
-    					$(location).attr('href', 'modifTaPromo.php?pk_promotion_service=' + primary_key.text());
+    					$(location).attr('href', 'service.php');
         			}
         		
     			});
         	} else{
-				alert('Veuillez remplir tous les champs requis');
+				alert('Veuillez remplir tous les champs requis adéquatemment');
         	}
     	});
     </script>

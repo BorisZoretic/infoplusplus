@@ -32,6 +32,20 @@ $(document).on("click", "#tool", function(){
 	$(this).closest(".divTable").find("#tool").toggleClass("show");
 	});
 
+$(document).on("hover", ".imgPromo", function(){
+	$(this).find(".none").toggleClass("showDate");
+	});
+
+$(document).ready(function(){
+    $( ".imagePromo" ).hover(
+    		  function() {
+    		    $( this ).find('.none').removeClass( "none" );
+    		  }, function() {
+    		    $( this ).find('.showDate').addClass( "none" );
+    		  }
+    		);
+});
+
 $(document).on("click", "#toolBob", function(){
 	$(this).closest(".imagePromo").find("#myDropdownBob").toggleClass("showBob");
 	$(this).closest(".imagePromo").find("#toolBob").toggleClass("showBob");
