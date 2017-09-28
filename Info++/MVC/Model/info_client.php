@@ -247,35 +247,7 @@ WHERE c.pk_client = '" . $pk_client . "'";
         return null;
     }
     
-    function getClientWithUserFK($f_key)
-    {
-        include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
-        
-        $internalAttributes = get_object_vars($this);
-        
-        if ($this->primary_key == "order") {
-            $this->primary_key = "name";
-        }
-        
-        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE " . $this->fk_utilisateur . " = '" . $f_key . "'";
-        $result = $conn->query($sql);
-        
-        if ($result->num_rows > 0) {
-            $anObject = Array();
-            while ($row = $result->fetch_assoc()) {
-                $anObject["primary_key"] = $this->primary_key;
-                $anObject["table_name"] = $this->table_name;
-                foreach ($row as $aRowName => $aValue) {
-                    $anObject[$aRowName] = $aValue;
-                    $this->$aRowName = $aValue;
-                }
-            }
-            $conn->close();
-            return $anObject;
-        }
-        $conn->close();
-        return null;
-    }
+    
     
     function getObjectAsArrayWithMetadata()
     {

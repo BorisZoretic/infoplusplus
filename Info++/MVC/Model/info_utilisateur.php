@@ -142,6 +142,8 @@ class InfoUtilisateur extends InfoModel {
         return null;
     }
     
+   
+    
   
     function getDynamicList(){
         $aListOfObjects = $this->getListOfActiveBDObjects();

@@ -47,7 +47,7 @@ class utilisateur_controller
         $this->infosInscription[7] = isset($_POST['email']) ? $_POST['email'] : null;
         $this->infosInscription[8] = isset($_POST['password']) ? $_POST['password'] : null;
         $this->infosInscription[9] = isset($_POST['infolettre']) ? '1' : '0';
-        $this->infosInscription[10] = isset($_POST['primary']) ? $_POST['primary'] : null;
+        $this->infosInscription[10] = isset($_GET['primary']) ? $_GET['primary'] : null;
         $this->InfosUtilisateur = new InfoUtilisateur();
         $this->InfosClient = new InfoClient();
         $this->InfosAdresse = new InfoAdresse();
@@ -62,15 +62,7 @@ class utilisateur_controller
             if ($row['courriel'] == $this->infosInscription[7]) {
                 
                 $this->Duplicate = true;
-                if (isset($_POST['primary'])){                    
-                    $this->InfosUtilisateur->getObjectFromDB($this->infosInscription[10]);
-                    $this->InfosClient->getClientWithUserFK($this->infosInscription[10]);
-                    $this->InfosAdresse->getObjectFromDB($this->InfosClient->getFk_adresse());
-                    $this->InfosVille->getObjectFromDB($this->InfosAdresse->getFk_ville());    
-                }
                 
-                
-               
             }
         }
     }
@@ -83,7 +75,7 @@ class utilisateur_controller
     function ajouterClient()
     {
         $this->verifyEmails();
-        if ($this->getDuplicate() == false) {
+        if ($this->getDuplicate() == false && isset($_GET['mod'])==false) {
             
             /* Infos Client #1 */
             $this->InfosClient->setNom($this->infosInscription[0]);
@@ -101,6 +93,7 @@ class utilisateur_controller
             /* Infos Utilisateur */
             $this->InfosUtilisateur->setCourriel($this->infosInscription[7]);
             $this->InfosUtilisateur->setMot_de_passe($this->infosInscription[8]);
+            
             $this->InfosUtilisateur->setAdministration('0');
             // Ajout adresse
             $this->InfosAdresse->setPk_adresse($this->InfosAdresse->addDBObject());
@@ -113,6 +106,16 @@ class utilisateur_controller
             $this->InfosClient->addDBObject();
         }
         elseif ($_GET['mod']==1) {
+            
+            if (isset($_GET['primary'])){
+                $this->InfosClient->getObjectFromDB($this->infosInscription[10]);
+                $this->InfosUtilisateur->getObjectFromDB($this->InfosClient->getFk_utilisateur());
+                
+                $this->InfosAdresse->getObjectFromDB($this->InfosClient->getFk_adresse());
+                $this->InfosVille->getObjectFromDB($this->InfosAdresse->getFk_ville());
+            }
+            
+            
             /* Infos Client #1 */
             $this->InfosClient->setNom($this->infosInscription[0]);
             $this->InfosClient->setPrenom($this->infosInscription[1]);            
@@ -125,12 +128,14 @@ class utilisateur_controller
             $this->InfosAdresse->setRue($this->infosInscription[3]);
             $this->InfosAdresse->setFk_ville($this->infosInscription[4]);
             $this->InfosAdresse->setCode_postal($this->infosInscription[5]);
+            $this->InfosAdresse->setPk_adresse($this->InfosClient->getFk_adresse());
             $this->InfosAdresse->updateDBObject();
             
             
             /* Infos Utilisateur */
             $this->InfosUtilisateur->setCourriel($this->infosInscription[7]);
             $this->InfosUtilisateur->setMot_de_passe($this->infosInscription[8]);
+            $this->InfosUtilisateur->setPk_utilisateur($this->infosInscription[10]);
             $this->InfosUtilisateur->updateDBObject();
                         
             
