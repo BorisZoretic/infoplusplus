@@ -72,14 +72,17 @@ input[type="date"]{
 .imgPromo{
 	display:block;
 	width: 100%;
-	margin-top: 34px;
-	margin-left: 10px;
+    margin-top: 13px;
+    margin-left: 7px;
+	color:#FF9F07;
+	font-weight: 600;
 }
 
 .divMarginTop{
 	margin-top: 50px;
 	margin-left: 20px;
 	margin-right: 20px;
+    margin-bottom: 35px;
 }
 
 .buttonPlus{
@@ -101,6 +104,35 @@ input[type="date"]{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
+    padding:5px;
+}
+
+.titrePromo{
+    background-color: #FF9F07;
+    color: white;
+    font-size: 10px;
+    font-weight: 100;
+    max-width: 43px;
+    max-height: 12px;
+    margin-left: -7px;
+    margin-top: 0px;
+    display: block;
+    padding-left:2px;
+}
+
+.spanRabaisPromo{
+	margin-top: -5px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.showDate{
+	font-size: 10px;
+    width: 80px;
+    margin-left: -10px;
+    display: block;
+    margin-right: 10px;
+    margin-top: 5px;
 }
 
 .idFacture{
@@ -171,11 +203,14 @@ input[type="date"]{
 }
 
 .imagePromo{
+	background-color: #f9f9f9;
 	position: relative;
 	float: left;
     height: 45px;
     width: 45px;
-    margin-left: 10px;
+	margin-top: 34px;
+	margin-left: 10px;
+	border: solid 1px #FF9F07;
 }
 
 .imgToolBob{
@@ -184,8 +219,8 @@ input[type="date"]{
     display: block;
     float: right;
     position: absolute;
-    margin-top: 33px;
-    margin-left: 45px;
+    margin-left: 34px;
+    margin-top: -1px;
 }
 
 .paddingContent{
@@ -193,19 +228,28 @@ input[type="date"]{
 }
 
 .selectPromo{
-    margin-top: -1px;
     padding: 6px;
-    width: 128px;
+    width: 132px;
     background-color: #FF9F07;
     color: black;
     font-size: 10px;
 }
 
 .imgPromoModif{
-    width: 120%;
     display: block;
-    border: 1px solid #000000;
-    margin-bottom: 1px;
+    border: 1px solid #FF9F07;
+    height: 112px;
+    width: 130px;
+    font-size: 40px;
+    font-weight: 500;
+    color: #FF9F07;
+    background-color: #f9f9f9;
+}
+
+.spanRabais{
+	display: block;
+    padding: 27px;
+    margin-top: 5px;
 }
 
 .formPromo{
@@ -216,4 +260,16 @@ input[type="date"]{
 
 .labelPromo{
     font-weight: 600;
+}
+
+.btnBob{
+	font-size: 22px;
+    font-weight: 500;
+    margin-left: 15px;
+    margin-top: 4px;
+    display: block;
+}
+
+.btnBobAjout{
+	margin-left: 18px;
 }

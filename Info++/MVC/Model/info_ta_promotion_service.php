@@ -128,10 +128,16 @@ class InfoTaPromotionService extends InfoModel {
         
         $aPromotion = new InfoPromotion();
         
+        $format = 'Y-m-d H:i:s';
+        
         $aListOfObjects = $this->getListOfActiveBDObjects();
         $compt = 1;
         if ($aListOfObjects != null) {
             foreach ( $aListOfObjects as $anObject ) {
+                
+                
+                $date_debut = DateTime::createFromFormat($format, $anObject['date_debut']);
+                $date_fin = DateTime::createFromFormat($format, $anObject['date_fin']);
                 
                 if($anObject['fk_service'] == $pk_service){
                     $promo = $aPromotion->getObjectFromDB($anObject['fk_promotion']);
@@ -141,15 +147,10 @@ class InfoTaPromotionService extends InfoModel {
                         <a class='paddingContent' href='modifTaPromo.php?pk_promotion_service=" . $anObject['pk_promotion_service'] . "'>Modifier la promotion</a>
                         <a class='paddingContent' id='deletePromoService' idPromoService='".$anObject["pk_promotion_service"]."' href='#'>Supprimer la promotion</a>
                         </div>";
-                    if($promo['rabais'] == 0.10){
-                        echo "<img class='imgPromo' src='images/promotions/10.png' title='imgPromo10' alt='imgPromo10'>";
-                    }else if($promo['rabais'] == 0.15){
-                        echo "<img class='imgPromo' src='images/promotions/15.png' title='imgPromo15' alt='imgPromo15'>";
-                    }else if($promo['rabais'] == 0.20){
-                        echo "<img class='imgPromo' src='images/promotions/20.png' title='imgPromo20' alt='imgPromo20'>";
-                    }else if($promo['rabais'] == 0.25){
-                        echo "<img class='imgPromo' src='images/promotions/25.png' title='imgPromo25' alt='imgPromo25'>";
-                    }
+                    $titre = str_replace('Rabais', '', $promo['promotion_titre']);
+                    $titre = ucfirst($titre);
+                    echo "<div class='imgPromo'><span class='spanRabaisPromo'>". $promo['rabais'] * 100 ."%</span><span class='titrePromo'>". $titre ."</span></div>";
+                    echo "<div class='none showDate'>".$date_debut->format('Y-m-d')." à " . $date_fin->format('Y-m-d') . "</div>";
                     echo "</div>";
                 }
                 
@@ -175,15 +176,7 @@ class InfoTaPromotionService extends InfoModel {
             
 		<form id='formModifPromo' class='inscription' method='post'>
 			<div id='uploads'>";
-                if($promo['rabais'] == 0.10){
-                    echo "<img class='imgPromoModif' src='images/promotions/10.png' title='imgPromo10' alt='imgPromo10'>";
-                }else if($promo['rabais'] == 0.15){
-                    echo "<img class='imgPromoModif' src='images/promotions/15.png' title='imgPromo15' alt='imgPromo15'>";
-                }else if($promo['rabais'] == 0.20){
-                    echo "<img class='imgPromoModif' src='images/promotions/20.png' title='imgPromo20' alt='imgPromo20'>";
-                }else if($promo['rabais'] == 0.25){
-                    echo "<img class='imgPromoModif' src='images/promotions/25.png' title='imgPromo25' alt='imgPromo25'>";
-                }
+        echo "<div class='imgPromoModif'><span class='spanRabais'>". $promo['rabais'] * 100 ."%</span></div>";
 		echo "<select id='selectPromo' class='selectPromo'>";
 		$aPromo->getActiveObjectsAsSelect($promo['pk_promotion'], "promotion_titre");
               echo "</select></div>
@@ -195,7 +188,7 @@ class InfoTaPromotionService extends InfoModel {
     			<label class='labelPromo' for='code'>Entre un code s'il est requis pour appliquer<br>la promotion lors de la création de la facture</label></br>
     			<input id='code' name='code' value='".$laPromo['code']."'></input>
     			</div>
-    			<a class='buttonConfirmer'>Modifier</a>
+    			<div class='buttonConfirmer'><a class='btnBob'>Modifier</a></div>
 			</form>
 			</div>";
     }
