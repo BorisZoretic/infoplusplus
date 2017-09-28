@@ -78,6 +78,7 @@ if ($loginControl->getHs() == true) {
     $typeuser = $loginControl->getInfosUtilisateur()->getAdmin($loginControl->getInfosLogin()[0]);
     $_SESSION['id'] = $iduser;
     $_SESSION['admin'] = $typeuser;
+    $_SESSION['panier'] = array();
     if ($_SESSION['admin'] == 1)
         header("Location: http://localhost/infoplusplus/Info++/service.php");
     else 

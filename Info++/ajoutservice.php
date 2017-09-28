@@ -3,13 +3,13 @@ session_start();
 include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php';
 
-if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
+if (isset($_GET['duplicate']) && $_GET['duplicate'] == 1) {
     $message = "Le nom de service est déjà utilisé";
     echo "<script type='text/javascript'>alert('$message');</script>";
     session_abort();
 }
 
-if (isset($_SESSION['admin']) == false){
+if (isset($_SESSION['admin']) == false) {
     header("Location: http://localhost/infoplusplus/Info++/index.php?erreur=2");
     exit();
 }
@@ -19,7 +19,7 @@ if (isset($_SESSION['admin']) == false){
 <body>
 	
             <?php
-       
+            
             require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigateur.php';
             
             ?>
@@ -28,22 +28,31 @@ if (isset($_SESSION['admin']) == false){
 		<h4>Complétez le formulaire pour ajouter un service</h4>
 		<h5>Tous les champs sont obligatoires</h5>
 
-		<form id="formIns" class="inscription" onsubmit="return validate()" enctype="multipart/form-data" method="post"
+		<form id="formIns" class="inscription" onsubmit="return validate()"
+			enctype="multipart/form-data" method="post"
 			action="http://localhost/infoplusplus/Info++/MVC/Controller/service_controller.php">
-			<div name='imageUpload' id='uploads'><img class='imgHolder' src=''>
-			<input type='file' name='fileToUpload' class='imgUpload' id='fileToUp'>
-			<input type="button" class='btnUpdate' value='Mettre à jour la photo'></div>
+			<div name='imageUpload' id='uploads'>
+				<img class='imgHolder' src=''> <input type='file'
+					name='fileToUpload' class='imgUpload' id='fileToUp'> <input
+					type="button" class='btnUpdate' value='Mettre à jour la photo'>
+			</div>
 			<div id='formServ'>
-			<input id="titre" name='title' class='inputMarginWidthService' placeholder='Titre'></input>
-			<br>
-			<textarea type="textarea" id="desc" name='description' class='inputMarginWidthServiceDesc' placeholder='Description'></textarea>
-			<br> <input type='number' min='1' max='1000' name='duree' id="dur" class='inputMarginWidthService2'
-				placeholder='Durée'></input> <input type='number' min='1' max='1000' id="tar" name='tarif'
-				class='inputMarginWidthService2' placeholder='Tarif'></input><br>
-				<div class='inputMarginWidthService3' ><input type='checkbox' id='act' name='active'></input><label>Activer dans le catalogue</label></div>
-				
+				<input id="titre" name='title' class='inputMarginWidthService'
+					placeholder='Titre'></input> <br>
+				<textarea type="textarea" id="desc" name='description'
+					class='inputMarginWidthServiceDesc' placeholder='Description'></textarea>
+				<br> <input type='number' min='1' max='1000' name='duree' id="dur"
+					class='inputMarginWidthService2' placeholder='Durée'></input> <input
+					type='number' min='1' max='1000' id="tar" name='tarif'
+					class='inputMarginWidthService2' placeholder='Tarif'></input><br>
+				<div class='inputMarginWidthService3'>
+					<input type='checkbox' id='act' name='active'></input><label>Activer
+						dans le catalogue</label>
 				</div>
-			<input type="submit" id="add" name="submit" class='buttonConfirmer' value="Confirmer">
+
+			</div>
+			<input type="submit" id="add" name="submit" class='buttonConfirmer'
+				value="Confirmer">
 		</form>
 	</div>
 
@@ -102,7 +111,13 @@ if (isset($_SESSION['admin']) == false){
         	$('.btnUpdate').click(function(){
         	    $('input').click();
         	});
-    </script>
-        
-    </body>
+
+        	$('#fileToUp').change( function(event) {
+        		var tmppath = URL.createObjectURL(event.target.files[0]);
+        		    $(".imgHolder").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]));        		    
+        		  
+        		});
+    		</script>
+
+</body>
 </html>

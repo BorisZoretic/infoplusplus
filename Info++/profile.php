@@ -16,9 +16,15 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 	<div class="formcenter">
 		<h4>Vos renseignements personnelles</h4>
 		<h5>Tous les champs sont obligatoires afin d'enregistrer les modifications.</h5>
-
-		<form class="inscription" id="formProfile" method=""
-			action=""></form>
+       
+		<form class="inscription" id="formProfile" method="post"
+			action="http://localhost/infoplusplus/Info++/MVC/Controller/utilisateur_controller.php?mod=1">
+			 <?php
+        
+                echo "<label name='primary' id='pk' class='none'>". $_SESSION['id'] . "</label>";
+                ?>
+			
+			</form>
 	</div>
 
 
@@ -64,6 +70,40 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
             	  
             	
             });
+
+//         	$('.buttonConfirmer').click(function(){
+//         		var self = $(this);
+//         		var form = self.closest("#formProfile");
+
+//         		var pk_client = ("#pk").text();
+//         		var lname = form.find("#lname");
+//         		var fname = form.find("#fname");
+//         		var streetadd = form.find("#streetadd");
+//         		var sname = form.find("#sname");
+//         		var zip = form.find("#zip");
+//         		var phone = form.find("#phone");
+//         		var selector = form.find("#selector");
+//         		var ema = form.find("#ema");
+//         		var pass = form.find("#pass");
+        		
+        		
+//             		var data = "";
+            		
+//             		$.ajax({method : "POST",
+//             			url : "AjaxRelated/edit-client_process.php?lname=" + lname.text() + "&fname=" + fname.text() + "&streetadd=" + streetadd.text() + "&sname=" + sname.text() + "&zip=" +  zip.text()+ "&phone=" +  phone.text()+ "&selector=" +  selector.val()+ "&ema=" +  ema.text()+ "&pass=" +  pass.text()+ "&primary_key=" +  pk_client.text(),
+//             			data : data,
+//             			beforeSend : function() {
+//             				// TO INSERT - loading animation
+//             			},
+//             			success : function(response) {
+//         					//$(location).attr('href', 'service.php');
+//             			}
+            		
+//         			});
+//             	} else{
+//     				alert('Veuillez remplir tous les champs requis');
+//             	}
+//         	});
 
 		</script>
 

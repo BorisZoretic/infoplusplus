@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 $anObject = null;
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_client.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_ville.php';
@@ -7,7 +8,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_vi
 $InfoVilles = new InfoVille();
 $client = new InfoClient();
 
-$anObject = $client->getInscription(4);
+$anObject = $client->getInscription($_SESSION['id']);
 
 
 ?>

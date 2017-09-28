@@ -47,7 +47,7 @@ class utilisateur_controller
         $this->infosInscription[7] = isset($_POST['email']) ? $_POST['email'] : null;
         $this->infosInscription[8] = isset($_POST['password']) ? $_POST['password'] : null;
         $this->infosInscription[9] = isset($_POST['infolettre']) ? '1' : '0';
-        
+        $this->infosInscription[10] = isset($_POST['primary']) ? $_POST['primary'] : null;
         $this->InfosUtilisateur = new InfoUtilisateur();
         $this->InfosClient = new InfoClient();
         $this->InfosAdresse = new InfoAdresse();
@@ -62,6 +62,15 @@ class utilisateur_controller
             if ($row['courriel'] == $this->infosInscription[7]) {
                 
                 $this->Duplicate = true;
+                if (isset($_POST['primary'])){                    
+                    $this->InfosUtilisateur->getObjectFromDB($this->infosInscription[10]);
+                    $this->InfosClient->getClientWithUserFK($this->infosInscription[10]);
+                    $this->InfosAdresse->getObjectFromDB($this->InfosClient->getFk_adresse());
+                    $this->InfosVille->getObjectFromDB($this->InfosAdresse->getFk_ville());    
+                }
+                
+                
+               
             }
         }
     }
@@ -103,13 +112,41 @@ class utilisateur_controller
             $this->InfosClient->setFk_utilisateur($this->InfosUtilisateur->addDBObject());
             $this->InfosClient->addDBObject();
         }
+        elseif ($_GET['mod']==1) {
+            /* Infos Client #1 */
+            $this->InfosClient->setNom($this->infosInscription[0]);
+            $this->InfosClient->setPrenom($this->infosInscription[1]);            
+            $this->InfosClient->setTelephone($this->infosInscription[6]);           
+            $this->InfosClient->setInfolettre($this->infosInscription[9]);            
+            $this->InfosClient->updateDBObject();
+            
+            /* Infos Adresse */
+            $this->InfosAdresse->setNo_civique($this->infosInscription[2]);
+            $this->InfosAdresse->setRue($this->infosInscription[3]);
+            $this->InfosAdresse->setFk_ville($this->infosInscription[4]);
+            $this->InfosAdresse->setCode_postal($this->infosInscription[5]);
+            $this->InfosAdresse->updateDBObject();
+            
+            
+            /* Infos Utilisateur */
+            $this->InfosUtilisateur->setCourriel($this->infosInscription[7]);
+            $this->InfosUtilisateur->setMot_de_passe($this->infosInscription[8]);
+            $this->InfosUtilisateur->updateDBObject();
+                        
+            
+            
+        }
     }
 }
 
 $inscription = new utilisateur_controller();
 $inscription->ajouterClient();
-if($inscription->getDuplicate()==true){
+if($inscription->getDuplicate()==true && isset($_GET['mod'])==false ){
     header("Location: http://localhost/infoplusplus/Info++/inscription.php?duplicate=1");
+    exit();
+}
+elseif(isset($_GET['mod'])==true ){
+    header("Location: http://localhost/infoplusplus/Info++/catalogue.php");
     exit();
 }
 else{

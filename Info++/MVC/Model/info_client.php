@@ -228,7 +228,7 @@ WHERE c.pk_client = '" . $pk_client . "'";
             echo "<input name='rue' id='sname' class='inputMarginWidthRue' placeholder='Rue' value='" . $anObject['rue'] . "'></input>";
             echo $Villes->getActiveVillesAsSelect($anObject['fk_ville']);
             echo "<input name='codepostal' id='zip' class='inputMarginWidth' placeholder='Code postale' value='" . $anObject['code_postal'] . "'></input>";
-            echo "<input name='telephone' class='inputMarginWidth' placeholder='Numéro de téléphone' value='" . $anObject['telephone'] . "'></input>";
+            echo "<input name='telephone' id='phone' class='inputMarginWidth' placeholder='Numéro de téléphone' value='" . $anObject['telephone'] . "'></input>";
             echo "<div id='selector' class='invisible'>" . $anObject['fk_ville'] . "</div>";
             echo "<br>";
             echo "<h4>Vos informations de connexion</h4>";
@@ -240,11 +240,54 @@ WHERE c.pk_client = '" . $pk_client . "'";
         value='" . $anObject['mot_de_passe'] . "'></input>";
             echo "<input type='password' name='passwordconfirm' id='passwordconf' class='inputMarginWidth' placeholder='Confirmer mot de passe'
         onBlur='confirmPass()' value='" . $anObject['mot_de_passe'] . "'></input><br>";
-            echo "<button class='buttonConfirmer'>Confirmer</button>";
+            echo "<button class='buttonConfirmer'>Modifier</button>";
             return;
         }
         $conn->close();
         return null;
+    }
+    
+    function getClientWithUserFK($f_key)
+    {
+        include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
+        
+        $internalAttributes = get_object_vars($this);
+        
+        if ($this->primary_key == "order") {
+            $this->primary_key = "name";
+        }
+        
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE " . $this->fk_utilisateur . " = '" . $f_key . "'";
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+            $anObject = Array();
+            while ($row = $result->fetch_assoc()) {
+                $anObject["primary_key"] = $this->primary_key;
+                $anObject["table_name"] = $this->table_name;
+                foreach ($row as $aRowName => $aValue) {
+                    $anObject[$aRowName] = $aValue;
+                    $this->$aRowName = $aValue;
+                }
+            }
+            $conn->close();
+            return $anObject;
+        }
+        $conn->close();
+        return null;
+    }
+    
+    function getObjectAsArrayWithMetadata()
+    {
+        return get_object_vars($this);
+    }
+    
+    function getObjectAsArrayWithOutMetadata()
+    {
+        $anObject = get_object_vars($this);
+        unset($anObject['table_name']);
+        unset($anObject['primary_key']);
+        return $anObject;
     }
 }
 

@@ -98,6 +98,7 @@ class InfoModel
         
         if ($conn->query($sql) === TRUE) {
             echo "success";
+            return  $conn->insert_id;
         } else {
             echo "fail";
         }

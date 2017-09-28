@@ -8,7 +8,7 @@ if(!isset($_SESSION['admin'])) {
     exit();
 }
 if (session_status() == PHP_SESSION_ACTIVE && $_SESSION['admin']==0) {/*. '(' . count($_SESSION['panier']) . ')';*/
-    echo "<a class='lien' href='panier.php'>Mon panier</a>
+    echo "<a class='lien' href='panier.php'>Mon panier". "(" . count($_SESSION['panier']) . ")" . "</a>
                 <a class='lien' href='logout.php'>Se déconnecter</a> <br>
                 <a class='navigation1' href='catalogue.php'>Catalogue</a><a class='navigation2' href='profile.php'>Profil</a>
                 <input type='text' class='searchTerm' placeholder='Recherche'>
