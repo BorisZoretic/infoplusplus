@@ -29,16 +29,16 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
 
 		<form id="formIns" class="inscription" onsubmit="return validate()" method="post"
 			action="http://localhost/infoplusplus/Info++/MVC/Controller/utilisateur_controller.php">
-			<input id="nom" name='nom' class='inputMarginWidth' placeholder='Nom'></input>
-			<input id="pnom" name='prenom' class='inputMarginWidth' placeholder='Prénom'></input>
+			<input id="nom" name='nom' class='inputMarginWidth' placeholder='Nom' required="required"></input>
+			<input id="pnom" name='prenom' class='inputMarginWidth' placeholder='Prénom' required="required"></input>
 			<br> <input name='civic' id="streetnum" class='inputMarginWidthCivic'
-				placeholder='No'></input> <input id="street" name='rue'
-				class='inputMarginWidthRue' placeholder='Rue'></input> <select
-				name="ville" id="villes" class='inputMarginWidth'>
+				placeholder='No' required="required"></input> <input id="street" name='rue'
+				class='inputMarginWidthRue' placeholder='Rue' required="required"></input> <select
+				name="ville" id="villes" class='inputMarginWidth' required="required">
 
 			</select> <br> <input name='codepostal' id='postal' class='inputMarginWidth'
-				placeholder='Code postale'></input> <input name='telephone' id='phone'
-				class='inputMarginWidth' placeholder='Numéro de téléphone'></input>
+				placeholder='Code postale' required="required"></input> <input name='telephone' id='phone'
+				class='inputMarginWidth' placeholder='Numéro de téléphone' required="required"></input>
 
 			<br> <br> <br>
 			<h4>Votre courriel servira à vous identifier lors de votre prochaine
@@ -46,14 +46,14 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
 			<h5>Le mot de passe doit contenir un chiffre, une lettre et 8
 				caractères au mininum</h5>
 			<input name='email' id="ema" class='inputMarginWidth'
-				placeholder='Adresse courriel'></input> <input name='emailconfirm'
+				placeholder='Adresse courriel' required="required"> </input> <input name='emailconfirm'
 				id="emailconf" class='inputMarginWidth'
-				placeholder='Confirmez adresse courriel' onBlur="confirmEmail()"></input>
+				placeholder='Confirmez adresse courriel' onBlur="confirmEmail()" required="required"></input>
 			<br> <input type='password' id="pass" name='password'
-				class='inputMarginWidth' placeholder='Mot de passe'></input> <input
+				class='inputMarginWidth' placeholder='Mot de passe' required="required"></input> <input
 				type='password' name='passwordconfirm' id="passwordconf"
 				class='inputMarginWidth' placeholder='Confirmer mot de passe'
-				onBlur="confirmPass()"></input> <br> <div class='inputMarginWidthService3' ><input type='checkbox' name='infolettre'></input><label>Recevoir l'infolettre</label></div>
+				onBlur="confirmPass()" required="required"></input> <br> <div class='inputMarginWidthService3' ><input type='checkbox' name='infolettre'></input><label>Recevoir l'infolettre</label></div>
                 
                       
 			<input type="submit" id="add" class='buttonConfirmer' value="Confirmer">
@@ -94,10 +94,10 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
     	
    
     	function validate(){
-    	 	var ck_name = /^[a-zA-Z]+$/;
-    		var ck_fname = /^[a-zA-Z]+$/;
+    		var ck_name = /^[A-zÀ-ÿ ]+$/; 
+    		var ck_fname = /^[A-zÀ-ÿ ]+$/;
     		var ck_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-    		var ck_rue = /^[a-zA-Z]+$/;
+    		var ck_rue = /^[A-zÀ-ÿ ]+$/;
     		var ck_civic = /^[0-9]*$/;
     		var ck_phone = /^\(?(?:[0-9]{3})\)?(?:[ .-]?)(?:[0-9]{3})(?:[ .-]?)(?:[0-9]{4}$)/;
     		var ck_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$/;

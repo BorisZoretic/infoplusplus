@@ -223,23 +223,23 @@ WHERE c.pk_client = '" . $pk_client . "'";
             }
             $conn->close();
             
-            echo "<input name='nom' id='lname' class='inputMarginWidth' placeholder='Nom' value='" . $anObject['nom'] . "'></input>";
-            echo "<input name='prenom' id='fname' class='inputMarginWidth' placeholder='Prénom' value='" . $anObject['prenom'] . "'></input><br>";
-            echo "<input name='civic' id='streetadd' class='inputMarginWidthCivic' placeholder='No civic' value='" . $anObject['no_civique'] . "'></input>";
-            echo "<input name='rue' id='sname' class='inputMarginWidthRue' placeholder='Rue' value='" . $anObject['rue'] . "'></input>";
+            echo "<input required='required' name='nom' id='lname' class='inputMarginWidth' placeholder='Nom' value='" . $anObject['nom'] . "'></input>";
+            echo "<input required='required' name='prenom' id='fname' class='inputMarginWidth' placeholder='Prénom' value='" . $anObject['prenom'] . "'></input><br>";
+            echo "<input required='required' name='civic' id='streetadd' class='inputMarginWidthCivic' placeholder='No civic' value='" . $anObject['no_civique'] . "'></input>";
+            echo "<input required='required' name='rue' id='sname' class='inputMarginWidthRue' placeholder='Rue' value='" . $anObject['rue'] . "'></input>";
             echo $Villes->getActiveVillesAsSelect($anObject['fk_ville']);
-            echo "<input name='codepostal' id='zip' class='inputMarginWidth' placeholder='Code postale' value='" . $anObject['code_postal'] . "'></input>";
-            echo "<input name='telephone' id='phone' class='inputMarginWidth' placeholder='Numéro de téléphone' value='" . $anObject['telephone'] . "'></input>";
+            echo "<input required='required' name='codepostal' id='zip' class='inputMarginWidth' placeholder='Code postale' value='" . $anObject['code_postal'] . "'></input>";
+            echo "<input required='required' name='telephone' id='phone' class='inputMarginWidth' placeholder='Numéro de téléphone' value='" . $anObject['telephone'] . "'></input>";
             echo "<div id='selector' class='invisible'>" . $anObject['fk_ville'] . "</div>";
             echo "<br>";
             echo "<h4>Vos informations de connexion</h4>";
             echo "<h5>Le mot de passe doit contenir un chiffre, une lettre et 8 caractères au mininum.</h5>";
-            echo "<input name='email' id='ema' class='inputMarginWidth' placeholder='Adresse courriel' value='" . $anObject['courriel'] . "'></input>";
-            echo "<input name='emailconfirm' id='emailconf' class='inputMarginWidth' placeholder='Confirmez adresse courriel' onBlur='confirmEmail()'
+            echo "<input required='required' name='email' id='ema' class='inputMarginWidth' placeholder='Adresse courriel' value='" . $anObject['courriel'] . "'></input>";
+            echo "<input required='required' name='emailconfirm' id='emailconf' class='inputMarginWidth' placeholder='Confirmez adresse courriel' onBlur='confirmEmail()'
         value='" . $anObject['courriel'] . "'></input><br>";
-            echo "<input type='password' id='pass' name='password' class='inputMarginWidth' placeholder='Mot de passe'
+            echo "<input required='required' type='password' id='pass' name='password' class='inputMarginWidth' placeholder='Mot de passe'
         value='" . $anObject['mot_de_passe'] . "'></input>";
-            echo "<input type='password' name='passwordconfirm' id='passwordconf' class='inputMarginWidth' placeholder='Confirmer mot de passe'
+            echo "<input required='required' type='password' name='passwordconfirm' id='passwordconf' class='inputMarginWidth' placeholder='Confirmer mot de passe'
         onBlur='confirmPass()' value='" . $anObject['mot_de_passe'] . "'></input><br>";
             if ($anObject['infolettre'] == 1){
                 echo "<div class='inputMarginWidthService3' ><input type='checkbox' checked='true' name='infolettre'></input><label>Recevoir l'infolettre</label></div></div>";
@@ -248,7 +248,7 @@ WHERE c.pk_client = '" . $pk_client . "'";
             }
                 
                         
-            echo "<button class='buttonConfirmer'>Modifier</button>";
+            echo "<input type='submit' class='buttonConfirmer' value='Modifier'>";
             return;
         }
         $conn->close();
