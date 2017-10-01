@@ -9,6 +9,11 @@ input[type="date"]{
   color: #FF9F07;
 }
 
+h3{
+	margin-bottom: 0px;
+	margin-left: 10px;
+}
+
 .border{
 	border-style: solid;
     border-width: 1px;
@@ -301,4 +306,33 @@ input[type="date"]{
     width: 35px;
     padding: 6px;
     margin-left: 65px;
+}
+
+.txtRabaisPromo{
+    float: right;
+    display: block;
+    margin-top: -40px;
+    margin-right: 110px;
+    color: #FF9F07;
+    font-weight: 600;
+}
+
+.spacingInput{
+    float: right;
+    width: 58px;
+    margin-right: 95px;
+}
+
+.aConfirmPromo{
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 15px;
+    margin-top: 7px;
+    display: block;
+}
+
+.btnConfrimPromo{
+	margin-top: 32px;
+    margin-left: 0;
+    float: left;
 }
