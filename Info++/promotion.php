@@ -11,9 +11,8 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 </head>
 <body>
 	<?php
-
-require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigateur.php';
-?>
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigateur.php';
+	?>
 	
 		<?php
 		echo "<a class='ajoutService'>Ajouter une promotion</a>";
@@ -45,7 +44,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 			});
 		});
 
-	$(document).on("click", ".buttonConfirmer", function(){
+	$(document).on("click", ".btnConfrimPromo", function(){
 
 		var self = $(this);
 		var form = self.closest("#formAddPromo");
@@ -64,6 +63,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
     				// TO INSERT - loading animation
     			},
     			success : function(response) {
+    				//self.closest(".content").find("toRemove").remove();
     				updateList();
     			}
     		
@@ -76,7 +76,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 		});
 	
 	$(document).on("click", ".ajoutService", function(e){
-		var toAppend = "<div id='tab' class='border divTable service dropdown'>";
+		var toAppend = "<div id='tab' class='border divTable service dropdown toRemove'>";
 		toAppend += "<form id='formAddPromo' class='inscription' method='post'>";
 		toAppend += "<input style='margin-left:-123px' id='titre' name='titre' value='' placeholder='Titre de la promotion'></input>";
 		toAppend += "<input class='spacingInput' id='rabais' name='rabais' value='' placeholder='Rabais %'></input>";
@@ -140,82 +140,44 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 	});
 
 
-	   $(document).on("click", "#modifyPromo", function () {
+   $(document).on("click", "#modifyPromo", function () {
+	  
+		var label = $(this).closest("#tab").find("label.titrePromotion");
+		var label2 = $(this).closest("#tab").find("label.txtRabaisPromotion");
+		
+        var txt = label.text();	       
+        label.replaceWith("<input class='titrePromotion' value='"+txt+"'/>");
+        
+        var txt2 = label2.text();
+        txt2 = txt2.replace('%', '');	       
+        label2.replaceWith("<input class='txtRabaisPromotion' value='"+txt2+"'/>");
+
+        $(this).closest("#tab").append("<div class='buttonConfirmer btnModifPromo'><a class='aConfirmPromo'>Confirmer</a></div>");
+    });
+
+   $(document).on("click", ".btnModifPromo", function () {
 		  
-			var label = $(this).closest("#tab").find("label.titrePromotion");
-			var label2 = $(this).closest("#tab").find("label.txtRabaisPromotion");
-			
-	        var txt = label.text();	       
-	        label.replaceWith("<input class='titrePromotion' value='"+txt+"'/>");
-	        
-	        var txt2 = label2.text();	       
-	        label2.replaceWith("<input class='txtRabaisPromotion' value='"+txt2+"'/>");
-	    });
+		var inputTitre = $(this).closest("#tab").find("input.titrePromotion");
+		var inputRabais = $(this).closest("#tab").find("input.txtRabaisPromotion");
 
-	    $(document).on("blur", "input.titrePromotion", function () {
-	    	var input = $(this).closest("input.titrePromotion");
-	        var txt = input.val();
-	        input.replaceWith("<label class='titrePromotion'>" +txt+ "</label>");
+		var rabais = (inputRabais.val()/100);
+		var data = '';
+		$.ajax({method : "POST",
+			url : "AjaxRelated/edit-promo_process.php?txt=" + inputTitre.val() + "&rab=" + rabais + "&pk=" + $(this).closest("#tab").find("#modifyPromo").attr('idPromo'),
+			data : data,
+			beforeSend : function() {
+				// TO INSERT - loading animation
+			},
+			success : function(response) {
+				updateList();
+			}
+		
+		});
+       
 
-    		var primary_key = $(this).closest("#tab").find("#pkpromo");
-    		
-
-    		if(txt != ""){
-    			console.log(txt);
-    			
-        		var data = "";      		
-            	
-            	
-        		$.ajax({method : "POST",
-        			url : "AjaxRelated/edit-promo_process.php?pk=" + primary_key.text() + "&txt=" + input.val(),
-        			data : data,
-        			beforeSend : function() {
-        				// TO INSERT - loading animation
-        			},
-        			success : function(response) {
-    					$(location).attr('href', 'promotion.php');
-        			}
-        		
-    			});
-        	} else{
-				alert('Veuillez remplir tous les champs requis adéquatemment');
-        	}	
-			
-	    });
-
-
-	    $(document).on("blur", "input.txtRabaisPromotion", function () {
-	    	var input2 = $(this).closest("input.txtRabaisPromotion");    
-	    	var txt2 = input2.val();
-	        input2.replaceWith("<label class='txtRabaisPromotion'>" +txt2+ "</label>");	  
-
-	        var primary_key = $(this).closest("#tab").find("#pkpromo");
-    		
-
-    		if(txt2 != ""){
-    			   			
-        		var data = "";
-        	
-        		$.ajax({method : "POST",
-        			url : "AjaxRelated/edit-promo_process.php?pk=" + primary_key.text() + "&rab=" + input2.val(),
-        			data : data,
-        			beforeSend : function() {
-        				// TO INSERT - loading animation
-        			},
-        			success : function(response) {
-    					$(location).attr('href', 'promotion.php');
-        			}
-        		
-    			});
-        	} else{
-				alert('Veuillez remplir tous les champs requis adéquatemment');
-        	}	    
-	    });
-		    
-
+   });
 
 	    
-
     $(document).ready(function() {    	
 
     	var activePage = window.location.href;
