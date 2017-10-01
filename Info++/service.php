@@ -46,7 +46,8 @@ $(document).ready(function(){
     		);
 });
 
-$(document).on("click", "#toolBob", function(){
+$(document).on("click", "#toolBob", function(e){
+	e.stopPropagation();
 	$(this).closest(".imagePromo").find("#myDropdownBob").toggleClass("showBob");
 	$(this).closest(".imagePromo").find("#toolBob").toggleClass("showBob");
 	});
@@ -64,28 +65,65 @@ $(document).on("click", "#deac", function(){
 
 
 $(document).on("click", "#deletePromoService", function(){
-	console.log($(this).attr('idPromoService'));
+	$(this).closest(".divMarginTop").find(".center").toggleClass("showCenter");
+});
+
+$(document).on("click", "#deleteConfirm", function(){
+	console.log($(this).closest(".divMarginTop").find("#deletePromoService").attr('idPromoService'));
 	data = '';
 	$.ajax({method : "POST",
-		url : "AjaxRelated/delete-object_process.php?pk_promotion_service=" + $(this).attr('idPromoService'),
+		url : "AjaxRelated/delete-object_process.php?pk_promotion_service=" + $(this).closest(".divMarginTop").find("#deletePromoService").attr('idPromoService'),
 		data : data,
 		beforeSend : function() {
 			// TO INSERT - loading animation
 		},
 		success : function(response) {
-			$(location).attr('href', 'service.php');
+			updateList();
+			//$(location).attr('href', 'service.php');
 		}
 	
 	});
-	});
+});
 
-
-
+$(document).on("click", "#deleteDeny", function(){
+	$(this).closest(".divMarginTop").find(".center").toggleClass("showCenter");
+});
 
 
 $(document).on("click", ".buttonPlus", function(){
 	$(location).attr('href', 'ajoutTaPromo.php?fk_service=' + $(this).attr('id'));
 	});
+
+$(document).on("click", ".content", function(){
+	$( "#myDropdownBob" ).each(function( index ) {
+		  if($(this).hasClass("showBob")){
+			$(this).removeClass("showBob");
+		  	$(this).closest(".imagePromo").find("#toolBob").removeClass("showBob");
+		  }
+		});
+	});
+
+
+function updateList(){
+	$
+	.ajax({
+		method : "GET",
+		url : "MVC/View/getObjectDynamicTable.php",
+		beforeSend : function() {
+			// TO INSERT - loading animation
+		},
+		beforeSend : function() {
+			/*$('.tblObject tbody')
+					.append(
+							"<span id='download'>Telechargement..</span>");*/
+		},
+		success : function(response) {
+			//$('#download').remove();
+			$('.content').html("");
+			$('.content').append(response);
+		}
+	});
+}
 
 
 

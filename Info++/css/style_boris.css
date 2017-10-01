@@ -273,3 +273,32 @@ input[type="date"]{
 .btnBobAjout{
 	margin-left: 18px;
 }
+
+.center{
+	display:none;
+}
+
+.showCenter{
+	position: absolute;
+    display: block;
+    background-color: #d3d3d3;
+    border: solid 1px #000000;
+    width: 300px;
+    padding: 30px;
+    margin-left: 52px;
+    margin-top: -175px;
+}
+
+.cursorPointer{
+	cursor: pointer;
+}
+
+.confirmationButtons{
+    border: 1px solid #000000;
+    float:left;
+    display: block;
+    margin-top: 10px;
+    width: 35px;
+    padding: 6px;
+    margin-left: 65px;
+}

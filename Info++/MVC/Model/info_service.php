@@ -194,6 +194,7 @@ class InfoService extends InfoModel {
         $aPromotionService = new InfoTaPromotionService();
         
         $aListOfObjects = $this->getListOfActiveBDObjects();
+        echo "<div class='content'>";
         if ($aListOfObjects != null) {
             foreach ( $aListOfObjects as $anObject ) {
                 if ($anObject['actif']==1) {
@@ -230,12 +231,14 @@ class InfoService extends InfoModel {
                 //echo "<img class='imgPromo' src='images/promotions/grid.png' title='grid' alt='grid'>";
                 echo "<button class='buttonPlus' id='". $anObject['pk_service'] ."'>+</button>";
                 echo "<img class='mediasSociaux' src='images/icones/medias sociaux.jpeg' title='mediasSociaux' alt='mediasSociaux'>";
+                echo "<div class='center'><span>Voulez-vous vraiment supprimer cette promotion?<span><br><a class='cursorPointer confirmationButtons' id='deleteConfirm'>Oui</a><a class='cursorPointer confirmationButtons' id='deleteDeny'>Non</a></div>";
                 
                 echo "</div>";
                 
                 echo "</div>";
             }
         }
+        echo "</div>";
     }
 
 }
