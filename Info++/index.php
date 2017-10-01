@@ -25,8 +25,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 		<img class="logo" src="images/icones/logo.png" title="logo" alt="logo">
 		<div class='topliens'>
             <?php
-            if (session_status() == PHP_SESSION_ACTIVE) { 
-               
+            if (session_status() == PHP_SESSION_ACTIVE) {                
                 echo "<a class='lien' href='panier.php'>Mon panier</a>  
                 <a class='lien' href='profile.php'>Mon profil</a>                  
                 <a class='lien' href='logout.php'>Se déconnecter</a>";

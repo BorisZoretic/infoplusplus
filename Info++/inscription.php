@@ -53,7 +53,9 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
 				class='inputMarginWidth' placeholder='Mot de passe'></input> <input
 				type='password' name='passwordconfirm' id="passwordconf"
 				class='inputMarginWidth' placeholder='Confirmer mot de passe'
-				onBlur="confirmPass()"></input> <br>
+				onBlur="confirmPass()"></input> <br> <div class='inputMarginWidthService3' ><input type='checkbox' name='infolettre'></input><label>Recevoir l'infolettre</label></div>
+                
+                      
 			<input type="submit" id="add" class='buttonConfirmer' value="Confirmer">
 		</form>
 	</div>

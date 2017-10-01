@@ -66,50 +66,21 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
             	
             	$('#formProfile').load('MVC/view/getUtilisateurSelect.php');
 
-            	var url = window.location.href;
-                var activePage = url;
-                $('.nav a').each(function () {
+            	var activePage = window.location.href;
+            	console.log(activePage);
+                //var activePage = url.substring(url.lastIndexOf('/') + 1);
+                
+                $('.topliens .navigation2').each(function () {
                     var linkPage = this.href;
-
+					console.log(linkPage);
                     if (activePage == linkPage) {
-                    	$(this).closest("a").removeClass("navigation1");
-                        $(this).closest("a").addClass("navigation2");
+                        console.log("tbk");                        
+                    	//$(this).closest("a").removeClass("navigation1");
+                        $(this).closest(".navigation2").addClass("navigation1");
+                        $(this).closest(".navigation2").removeClass("navigation2");
                     }
                 });
             	
-            	//$('#villes option[value='+ $('#selector').html() +']').prop('selected',true);
-//             	$('.buttonConfirmer').click(function(){
-//             		var self = $(this);
-//             		var form = self.closest("#formProfile");
-
-//             		var pk_client = ("#pk").text();
-//             		var lname = form.find("#lname");
-//             		var fname = form.find("#fname");
-//             		var streetadd = form.find("#streetadd");
-//             		var sname = form.find("#sname");
-//             		var zip = form.find("#zip");
-//             		var phone = form.find("#phone");
-//             		var selector = form.find("#selector");
-//             		var ema = form.find("#ema");
-//             		var pass = form.find("#pass");
-            		
-            		
-            		
-//                 		var data = "";
-                		
-//                 		$.ajax({method : "POST",
-//                 			url : "MVC/Controller/utilisateur_controller.php?nom=" + lname.text() + "&prenom=" + fname.text() + "&civic=" + streetadd.text() + "&rue=" + sname.text() + "&codepostal=" +  zip.text()+ "&telephone=" +  phone.text()+ "&ville=" +  selector.val()+ "&email=" +  ema.text()+ "&password=" +  pass.text()+ "&primary=" +  pk_client.text(),
-//                 			data : data,
-//                 			beforeSend : function() {
-//                 				// TO INSERT - loading animation
-//                 			},
-//                 			success : function(response) {
-            					
-//                 			}
-                		
-//             			});
-                	 
-//             	});
                 	  
             	
             });

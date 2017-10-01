@@ -197,6 +197,7 @@ class InfoClient extends InfoModel
 
     function getInscription($pk_client)
     {
+     
         include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
         require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_ville.php';
         $internalAttributes = get_object_vars($this);
@@ -240,6 +241,13 @@ WHERE c.pk_client = '" . $pk_client . "'";
         value='" . $anObject['mot_de_passe'] . "'></input>";
             echo "<input type='password' name='passwordconfirm' id='passwordconf' class='inputMarginWidth' placeholder='Confirmer mot de passe'
         onBlur='confirmPass()' value='" . $anObject['mot_de_passe'] . "'></input><br>";
+            if ($anObject['infolettre'] == 1){
+                echo "<div class='inputMarginWidthService3' ><input type='checkbox' checked='true' name='infolettre'></input><label>Recevoir l'infolettre</label></div></div>";
+            }else{
+                echo "<div class='inputMarginWidthService3' ><input type='checkbox' name='infolettre'></input><label>Recevoir l'infolettre</label></div></div>";
+            }
+                
+                        
             echo "<button class='buttonConfirmer'>Modifier</button>";
             return;
         }

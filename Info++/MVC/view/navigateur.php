@@ -8,7 +8,7 @@ if(!isset($_SESSION['admin'])) {
     exit();
 }
 if (session_status() == PHP_SESSION_ACTIVE && $_SESSION['admin']==0) {/*. '(' . count($_SESSION['panier']) . ')';*/
-    echo "<div class='nav'><a class='lien' href='panier.php'>Mon panier". "(" . count($_SESSION['panier']) . ")" . "</a>
+    echo "<a class='lien' href='panier.php'>Mon panier". "(" . count($_SESSION['panier']) . ")" . "</a>
                 <a class='lien' href='logout.php'>Se déconnecter</a> <br>
                 <a class='navigation2' href='catalogue.php'>Catalogue</a><a class='navigation2' href='profile.php'>Profil</a>
                 <input type='text' class='searchTerm' placeholder='Recherche'>
@@ -16,9 +16,10 @@ if (session_status() == PHP_SESSION_ACTIVE && $_SESSION['admin']==0) {/*. '(' . 
 }
 else if(session_status() == PHP_SESSION_ACTIVE && $_SESSION['admin']==1)
 {
-    echo "<div class='nav'><a class='lien' href='logout.php'>Se déconnecter</a><br>
+    echo "<a class='lien' href='logout.php'>Se déconnecter</a><br>
                 <a class='navigation2' href='service.php'>Service</a>
                 <a class='navigation2' href='facture.php'>Facture</a>
+                <a class='navigation2' href='promotion.php'>Promotions</a>
                 <input type='text' class='searchTerm' placeholder='Recherche'>
                 <button type='submit' class='searchButton'><label>S</label></button></div>";
 }
