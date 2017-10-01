@@ -65,6 +65,17 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
             $(document).ready(function() {
             	
             	$('#formProfile').load('MVC/view/getUtilisateurSelect.php');
+
+            	var url = window.location.href;
+                var activePage = url;
+                $('.nav a').each(function () {
+                    var linkPage = this.href;
+
+                    if (activePage == linkPage) {
+                    	$(this).closest("a").removeClass("navigation1");
+                        $(this).closest("a").addClass("navigation2");
+                    }
+                });
             	
             	//$('#villes option[value='+ $('#selector').html() +']').prop('selected',true);
 //             	$('.buttonConfirmer').click(function(){
