@@ -65,7 +65,7 @@ $(document).on("click", "#deac", function(){
 
 
 $(document).on("click", "#deletePromoService", function(){
-	$(this).closest(".divMarginTop").find(".center").toggleClass("showCenter");
+	$(this).closest(".divMarginTop").find(".centerDiv").toggleClass("showCenter");
 });
 
 $(document).on("click", "#deleteConfirm", function(){
@@ -86,7 +86,7 @@ $(document).on("click", "#deleteConfirm", function(){
 });
 
 $(document).on("click", "#deleteDeny", function(){
-	$(this).closest(".divMarginTop").find(".center").toggleClass("showCenter");
+	$(this).closest(".divMarginTop").find(".centerDiv").toggleClass("showCenter");
 });
 
 
