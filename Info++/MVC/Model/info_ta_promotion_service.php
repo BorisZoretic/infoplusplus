@@ -141,11 +141,12 @@ class InfoTaPromotionService extends InfoModel {
                 
                 if($anObject['fk_service'] == $pk_service){
                     $promo = $aPromotion->getObjectFromDB($anObject['fk_promotion']);
+                    
                     echo "<div class='imagePromo'>";
                     echo "<img id='toolBob' class='imgToolBob' src='../images/icones/sys.png'>";
                     echo "<div id='myDropdownBob' class='dropdown-content'>
                         <a class='paddingContent' href='modifTaPromo.php?pk_promotion_service=" . $anObject['pk_promotion_service'] . "'>Modifier la promotion</a>
-                        <a class='paddingContent' id='deletePromoService' idPromoService='".$anObject["pk_promotion_service"]."' href='#'>Supprimer la promotion</a>
+                        <a class='paddingContent cursorPointer' id='deletePromoService' idPromoService='".$anObject["pk_promotion_service"]."'>Supprimer la promotion</a>
                         </div>";
                     $titre = str_replace('Rabais', '', $promo['promotion_titre']);
                     $titre = ucfirst($titre);
