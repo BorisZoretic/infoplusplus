@@ -30,13 +30,15 @@ if (isset($_SESSION['admin']) == false){
             ?>
 	
 	<div class="formcenter">
-		<h4>Complétez le formulaire pour ajouter un service</h4>
+		<h4>Complétez le formulaire pour modifier un service</h4>
 		<h5>Tous les champs sont obligatoires</h5>
 
-		<form id="formIns" class="inscription" onsubmit="return validate()" enctype="multipart/form-data" method="post"
-			action="http://localhost/infoplusplus/Info++/MVC/Controller/service_controller.php"></form>
+		<?php
+		echo "<form id='formIns' class='inscription' enctype='multipart/form-data' method='post'
+    action='http://localhost/infoplusplus/Info++/MVC/Controller/service_controller.php?mod=1&primary=". $_GET['id'] ."'></form>";
+            ?>
 	</div>
-
+ 
 
 
 
@@ -44,7 +46,7 @@ if (isset($_SESSION['admin']) == false){
 
 	<script type="text/javascript">
 
-   
+	//onsubmit='return validate()'
     	function validate(){
     	 	
     		var ck_num = /^[0-9]*$/;
@@ -89,13 +91,16 @@ if (isset($_SESSION['admin']) == false){
         require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/footer.php';
         ?>
         	<script>
-        	$(document).on("click", ".btnUpdate", function(){
-        		 $('input').click();
-        	});
-    
+        	$(document).off().on("click", ".btnUpdate", function(){
+        	$("#changeImage").text("1");
+       		 $("input").click();
+       		 
+       	});
 
 			$(document).ready(function() {
 
+				
+	    
 				
 				var idService = $("#pk").text();
 				

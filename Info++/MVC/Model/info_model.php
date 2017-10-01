@@ -75,6 +75,8 @@ class InfoModel
         
         $sets = "SET ";
         
+        
+        
         $lastElement = end($internalAttributes);
         foreach ($internalAttributes as $rowName => $value) {
             
@@ -233,6 +235,9 @@ class InfoModel
         }
         
         $sql = "SELECT * FROM `" . $this->table_name . "` WHERE " . $this->primary_key . " = '" . $primary_key . "'";
+       
+        
+        
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0) {

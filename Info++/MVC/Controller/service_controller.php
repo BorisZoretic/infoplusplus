@@ -36,7 +36,8 @@ class service_controller
         $this->infosService[2] = isset($_POST['duree']) ? $_POST['duree'] : null;
         $this->infosService[3] = isset($_POST['tarif']) ? $_POST['tarif'] : null;
         $this->infosService[4] = isset($_POST['active']) ? '1' : '0';
-        
+        $this->infosService[5] = isset($_GET['primary']) ? $_GET['primary'] : null;
+        $this->infosService[6] = isset($_POST['chgImg']) ? '1' : '0';
         
         $this->InfosServices = new InfoService();
        
@@ -61,13 +62,26 @@ class service_controller
     
     function ajouterService()
     {
-        $this->verifyTitles();
-        $uploadOk = $this->uploadImage();
-        if ($this->getDuplicate() == false && $uploadOk != '0') {       
+        
+        if (isset($_GET['mod'])==false){
+            $this->verifyTitles();
+            $uploadOk = $this->uploadImage();
+        }
+        elseif($this->infosService[6]=='1'){
+           
+            $uploadOk = $this->uploadImage();
+        }
+        else{
+            $image = $this->InfosServices->getObjectFromDB($this->infosService[5]);
+            
+            $uploadOk = $image['image'];
+            
+        }
+        if ($this->getDuplicate() == false && $uploadOk != '0' && isset($_GET['mod'])==false) {       
         
             
             
-            /* Infos Utilisateur */
+            /* Infos Service*/
             $this->InfosServices->setService_titre($this->infosService[0]);
             $this->InfosServices->setService_description($this->infosService[1]);
             $this->InfosServices->setDuree($this->infosService[2]);
@@ -78,6 +92,25 @@ class service_controller
             
      
             $this->InfosServices->addDBObject();
+        }
+        
+        elseif ($_GET['mod']==1) {
+            
+            if (isset($_GET['primary'])){
+                $this->InfosServices->setPk_service($this->infosService[5]);
+                $this->InfosServices->setService_titre($this->infosService[0]);
+                $this->InfosServices->setService_description($this->infosService[1]);
+                $this->InfosServices->setDuree($this->infosService[2]);
+                $this->InfosServices->setTarif($this->infosService[3]);
+                $this->InfosServices->setActif($this->infosService[4]);
+                $this->InfosServices->setImage($uploadOk);
+                $this->InfosServices->updateDBObject();
+            }
+                    
+           
+            
+            
+            
         }
     }
     
