@@ -73,7 +73,7 @@ $(document).on("click", "#deleteConfirm", function(){
 	console.log($(this).closest(".divMarginTop").find("#deletePromoService").attr('idPromoService'));
 	data = '';
 	$.ajax({method : "POST",
-		url : "AjaxRelated/delete-object_process.php?pk_promotion_service=" + $(this).closest(".divMarginTop").find("#deletePromoService").attr('idPromoService'),
+		url : "AjaxRelated/delete-object_process.php?type=info_ta_promotion_service&pk_promotion_service=" + $(this).closest(".divMarginTop").find("#deletePromoService").attr('idPromoService'),
 		data : data,
 		beforeSend : function() {
 			// TO INSERT - loading animation
@@ -116,7 +116,7 @@ function updateList(){
 	$
 	.ajax({
 		method : "GET",
-		url : "MVC/View/getObjectDynamicTable.php",
+		url : "MVC/View/getObjectDynamicTable.php?type=info_service",
 		beforeSend : function() {
 			// TO INSERT - loading animation
 		},

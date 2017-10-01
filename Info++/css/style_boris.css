@@ -336,3 +336,15 @@ h3{
     margin-left: 0;
     float: left;
 }
+
+.confirmationBonus{
+	padding: 10px;
+    margin-left: 90px;
+    margin-top: -79px;
+}
+
+.formPeriod{
+    float: left;
+    margin-top: 10px;
+    margin-right: -10px;
+}
