@@ -49,7 +49,7 @@ class InfoModel
         
         $sql = $definition . $attributes . $values;
         
-        echo $sql . "<br>";
+        //echo $sql . "<br>";
         
         // echo $sql;
         if (! $result = $conn->query($sql)) {
@@ -112,7 +112,7 @@ class InfoModel
 		SET `$aField` = '$aValue'
 		WHERE `" . $this->table_name . "`.`" . $this->primary_key . "` = '$anID' ";
         
-        echo "<br>" . $sql;
+        //echo "<br>" . $sql;
         
         include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
         
@@ -147,7 +147,7 @@ class InfoModel
     {
         $sql = "DELETE FROM `" . $this->table_name . "`
 		WHERE  `" . $this->table_name . "`.`" . $this->primary_key . "` = '$anID' ";
-        echo $sql;
+        //echo $sql;
         include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
         
         if ($conn->query($sql) === TRUE) {
