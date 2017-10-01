@@ -162,11 +162,11 @@ class service_controller
 
 $addservice = new service_controller();
 $addservice->ajouterService();
-// if($addservice->getDuplicate()==true){
-//     header("Location: http://localhost/infoplusplus/Info++/ajoutservice.php?duplicate=1");
-//     exit();
-// }
-// else{
-//     header("Location: http://localhost/infoplusplus/Info++/service.php");
-//     exit();
-// }
+if($addservice->getDuplicate()==true){
+    header("Location: http://localhost/infoplusplus/Info++/ajoutservice.php?duplicate=1");
+    exit();
+}
+else{
+    header("Location: http://localhost/infoplusplus/Info++/service.php");
+    exit();
+}

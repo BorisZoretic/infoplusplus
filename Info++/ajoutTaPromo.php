@@ -133,7 +133,7 @@ if (isset($_SESSION['admin']) == false){
     }
     };
     </script>
-    <input type="date" />    
+     
         
     </body>
 </html>
