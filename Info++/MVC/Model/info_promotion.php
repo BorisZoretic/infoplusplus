@@ -66,6 +66,35 @@ class InfoPromotion extends InfoModel {
         return $this;
     }
     
+	function getDynamicAdminList(){
+		$aListOfObjects = $this->getListOfActiveBDObjects();
+		
+		echo "<div class='content'>";
+		if ($aListOfObjects != null) {
+			foreach ( $aListOfObjects as $anObject ) {
+				echo "<div id='tab' class='border divTable service dropdown'>";
+				
+				echo "<div id='tool' class='imgTool'>
+                        <img class='imgTool' src='../images/icones/sys.png'>
+                        </div>";
+				
+				echo "<div id='myDropdown' class='dropdown-content'>
+                       <a href='#'>Appliquer à tous les services</a>
+                       <a href='#'>Modifier la promotion</a>
+					   <a href='#'>Supprimer la promotion</a>
+                       </div>";
+				
+				
+				echo "<h3>". $anObject['promotion_titre'] ."</h3><br>";
+				echo "<p class='txtRabaisPromo'>" . ($anObject['rabais'] * 100) . "%</p>";
+				
+				
+				echo "</div>";
+			}
+		}
+		echo "</div>";
+	}
+    
 }
 
 ?>

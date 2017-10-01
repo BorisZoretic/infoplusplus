@@ -27,7 +27,8 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
             require_once $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/footer.php';
         ?>
         <script> 
-$(document).on("click", "#tool", function(){
+$(document).on("click", "#tool", function(e){
+	e.stopPropagation();
 	$(this).closest(".divTable").find("#myDropdown").toggleClass("showAbsolute");
 	$(this).closest(".divTable").find("#tool").toggleClass("show");
 	});
@@ -99,6 +100,13 @@ $(document).on("click", ".content", function(){
 		  if($(this).hasClass("showBob")){
 			$(this).removeClass("showBob");
 		  	$(this).closest(".imagePromo").find("#toolBob").removeClass("showBob");
+		  }
+		});
+
+	$( "#myDropdown" ).each(function( index ) {
+		  if($(this).hasClass("showAbsolute")){
+			$(this).removeClass("showAbsolute");
+		  	$(this).closest(".divTable").find("#tool").removeClass("show");
 		  }
 		});
 	});
