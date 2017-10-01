@@ -40,7 +40,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
                     var linkPage = this.href;
 					console.log(linkPage);
                     if (activePage == linkPage) {
-                        console.log("tbk");                        
+                                            
                     	//$(this).closest("a").removeClass("navigation1");
                         $(this).closest(".navigation2").addClass("navigation1");
                         $(this).closest(".navigation2").removeClass("navigation2");
