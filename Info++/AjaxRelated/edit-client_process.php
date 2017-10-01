@@ -10,6 +10,7 @@ $date_debut = $_GET["date_debut"];
 $date_fin = $_GET["date_fin"];
 $code = $_GET["code"];
 
+
 $anObject->setPk_promotion_service($aPromoService['pk_promotion_service']);
 $anObject->setCode($code);
 $anObject->setDate_debut($date_debut);

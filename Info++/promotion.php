@@ -68,6 +68,100 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 		$(".content").append(toAppend);
 		});
 
+	   $(document).on("click", "#modifyPromo", function () {
+		  
+			var label = $(this).closest("#tab").find("label.titrePromotion");
+			var label2 = $(this).closest("#tab").find("label.txtRabaisPromotion");
+			
+	        var txt = label.text();	       
+	        label.replaceWith("<input class='titrePromotion' value='"+txt+"'/>");
+	        
+	        var txt2 = label2.text();	       
+	        label2.replaceWith("<input class='txtRabaisPromotion' value='"+txt2+"'/>");
+	    });
+
+	    $(document).on("blur", "input.titrePromotion", function () {
+	    	var input = $(this).closest("input.titrePromotion");
+	        var txt = input.val();
+	        input.replaceWith("<label class='titrePromotion'>" +txt+ "</label>");
+
+    		var primary_key = $(this).closest("#tab").find("#pkpromo");
+    		
+
+    		if(txt != ""){
+    			console.log(txt);
+    			
+        		var data = "";      		
+            	
+            	
+        		$.ajax({method : "POST",
+        			url : "AjaxRelated/edit-promo_process.php?pk=" + primary_key.text() + "&txt=" + input.val(),
+        			data : data,
+        			beforeSend : function() {
+        				// TO INSERT - loading animation
+        			},
+        			success : function(response) {
+    					$(location).attr('href', 'promotion.php');
+        			}
+        		
+    			});
+        	} else{
+				alert('Veuillez remplir tous les champs requis adéquatemment');
+        	}	
+			
+	    });
+
+
+	    $(document).on("blur", "input.txtRabaisPromotion", function () {
+	    	var input2 = $(this).closest("input.txtRabaisPromotion");    
+	    	var txt2 = input2.val();
+	        input2.replaceWith("<label class='txtRabaisPromotion'>" +txt2+ "</label>");	  
+
+	        var primary_key = $(this).closest("#tab").find("#pkpromo");
+    		
+
+    		if(txt2 != ""){
+    			   			
+        		var data = "";
+        	
+        		$.ajax({method : "POST",
+        			url : "AjaxRelated/edit-promo_process.php?pk=" + primary_key.text() + "&rab=" + input2.val(),
+        			data : data,
+        			beforeSend : function() {
+        				// TO INSERT - loading animation
+        			},
+        			success : function(response) {
+    					$(location).attr('href', 'promotion.php');
+        			}
+        		
+    			});
+        	} else{
+				alert('Veuillez remplir tous les champs requis adéquatemment');
+        	}	    
+	    });
+		    
+
+
+	    
+
+    $(document).ready(function() {    	
+
+    	var activePage = window.location.href;
+    	console.log(activePage);
+        //var activePage = url.substring(url.lastIndexOf('/') + 1);
+        
+        $('.topliens .navigation2').each(function () {
+            var linkPage = this.href;
+			console.log(linkPage);
+            if (activePage == linkPage) {
+                console.log("tbk");                        
+            	//$(this).closest("a").removeClass("navigation1");
+                $(this).closest(".navigation2").addClass("navigation1");
+                $(this).closest(".navigation2").removeClass("navigation2");
+            }
+        });        	  
+    	
+    });
 
 	</script>
 </body>
