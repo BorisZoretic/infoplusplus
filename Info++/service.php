@@ -148,7 +148,7 @@ $(document).ready(function() {
         var linkPage = this.href;
 		console.log(linkPage);
         if (activePage == linkPage) {
-            console.log("tbk");                        
+                                    
         	//$(this).closest("a").removeClass("navigation1");
             $(this).closest(".navigation2").addClass("navigation1");
             $(this).closest(".navigation2").removeClass("navigation2");
