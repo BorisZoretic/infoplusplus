@@ -110,7 +110,30 @@ if (isset($_SESSION['admin']) == false){
 				alert('Veuillez remplir tous les champs requis adéquatemment');
         	}
     	});
+
+    	$(function() {
+    	     $( "#date_fin" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+    	});
+    	$(function() {
+   	     $( "#date_debut" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+   	});
     </script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
+    <script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+    <script>
+    webshims.setOptions('forms-ext', {types: 'date'});
+    webshims.polyfill('forms forms-ext');
+    $.webshims.formcfg = {
+    en: {
+        dFormat: '-',
+        dateSigns: '-',
+        patterns: {
+            d: "yy-mm-dd"
+        }
+    }
+    };
+    </script>
+    <input type="date" />    
         
     </body>
 </html>
