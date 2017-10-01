@@ -37,7 +37,7 @@ class service_controller
         $this->infosService[3] = isset($_POST['tarif']) ? $_POST['tarif'] : null;
         $this->infosService[4] = isset($_POST['active']) ? '1' : '0';
         $this->infosService[5] = isset($_GET['primary']) ? $_GET['primary'] : null;
-        $this->infosService[6] = isset($_POST['chgImg']) ? '1' : '0';
+        $this->infosService[6] = isset($_POST['chgImg']) ? $_POST['chgImg'] : '0';
         
         $this->InfosServices = new InfoService();
        
@@ -95,7 +95,7 @@ class service_controller
         }
         
         elseif ($_GET['mod']==1) {
-            
+            echo $this->infosService[0];
             if (isset($_GET['primary'])){
                 $this->InfosServices->setPk_service($this->infosService[5]);
                 $this->InfosServices->setService_titre($this->infosService[0]);
@@ -162,11 +162,11 @@ class service_controller
 
 $addservice = new service_controller();
 $addservice->ajouterService();
-if($addservice->getDuplicate()==true){
-    header("Location: http://localhost/infoplusplus/Info++/ajoutservice.php?duplicate=1");
-    exit();
-}
-else{
-    header("Location: http://localhost/infoplusplus/Info++/service.php");
-    exit();
-}
+// if($addservice->getDuplicate()==true){
+//     header("Location: http://localhost/infoplusplus/Info++/ajoutservice.php?duplicate=1");
+//     exit();
+// }
+// else{
+//     header("Location: http://localhost/infoplusplus/Info++/service.php");
+//     exit();
+// }

@@ -166,7 +166,7 @@ class InfoService extends InfoModel {
                 echo "<div name='imageUpload' id='uploads'><img class='imgHolder' src='". $anObject['image'] ."'>";
                 echo "<input type='file' name='fileToUpload' class='imgUpload' id='fileToUp'>";
                 echo "<input type='button' class='btnUpdate' value='Mettre à jour la photo'></div>";
-                echo "<input id='changeImage' name='chgImg' class='none'>";
+                echo "<input id='changeImage' name='chgImg' class='none' value=''>";
                 echo "<div id='formServ'>";
                 echo "<input id='titre' name='title' class='inputMarginWidthService' value='". $anObject['service_titre'] ."'></input>";
                 echo "<br>";

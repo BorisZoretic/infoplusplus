@@ -92,7 +92,7 @@ if (isset($_SESSION['admin']) == false){
         ?>
         	<script>
         	$(document).off().on("click", ".btnUpdate", function(){
-        	$("#changeImage").text("1");
+        	$("#changeImage").attr("value","1");
        		 $("input").click();
        		 
        	});
