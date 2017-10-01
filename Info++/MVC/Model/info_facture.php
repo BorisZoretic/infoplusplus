@@ -91,6 +91,8 @@ class InfoFacture extends InfoModel {
                         echo "<br class='br2'>";
                     } else if($aRowName == "fk_service" && $row['montant_rabais'] != "0.00"){
                         $this->displayPromotion($aValue);
+                    } else if ($aRowName == "fk_service" && $row['montant_rabais'] == "0.00"){
+                    	//do nothing
                     }
                     
                     if ($aRowName == "service_titre" && $compt == 1){
@@ -136,7 +138,7 @@ class InfoFacture extends InfoModel {
                                         FROM ta_promotion_service tps
                                         JOIN service s ON s.pk_service = tps.fk_service
                                         JOIN promotion p ON p.pk_promotion = tps.fk_promotion
-                                        WHERE s.pk_service = " . $pk_service;
+                                        WHERE s.pk_service = " . $pk_service ;
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0) {
@@ -145,7 +147,7 @@ class InfoFacture extends InfoModel {
                 foreach ($row as $aRowName => $aValue) {
                     if($aRowName == "promotion_titre"){
                         $percent = round((float)$row['rabais'] * 100 ) . '%';
-                        echo "<span class='promoDisplay'>" . $aValue . " (" . $percent . ")</span>";
+                        echo "<span class='promoDisplay'>" . $aValue . " (" . $percent . ")</span><br class='br2'>";
                     }
                 }
             }
