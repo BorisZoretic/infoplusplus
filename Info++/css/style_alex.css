@@ -163,3 +163,20 @@ input[type='file'] {
 .deac {
 	background-color:#D3D3D3;
 }
+
+.txtRabaisPromotion{
+	display:inline-block;
+	color:#FF9F07;
+	font-weight:bold;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.titrePromotion{
+	display:inline-block;
+	width:300px;
+	font-weight:bold;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+}

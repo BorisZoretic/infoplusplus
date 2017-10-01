@@ -16,6 +16,7 @@ $ema = $_GET["ema"];
 $pass = $_GET["pass"];
 
 $anObject->setPk_promotion_service($aClient['pk_promotion_service']);
+$anObject->setPk_promotion_service($aPromoService['pk_promotion_service']);
 $anObject->setCode($code);
 $anObject->setDate_debut($date_debut);
 $anObject->setDate_fin($date_fin);

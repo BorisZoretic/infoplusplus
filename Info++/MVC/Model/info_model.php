@@ -60,7 +60,7 @@ class InfoModel
             echo "success";           
             return  $conn->insert_id;
             
-            // ////////////////////////////////////TEST LINE BELOW BIATCH retour de primary key généré
+            
            
         }
         
