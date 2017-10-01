@@ -81,12 +81,11 @@ class InfoPromotion extends InfoModel {
 				echo "<div id='myDropdown' class='dropdown-content'>
 
                        <a id='applyService' idPromo='" . $anObject['pk_promotion'] . "'>Appliquer à tous les services</a>
-                       <a id='modifyPromo' href='#'>Modifier la promotion</a>
+                       <a id='modifyPromo' idPromo='" . $anObject['pk_promotion'] . "'>Modifier la promotion</a>
 					   <a id='deletePromo' idPromo='" . $anObject['pk_promotion'] . "'>Supprimer la promotion</a>
 
                        </div>";
 
-				echo "<label id='pkpromo' class='none'>". $anObject['pk_promotion'] ."</label>";
 				echo "<label class='titrePromotion'>". $anObject['promotion_titre'] ."</label>";
 				echo "<label class='txtRabaisPromotion'>" . ($anObject['rabais'] * 100) . "%</label>";
                 echo "<div class='centerDiv'><span>Voulez-vous vraiment supprimer cette promotion?<span><br><a class='cursorPointer confirmationButtons' id='deleteConfirm'>Oui</a><a class='cursorPointer confirmationButtons' id='deleteDeny'>Non</a></div>";

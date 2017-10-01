@@ -88,7 +88,7 @@ if (isset($_SESSION['admin']) == false){
         				// TO INSERT - loading animation
         			},
         			success : function(response) {
-    					//$(location).attr('href', 'service.php');
+    					$(location).attr('href', 'service.php');
         			}
         		
     			});
