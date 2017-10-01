@@ -147,7 +147,7 @@ class InfoModel
     {
         $sql = "DELETE FROM `" . $this->table_name . "`
 		WHERE  `" . $this->table_name . "`.`" . $this->primary_key . "` = '$anID' ";
-        
+        echo $sql;
         include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
         
         if ($conn->query($sql) === TRUE) {
@@ -168,6 +168,8 @@ class InfoModel
         $sql = "SELECT * FROM `" . $this->table_name . "`";
         if ($this->table_name == "facture") {
             $sql .= " order by `date_service` DESC";
+        } else if ($this->table_name == "promotion"){
+        	$sql .= " order by `promotion_titre`";
         }
         $result = $conn->query($sql);
         
