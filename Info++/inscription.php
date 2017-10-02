@@ -53,7 +53,7 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
 				class='inputMarginWidth' placeholder='Mot de passe' required="required"></input> <input
 				type='password' name='passwordconfirm' id="passwordconf"
 				class='inputMarginWidth' placeholder='Confirmer mot de passe'
-				onBlur="confirmPass()" required="required"></input> <br> <div class='inputMarginWidthService3' ><input type='checkbox' name='infolettre'></input><label>Recevoir l'infolettre</label></div>
+				 required="required"></input> <br> <div class='inputMarginWidthService3' ><input type='checkbox' name='infolettre'></input><label>Recevoir l'infolettre</label></div>
                 
                       
 			<input type="submit" id="add" class='buttonConfirmer' value="Confirmer">
@@ -74,7 +74,9 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
             document.getElementById("ema").value = "";
             document.getElementById("emailconf").value = "";
             document.getElementById("ema").focus(); 
+            return false;
         }
+        return true;
     }
 
     function confirmPass() {
@@ -85,7 +87,9 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
             document.getElementById("pass").value = "";
             document.getElementById("passwordconf").value = "";
             document.getElementById("pass").focus(); 
+            return false;
         }
+        return true;
     }
 
 
@@ -94,6 +98,10 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
     	
    
     	function validate(){
+    		  if (confirmEmail() !=true || confirmPass() !=true){
+    				return false;
+    	        }
+    	            
     		var ck_name = /^[A-zÀ-ÿ ]+$/; 
     		var ck_fname = /^[A-zÀ-ÿ ]+$/;
     		var ck_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;

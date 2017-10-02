@@ -40,7 +40,9 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
             document.getElementById("ema").value = "";
             document.getElementById("emailconf").value = "";
             document.getElementById("ema").focus(); 
+            return false;
         }
+        return true;
     }
 
     function confirmPass() {
@@ -51,10 +53,17 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
             document.getElementById("pass").value = "";
             document.getElementById("passwordconf").value = "";
             document.getElementById("pass").focus(); 
+            return false;
         }
+        return true;
     }
 
     function validate(){
+        if (confirmEmail() !=true || confirmPass() !=true){
+			return false;
+        }
+            
+       
 	 	var ck_name = /^[A-zÀ-ÿ ]+$/; 
 		var ck_fname = /^[A-zÀ-ÿ ]+$/;
 		var ck_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;

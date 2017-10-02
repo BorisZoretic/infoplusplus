@@ -240,7 +240,7 @@ WHERE c.pk_client = '" . $pk_client . "'";
             echo "<input required='required' type='password' id='pass' name='password' class='inputMarginWidth' placeholder='Mot de passe'
         value='" . $anObject['mot_de_passe'] . "'></input>";
             echo "<input required='required' type='password' name='passwordconfirm' id='passwordconf' class='inputMarginWidth' placeholder='Confirmer mot de passe'
-        onBlur='confirmPass()' value='" . $anObject['mot_de_passe'] . "'></input><br>";
+         value='" . $anObject['mot_de_passe'] . "'></input><br>";
             if ($anObject['infolettre'] == 1){
                 echo "<div class='inputMarginWidthService3' ><input type='checkbox' checked='true' name='infolettre'></input><label>Recevoir l'infolettre</label></div></div>";
             }else{
