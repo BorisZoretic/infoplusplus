@@ -48,7 +48,7 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
 			<input name='email' id="ema" class='inputMarginWidth'
 				placeholder='Adresse courriel' required="required"> </input> <input name='emailconfirm'
 				id="emailconf" class='inputMarginWidth'
-				placeholder='Confirmez adresse courriel' onBlur="confirmEmail()" required="required"></input>
+				placeholder='Confirmez adresse courriel' required="required"></input>
 			<br> <input type='password' id="pass" name='password'
 				class='inputMarginWidth' placeholder='Mot de passe' required="required"></input> <input
 				type='password' name='passwordconfirm' id="passwordconf"

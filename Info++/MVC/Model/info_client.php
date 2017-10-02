@@ -235,7 +235,7 @@ WHERE c.pk_client = '" . $pk_client . "'";
             echo "<h4>Vos informations de connexion</h4>";
             echo "<h5>Le mot de passe doit contenir un chiffre, une lettre et 8 caractères au mininum.</h5>";
             echo "<input required='required' name='email' id='ema' class='inputMarginWidth' placeholder='Adresse courriel' value='" . $anObject['courriel'] . "'></input>";
-            echo "<input required='required' name='emailconfirm' id='emailconf' class='inputMarginWidth' placeholder='Confirmez adresse courriel' onBlur='confirmEmail()'
+            echo "<input required='required' name='emailconfirm' id='emailconf' class='inputMarginWidth' placeholder='Confirmez adresse courriel'
         value='" . $anObject['courriel'] . "'></input><br>";
             echo "<input required='required' type='password' id='pass' name='password' class='inputMarginWidth' placeholder='Mot de passe'
         value='" . $anObject['mot_de_passe'] . "'></input>";
