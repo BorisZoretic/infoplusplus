@@ -43,8 +43,7 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
 			<br> <br> <br>
 			<h4>Votre courriel servira à vous identifier lors de votre prochaine
 				visite</h4>
-			<h5>Le mot de passe doit contenir un chiffre, une lettre et 8
-				caractères au mininum</h5>
+			<h5>Le mot de passe doit contenir de 8 à 32 caractères.</h5>
 			<input name='email' id="ema" class='inputMarginWidth'
 				placeholder='Adresse courriel' required="required"> </input> <input name='emailconfirm'
 				id="emailconf" class='inputMarginWidth'
@@ -108,7 +107,7 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
     		var ck_rue = /^[A-zÀ-ÿ ]+$/;
     		var ck_civic = /^[0-9]*$/;
     		var ck_phone = /^\(?(?:[0-9]{3})\)?(?:[ .-]?)(?:[0-9]{3})(?:[ .-]?)(?:[0-9]{4}$)/;
-    		var ck_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$/;
+    		var ck_password = /^[\s\S]{8,32}$/;
     		var ck_zip = /^[a-zA-Z][0-9][a-zA-Z]\s?[0-9][a-zA-Z][0-9]$/;
     		
     	var name = document.getElementById("nom").value;
@@ -147,7 +146,7 @@ if (isset($_GET['duplicate']) && $_GET['duplicate']==1 ) {
         	 
         	 }
     	 if (!ck_email.test(email)) {
-    	  errors[errors.length] = "Votre courriel contient des caractères interdits.";
+    	  errors[errors.length] = "Votre courriel est invalide ou contient des caractères interdits.";
     	  
     	 }    	 
     	 if (!ck_password.test(password)) {

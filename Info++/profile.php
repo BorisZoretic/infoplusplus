@@ -70,7 +70,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 		var ck_rue = /^[A-zÀ-ÿ ]+$/;
 		var ck_civic = /^[0-9]*$/;
 		var ck_phone = /^\(?(?:[0-9]{3})\)?(?:[ .-]?)(?:[0-9]{3})(?:[ .-]?)(?:[0-9]{4}$)/;
-		var ck_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$/;
+		var ck_password = /^[\s\S]{8,32}$/;
 		var ck_zip = /^[a-zA-Z][0-9][a-zA-Z]\s?[0-9][a-zA-Z][0-9]$/;
 		
 
@@ -110,7 +110,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
     	 
     	 }
 	 if (!ck_email.test(email)) {
-	  errors[errors.length] = "Votre courriel contient des caractères interdits.";
+	  errors[errors.length] = "Votre courriel est invalide ou contient des caractères interdits.";
 	  
 	 }    	 
 	 if (!ck_password.test(password)) {
