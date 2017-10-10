@@ -30,13 +30,14 @@ class InfoFacture extends InfoModel {
         if ($aListOfObjects != null) {
             foreach ( $aListOfObjects as $anObject ) {
                 $infoClient = array();
-                $infoClient = $aClient->getObjectFromDB($anObject['fk_client']);
+                $infoClient = $aClient->getAdresseAndClient($anObject['fk_client']);
                 
                 $date = DateTime::createFromFormat($format, $anObject['date_service']);
                 
                 echo "<div class='borderFacture divTable'>";
                 echo "<h4 class='idFacture'>" . $anObject['pk_facture'] . "</h4><h5 class='dateFacture'>" . $date->format('Y/m/d') . "</h5>";
                 echo "<h4 class='nameFacture'>" . $infoClient['prenom'] . " " . $infoClient['nom'] . "</h4>";
+                echo "<div class='none' id='infoClient'><span class='spanNomFacture'>" . $infoClient['prenom'] . " " . $infoClient['nom'] . "</span><span class='spanTelFacture'>" . $infoClient['telephone'] ."</span><br><br><span class='spanAdresseFacture'>" . $infoClient['no_civique'] . " " . $infoClient['rue'] . ", " . $infoClient['ville'] . ", " . $infoClient['code_postal'] . "</span></div>";
                 echo "<h5 class='confirmationFacture'>" . strtoupper ($anObject['no_confirmation']) . "</h5><h5 class='tarifFacture'>" . $this->getTarif($anObject['pk_facture']) . "$</h5>";
                 echo "<div class='panel'>";
                 $this->displayFactureContent($anObject['pk_facture']);
