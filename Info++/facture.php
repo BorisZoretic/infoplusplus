@@ -61,6 +61,11 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
     	
     	
     });
+
+    $(document).on("click", ".nameFacture", function(e){
+    	e.stopPropagation();
+    	$(this).closest(".divTable").find("#infoClient").toggleClass("divInfoClient");
+	});
         
     </script>
 </html>

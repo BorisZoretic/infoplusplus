@@ -149,6 +149,7 @@ h3{
 
 .nameFacture{
 	text-decoration: underline;
+	cursor: pointer;
 }
 
 .confirmationFacture{
@@ -348,4 +349,42 @@ h3{
     float: left;
     margin-top: 10px;
     margin-right: -10px;
+}
+
+.divInfoClient{
+	display: block;
+	width: 300px;
+    height: 80px;
+    position: absolute;
+    margin-top: -19px;
+    margin-left: 53px;
+	background: #ffffff;
+	
+	border: 2px solid #FF9F07;
+	
+	background: -webkit-linear-gradient(top, #ffffff, #ade3ea);
+	background: -moz-linear-gradient(top, #ffffff, #ade3ea);
+	background: -ms-linear-gradient(top, #ffffff, #ade3ea);
+	background: -o-linear-gradient(top, #ffffff, #ade3ea);
+	background: linear-gradient(to bottom, #ffffff, #ade3ea);
+}
+
+.spanNomFacture{
+    float: left;
+    font-weight: 600;
+    padding: 12px;
+    display: block;
+}
+
+.spanTelFacture{
+    float: right;
+    color:#09AAC1;
+    padding: 12px;
+    display: block;
+}
+
+.spanAdresseFacture{
+    color: #FF9F07;
+    padding: 12px;
+    display: block;
 }
