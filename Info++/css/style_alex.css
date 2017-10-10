@@ -13,6 +13,7 @@ form input[type=text] {
 }
 
 .formcenter {
+	background-color:white;
 	width:500px;
 	margin:auto;	
 	border: 1px solid #FF9F07;
@@ -179,4 +180,16 @@ input[type='file'] {
 	padding-top:10px;
 	padding-bottom:10px;
 	padding-left:10px;
+}
+
+.iframe {
+	
+	position:absolute;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    height:100%;
+    width:100%;
+    
 }

@@ -38,15 +38,15 @@ if (isset($_SESSION['admin']) == false) {
 			</div>
 			<div id='formServ'>
 				<input id="titre" name='title' class='inputMarginWidthService'
-					placeholder='Titre'></input> <br>
+					placeholder='Titre' required="true"></input> <br>
 				<textarea type="textarea" id="desc" name='description'
-					class='inputMarginWidthServiceDesc' placeholder='Description'></textarea>
+					class='inputMarginWidthServiceDesc' placeholder='Description' required="true"></textarea>
 				<br> <input type='number' min='1' max='1000' name='duree' id="dur"
-					class='inputMarginWidthService2' placeholder='Durée'></input> <input
+					class='inputMarginWidthService2' placeholder='Durée' required="true"></input> <input
 					type='number' min='1' max='1000' id="tar" name='tarif'
-					class='inputMarginWidthService2' placeholder='Tarif'></input><br>
+					class='inputMarginWidthService2' placeholder='Tarif' required="true"></input><br>
 				<div class='inputMarginWidthService3'>
-					<input type='checkbox' id='act' name='active'></input><label>Activer
+					<input type='checkbox' id='act' name='active' required="true"></input><label>Activer
 						dans le catalogue</label>
 				</div>
 

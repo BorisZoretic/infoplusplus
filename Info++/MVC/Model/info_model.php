@@ -54,10 +54,10 @@ class InfoModel
         // echo $sql;
         if (! $result = $conn->query($sql)) {
             // Oh no! The query failed.
-            echo "fail";
+            //echo "fail";
             exit();
         } else {
-            echo "success";           
+            //echo "success";           
             return  $conn->insert_id;
             
             
@@ -99,10 +99,10 @@ class InfoModel
         include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
         
         if ($conn->query($sql) === TRUE) {
-            echo "success";
+            //echo "success";
             return  $conn->insert_id;
         } else {
-            echo "fail";
+            //echo "fail";
         }
         
         $conn->close();

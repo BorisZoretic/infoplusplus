@@ -16,7 +16,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 ?>
 	
 		<?php
-		echo "<a href='ajoutservice.php'class='ajoutService'>Ajouter un service</a>";
+		echo "<a href='#' id='openiframe' class='ajoutService'>Ajouter un service</a>";
 		
             require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/Model/info_service.php';
             $aService = new InfoService();
@@ -26,7 +26,45 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
         <?php 
             require_once $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/footer.php';
         ?>
+        <div class="iframe" id="somediv"></div>
+        <script
+			  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+			  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+			  crossorigin="anonymous"></script>
         <script> 
+
+        $(document).on("click", "#openiframe", function(){
+        	opendialog("ajoutService2.php");
+        	});
+        
+       
+
+        	function opendialog(page) {
+        	
+        	  var $dialog = $('#somediv')
+        	  .html('<iframe id="frame" style="border: 0px; " src="' + page + '" width="100%" height="100%"></iframe>')
+        	  .dialog({
+        	    title: "Ajout",
+        	    autoOpen: false,
+        	    dialogClass: 'dialog_fixed,ui-widget-header',
+        	    modal: true,
+        	    height: 600,
+        	    minWidth: 600,
+        	    minHeight: 400,
+        	    draggable:true,
+        	    close: function () { $(this).remove(); },
+        	    buttons: { "Ok": function () {       
+            	      
+            	    $(this).dialog("close");
+            	    location.reload(); } }
+        	  });        	 
+        	  $dialog.dialog('open');
+        	} 
+
+
+
+        	
+        
 $(document).on("click", "#tool", function(e){
 	e.stopPropagation();
 	$(this).closest(".divTable").find("#myDropdown").toggleClass("showAbsolute");

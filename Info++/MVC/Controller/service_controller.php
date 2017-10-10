@@ -124,36 +124,36 @@ class service_controller
         if(isset($_POST["submit"])) {
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
             if($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
+                
                 $uploadOk = 1;
             } else {
-                echo "File is not an image.";
+                
                 $uploadOk = 0;
             }
         }
         // Check if file already exists
         if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
+            
             $uploadOk = 0;
         }
         
         // Allow certain file formats
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
-                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                
                 $uploadOk = 0;
             }
             // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) {
-                echo "Sorry, your file was not uploaded.";
+                
                 return $uploadOk;
                 // if everything is ok, try to upload file
             } else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $_SERVER["DOCUMENT_ROOT"] . "/infoplusplus/Info++/" . $target_file)) {
-                    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+                    
                     return $target_file;
                 } else {
-                    echo "Sorry, there was an error uploading your file.";
+                    
                     return $uploadOk;
                 }
             }
@@ -163,10 +163,12 @@ class service_controller
 $addservice = new service_controller();
 $addservice->ajouterService();
 if($addservice->getDuplicate()==true){
-    header("Location: http://localhost/infoplusplus/Info++/ajoutservice.php?duplicate=1");
+    echo "Dupliqué";
+    //header("Location: http://localhost/infoplusplus/Info++/ajoutservice.php?duplicate=1");
     exit();
 }
 else{
-    header("Location: http://localhost/infoplusplus/Info++/service.php");
+    echo "Ajout fait avec succès";
+    //header("Location: http://localhost/infoplusplus/Info++/service.php");
     exit();
 }
