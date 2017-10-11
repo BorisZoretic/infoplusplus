@@ -21,6 +21,26 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 <title>Info++ - Connexion</title>
 </head>
 <body>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_CA/sdk.js#xfbml=1&version=v2.10&appId=1954371348221676";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+function test(){
+    FB.login(function(response) {
+    	  if (response.status === 'connected') {
+    		  //$(location).attr('href', 'catalogue.php');
+    	  } else {
+    	    // The person is not logged into this app or we are unable to tell. 
+    	  }
+    	});
+}
+</script>
+
 	<div class="headerbg">
 		<img class="logo" src="images/icones/logo.png" title="logo" alt="logo">
 		<div class='topliens'>
@@ -52,9 +72,10 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 			<button class='buttonConnexion' type="submit">Connexion</button>
 			<a href="inscription.php"><button class='buttonConnexion' type="button">S'inscrire</button></a>
 			<br>
-			<button class='loginBtn loginBtn--facebook'>Login with facebook</button>
+			<!--  <button class='loginBtn loginBtn--facebook'>Login with facebook</button> -->
 
 		</form>
+		<div onlogin='test()' class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
 	</div>
 	
 	
@@ -65,7 +86,6 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
         <?php
         require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/footer.php';
         ?>
-        
         
     </body>
 </html>
