@@ -26,40 +26,72 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
         <?php 
             require_once $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/footer.php';
         ?>
-        <div class="iframe" id="somediv"></div>
-        <script
-			  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
-			  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
-			  crossorigin="anonymous"></script>
+<div class="iframe none" id="somediv">
+        <div class="formcenter">
+		<h4>Complétez le formulaire pour ajouter un service</h4>
+		<h5>Tous les champs sont obligatoires</h5>
+
+		<form id="formIns" class="inscription" onsubmit="return validate()">
+			<div name='imageUpload' id='uploads'>
+				<img class='imgHolder' src=''> <input type='file'
+					name='fileToUpload' class='imgUpload' id='fileToUp'> <input
+					type="button" class='btnUpdate' value='Mettre à jour la photo'>
+			</div>
+			<div id='formServ'>
+				<input id="titre" name='title' class='inputMarginWidthService'
+					placeholder='Titre' required="true"></input> <br>
+				<textarea type="textarea" id="desc" name='description'
+					class='inputMarginWidthServiceDesc' placeholder='Description' required="true"></textarea>
+				<br> <input type='number' min='1' max='1000' name='duree' id="dur"
+					class='inputMarginWidthService2' placeholder='Durée' required="true"></input> <input
+					type='number' min='1' max='1000' id="tar" name='tarif'
+					class='inputMarginWidthService2' placeholder='Tarif' required="true"></input><br>
+				<div class='inputMarginWidthService3'>
+					<input type='checkbox' id='act' name='active' required="true"></input><label>Activer
+						dans le catalogue</label>
+				</div>
+
+			</div>
+			<input type="submit" id="add" name="submit" class='buttonConfirmer'
+				value="Confirmer">
+		</form>
+	</div>       
+        
+</div>
+<!--         <script -->
+<!-- 			  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" -->
+<!-- 			  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" -->
+<!-- 			  crossorigin="anonymous"></script> -->
         <script> 
 
-        $(document).on("click", "#openiframe", function(){
-        	opendialog("ajoutService2.php");
+        $(document).on("click", "#openiframe", function(e){
+            e.stopPropagation;
+            $('#somediv').removeClass('none');
         	});
         
        
 
-        	function opendialog(page) {
+//         	function opendialog(page) {
         	
-        	  var $dialog = $('#somediv')
-        	  .html('<iframe id="frame" style="border: 0px; " src="' + page + '" width="100%" height="100%"></iframe>')
-        	  .dialog({
-        	    title: "Ajout",
-        	    autoOpen: false,
-        	    dialogClass: 'dialog_fixed,ui-widget-header',
-        	    modal: true,
-        	    height: 600,
-        	    minWidth: 600,
-        	    minHeight: 400,
-        	    draggable:true,
-        	    close: function () { $(this).remove(); },
-        	    buttons: { "Ok": function () {       
+//         	  var $dialog = $('#somediv')
+//         	  .html('<iframe id="frame" style="border: 0px; " src="' + page + '" width="100%" height="100%"></iframe>')
+//         	  .dialog({
+//         	    title: "Ajout",
+//         	    autoOpen: false,
+//         	    dialogClass: 'dialog_fixed,ui-widget-header',
+//         	    modal: true,
+//         	    height: 600,
+//         	    minWidth: 600,
+//         	    minHeight: 400,
+//         	    draggable:true,
+//         	    close: function () { $(this).remove(); },
+//         	    buttons: { "Ok": function () {       
             	      
-            	    $(this).dialog("close");
-            	    location.reload(); } }
-        	  });        	 
-        	  $dialog.dialog('open');
-        	} 
+//             	    $(this).dialog("close");
+//             	    location.reload(); } }
+//         	  });        	 
+//         	  $dialog.dialog('open');
+//         	} 
 
 
 
@@ -175,15 +207,17 @@ function updateList(){
 
 
 $(document).ready(function() {
-	
+	$('.btnUpdate').click(function(){
+	    $('input').click();
+	});
 
 
-	var activePage = window.location.href;
+	var activePage = window.location.pathname;
 	console.log(activePage);
     //var activePage = url.substring(url.lastIndexOf('/') + 1);
     
     $('.topliens .navigation2').each(function () {
-        var linkPage = this.href;
+        var linkPage = this.pathname;
 		console.log(linkPage);
         if (activePage == linkPage) {
                                     
@@ -192,6 +226,58 @@ $(document).ready(function() {
             $(this).closest(".navigation2").removeClass("navigation2");
         }
     });
+
+    $('.buttonConfirmer').click(function(e){
+    	e.preventDefault();
+		var self = $(this);
+		var form = $("#formIns");
+	
+		var formData = new FormData();
+		jQuery.each(jQuery('#fileToUp')[0].files, function(i, file) {
+		    formData.append('file-'+i, file);
+		});
+		var titre = form.find('#titre').val();
+		var desc = form.find("#desc").val();
+		var dur = form.find("#dur").val();
+		var tar = form.find("#tar").val();
+		var act = form.find("#act").val();
+		var img = formData;
+		alert(titre + " " + desc  + " " + dur  + " " + tar + " " + act  + " " + img);
+		
+			var data = {
+	       			title:titre,
+	       			description:desc,
+	       			duree:dur,
+	       			tarif:tar,
+	       			active:act,
+	       			fileToUpload:img
+	       			};
+    		
+    		$.ajax({method : "POST",
+    			url : "MVC/Controller/service_controller.php",
+    			data : data,
+    			async: false,
+		       	cache: false,
+		       	contentType: false,
+		       	enctype: 'multipart/form-data',
+		       	processData: false,
+    			beforeSend : function() {
+    				// TO INSERT - loading animation
+    			},
+    			success : function(response) {
+        			console.log(response);
+        			
+					//$(location).attr('href', 'service.php');
+    			},
+    			error : function(xhr, title, trace) {
+        			console.error(title + trace);
+    			}
+        			
+    		
+			});
+    	
+	});
+
 	
 	
 });

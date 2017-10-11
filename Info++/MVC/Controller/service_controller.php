@@ -122,7 +122,7 @@ class service_controller
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         // Check if image file is a actual image or fake image
         if(isset($_POST["submit"])) {
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            $check = getimagesize($_FILES["file-0"]);
             if($check !== false) {
                 
                 $uploadOk = 1;
@@ -149,11 +149,11 @@ class service_controller
                 return $uploadOk;
                 // if everything is ok, try to upload file
             } else {
-                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $_SERVER["DOCUMENT_ROOT"] . "/infoplusplus/Info++/" . $target_file)) {
-                    
+                if (move_uploaded_file($_FILES["file-0"], $_SERVER["DOCUMENT_ROOT"] . "/infoplusplus/Info++/" . $target_file)) {
+                    echo "successsssss";
                     return $target_file;
                 } else {
-                    
+                    echo "ohnoooooo";
                     return $uploadOk;
                 }
             }
@@ -162,13 +162,13 @@ class service_controller
 
 $addservice = new service_controller();
 $addservice->ajouterService();
-if($addservice->getDuplicate()==true){
-    echo "Dupliqué";
-    //header("Location: http://localhost/infoplusplus/Info++/ajoutservice.php?duplicate=1");
-    exit();
-}
-else{
-    echo "Ajout fait avec succès";
-    //header("Location: http://localhost/infoplusplus/Info++/service.php");
-    exit();
-}
+// if($addservice->getDuplicate()==true){
+//     echo "Dupliqué";
+//     //header("Location: http://localhost/infoplusplus/Info++/ajoutservice.php?duplicate=1");
+//     exit();
+// }
+// else{
+//     echo "Ajout fait avec succès";
+//     //header("Location: http://localhost/infoplusplus/Info++/service.php");
+//     exit();
+// }
