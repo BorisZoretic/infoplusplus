@@ -35,7 +35,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 			<div name='imageUpload' id='uploads'>
 				<img class='imgHolder' src=''> <input type='file'
 					name='fileToUpload' class='imgUpload' id='fileToUp'> <input
-					type="button" class='btnUpdate' value='Mettre à jour la photo'>
+					type="button" id='addImg' class='btnUpdate' value='Mettre à jour la photo'>
 			</div>
 			<div id='formServ'>
 				<input id="titre" name='title' class='inputMarginWidthService'
@@ -86,6 +86,18 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
         
 </div>
 
+
+<div class="iframe none" id="modifService">
+    <div class='formcenter'>
+    	
+        <h4>Ajouter la période et un code pour appliquer la promotion choisie</h4>
+        <h5 class='h5modif'>Le code n'est pas obligatoire et ne sera pas exigé si le champ est vide</h5>
+        <label id='pkmod' class='none'></label>    
+		<form id='formModServ' class='inscription' method='post'></form>
+	</div>
+        
+</div>
+
         
         
         <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
@@ -114,7 +126,7 @@ en: {
 
         $(document).on("click", ".buttonPlus", function(e){
             e.stopPropagation;
-            alert($(this).attr('id'));
+            
             $('#fk').append($(this).attr('id'));
             
             $('#addTaPromo').removeClass('none');
@@ -155,16 +167,24 @@ $(document).on("click", "#toolBob", function(e){
 	$(this).closest(".imagePromo").find("#toolBob").toggleClass("showBob");
 	});
 
+//DROPDOWN SERVICE
+$(document).on("click", "#mod", function(e){
+	 e.stopPropagation;
+	 var pk_service = $(this).closest(".divTable").find('#pk').text();
+	 $('#pkmod').append(pk_service);
+	 
+	 $('#formModServ').load('MVC/view/getService.php?id='+pk_service);
+     $('#modifService').removeClass('none');
 
-$(document).on("click", "#mod", function(){
-	var idService = $(this).closest(".divTable").find("#pk").text(); 
-	$(location).attr('href', 'modifservice.php?id='+idService);
+	 
+	
 });
 
 $(document).on("click", "#deac", function(){
 	var idService = $(this).closest(".divTable").find("#pk").text(); 
 	$(location).attr('href', 'MVC/view/getService.php?id='+idService+'&deac=1');
 });
+
 
 
 $(document).on("click", "#deletePromoService", function(){
@@ -236,7 +256,12 @@ function updateList(){
 
 
 $(document).ready(function() {
-	$('.btnUpdate').click(function(){
+// 	$('.btnUpdate').click(function(){
+// 	    $('input').click();
+// 	});
+
+	$('#ImageMod').click(function(){
+		$("#changeImage").attr("value","1");
 	    $('input').click();
 	});
 
@@ -258,6 +283,7 @@ $(document).ready(function() {
         }
     });
 
+    //SUBMIT ADD SERVICE
     $("#formIns").submit(function(e){
     	e.preventDefault();
 		var self = $(this);
@@ -265,22 +291,6 @@ $(document).ready(function() {
 	
 		var formData = new FormData(form);
 		
-// 		var titre = form.find('#titre').val();
-// 		var desc = form.find("#desc").val();
-// 		var dur = form.find("#dur").val();
-// 		var tar = form.find("#tar").val();
-// 		var act = form.find("#act").val();
-// 		var img = formData;
-		
-		
-// 			var data = {
-// 	       			title:titre,
-// 	       			description:desc,
-// 	       			duree:dur,
-// 	       			tarif:tar,
-// 	       			active:act,
-// 	       			fileToUpload:img
-// 	       			};
     		
     		$.ajax({method : "POST",
     			url : "MVC/Controller/service_controller.php",
@@ -309,11 +319,14 @@ $(document).ready(function() {
 
    
     	
-    	
+    $('#addImg').bind('click', function(e){
+        
+        $('#fileToUp').click();
+    });
   
-	$('.btnUpdate').click(function(){
-	    $('input').click();
-	});
+// 	$('.btnUpdate').click(function(){
+// 	    $('input').click();
+// 	});
 
 	$('#selectPromo').change(function(){
 		var self = $(this);
@@ -337,6 +350,43 @@ $(document).ready(function() {
 		
 	});
 
+	//SUBMIT MODIF SERVICE
+	$("#formModServ").submit(function(e){
+		e.preventDefault();
+		var self = $(this);
+		var form = $("#formModServ")[0];
+	
+		var formData = new FormData(form);
+		var pk_service = self.closest(".formcenter").find("#pkmod").text();
+		
+
+    		
+    		$.ajax({method : "POST",
+    			url : "MVC/Controller/service_controller.php?mod=1&primary="+pk_service,
+    			data : formData,
+    			async: false,
+		       	cache: false,
+		       	contentType: false,
+		       	
+		       	processData: false,
+    			beforeSend : function() {
+    				// TO INSERT - loading animation
+    			},
+    			success : function(response) {
+        			console.log(response);
+        			$('#pkmod').text("");
+        			$('#modifService').addClass('none');
+        			updateList();
+    			},
+    			error : function(xhr, title, trace) {
+        			console.error(title + trace);
+    			}
+        			
+    		
+			});
+	});
+
+	//SUBMIT ADD PROMO
 	$('.buttonConfirmer').click(function(){
 		var self = $(this);
 		var form = self.closest("#formModifPromo");
@@ -371,6 +421,8 @@ $(document).ready(function() {
 			alert('Veuillez remplir tous les champs requis adéquatemment');
     	}
 	});
+
+
 
 	$(function() {
 	     $( "#date_fin" ).datepicker({ dateFormat: 'yy-mm-dd'}); 

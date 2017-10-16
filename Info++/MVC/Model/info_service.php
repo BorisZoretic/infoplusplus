@@ -165,7 +165,7 @@ class InfoService extends InfoModel {
         $anObject = $this->getObjectFromDB($idservice);       
                 echo "<div name='imageUpload' id='uploads'><img class='imgHolder' src='". $anObject['image'] ."'>";
                 echo "<input type='file' name='fileToUpload' class='imgUpload' id='fileToUp'>";
-                echo "<input type='button' class='btnUpdate' value='Mettre à jour la photo'></div>";
+                echo "<input type='button' id='ImageMod' class='btnUpdate' value='Mettre à jour la photo'></div>";
                 echo "<input id='changeImage' name='chgImg' class='none' value=''>";
                 echo "<div id='formServ'>";
                 echo "<input id='titre' name='title' class='inputMarginWidthService' value='". $anObject['service_titre'] ."'></input>";
@@ -184,7 +184,7 @@ class InfoService extends InfoModel {
                         
                         </div>";
                 }
-                echo "<input type='submit' id='add' name='submit' class='buttonConfirmer' value='Modifier'>";
+                echo "<input type='submit' id='modServiceSubmit' name='submit' class='buttonConfirmer' value='Modifier'>";
             
         
     }
