@@ -14,7 +14,7 @@ form input[type=text] {
 
 .formcenter {
 	background-color:white;
-	width:500px;
+	width:501px;
 	margin:auto;	
 	border: 1px solid #FF9F07;
 	padding-left:20px;
@@ -184,8 +184,13 @@ input[type='file'] {
 
 .iframe {
 	
-	position:absolute;
-	display: flex;
+	background-color: rgba(0, 0, 0, 0.6);
+	 position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, 0%);
+	
     align-items: center;
     justify-content: center;
     z-index: 1;
