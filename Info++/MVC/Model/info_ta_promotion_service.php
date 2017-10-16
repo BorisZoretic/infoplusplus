@@ -145,7 +145,7 @@ class InfoTaPromotionService extends InfoModel {
                     echo "<div class='imagePromo'>";
                     echo "<img id='toolBob' class='imgToolBob' src='../images/icones/sys.png'>";
                     echo "<div id='myDropdownBob' class='dropdown-content'>
-                        <a class='paddingContent' href='modifTaPromo.php?pk_promotion_service=" . $anObject['pk_promotion_service'] . "'>Modifier la promotion</a>
+                        <a class='paddingContent' id='modPromoService' idPromoService='" . $anObject['pk_promotion_service'] . "'>Modifier la promotion</a>
                         <a class='paddingContent cursorPointer' id='deletePromoService' idPromoService='".$anObject["pk_promotion_service"]."'>Supprimer la promotion</a>
                         </div>";
                     $titre = str_replace('Rabais', '', $promo['promotion_titre']);
@@ -171,12 +171,7 @@ class InfoTaPromotionService extends InfoModel {
         $date_debut = DateTime::createFromFormat($format, $laPromo['date_debut']);
         $date_fin = DateTime::createFromFormat($format, $laPromo['date_fin']);
         
-        echo "<div class='formcenter'>
-        <h4>Ajouter la période et un code pour appliquer la promotion choisie</h4>
-        <h5 class='h5modif'>Le code n'est pas obligatoire et ne sera pas exigé si le champ est vide</h5>
-            
-		<form id='formModifPromo' class='inscription' method='post'>
-			<div id='uploads'>";
+        echo "<div id='uploads'>";
         echo "<div class='imgPromoModif'><span class='spanRabais'>". $promo['rabais'] * 100 ."%</span></div>";
 		echo "<select id='selectPromo' class='selectPromo'>";
 		$aPromo->getActiveObjectsAsSelect($promo['pk_promotion'], "promotion_titre");
@@ -189,9 +184,8 @@ class InfoTaPromotionService extends InfoModel {
     			<label class='labelPromo' for='code'>Entre un code s'il est requis pour appliquer<br>la promotion lors de la création de la facture</label></br>
     			<input id='code' name='code' value='".$laPromo['code']."'></input>
     			</div>
-    			<div class='buttonConfirmer'><a class='btnBob'>Modifier</a></div>
-			</form>
-			</div>";
+                <input type='submit' id='modifierPromo' name='submit' class='buttonConfirmer' value='Modifier'>";
+    			
     }
 
 }

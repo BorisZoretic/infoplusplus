@@ -80,7 +80,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
     			<label class='labelPromo' for='code'>Entre un code s'il est requis pour appliquer<br>la promotion lors de la création de la facture</label></br>
     			<input id='code' name='code' value=''></input>
 			</div>
-			<div class='buttonConfirmer'><a class='btnBob btnBobAjout'>Ajouter</a></div>
+			<div id='ajouterPromo' class='buttonConfirmer'><a class='btnBob btnBobAjout'>Ajouter</a></div>
 		</form>
 	</div>
         
@@ -98,6 +98,16 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
         
 </div>
 
+<div class="iframe none" id="modifPromo">
+       <div class='formcenter'>
+       
+        <h4>Ajouter la période et un code pour appliquer la promotion choisie</h4>
+        <h5 class='h5modif'>Le code n'est pas obligatoire et ne sera pas exigé si le champ est vide</h5>     
+        <label id='pkmodPromo' class='none'></label>  
+        <form id='formModPromo' class='inscription' method='post'></form>
+	</div>
+</div>
+  
         
         
         <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
@@ -182,9 +192,24 @@ $(document).on("click", "#mod", function(e){
 	
 });
 
+//DROPDOWN PROMO
+$(document).on("click", "#modPromoService", function(e){
+	 e.preventDefault;
+	 var pk_promotion_service = $(this).closest("#myDropdownBob").find("#modPromoService").attr('idPromoService')
+	 $('#pkmodPromo').append(pk_promotion_service);
+	 
+	 $('#formModPromo').load('MVC/view/getPromo.php?pk_promotion_service='+pk_promotion_service);
+	 
+    $('#modifPromo').removeClass('none');
+    
+
+	 
+	
+});
+
 $(document).on("click", "#deac", function(){
 	var idService = $(this).closest(".divTable").find("#pk").text(); 
-	$(location).attr('href', 'MVC/view/getService.php?id='+idService+'&deac=1');
+	//$(location).attr('href', 'MVC/view/getService.php?id='+idService+'&deac=1');
 	data = '';
 	$.ajax({method : "POST",
 		url : "MVC/view/getService.php?id="+idService+"&deac=1",
@@ -204,13 +229,16 @@ $(document).on("click", "#deac", function(){
 
 $(document).on("click", "#deletePromoService", function(){
 	$(this).closest(".divMarginTop").find(".centerDiv").toggleClass("showCenter");
+	$('#promo_to_delete').text($(this).closest("#myDropdownBob").find("#deletePromoService").attr('idPromoService'));
+	//var pk_promo_delete = $(this).closest("#myDropdownBob").find("#deletePromoService").attr('idPromoService');
 });
 
 $(document).on("click", "#deleteConfirm", function(){
+	
 	console.log($(this).closest(".divMarginTop").find("#deletePromoService").attr('idPromoService'));
 	data = '';
 	$.ajax({method : "POST",
-		url : "AjaxRelated/delete-object_process.php?type=info_ta_promotion_service&pk_promotion_service=" + $(this).closest(".divMarginTop").find("#deletePromoService").attr('idPromoService'),
+		url : "AjaxRelated/delete-object_process.php?type=info_ta_promotion_service&pk_promotion_service=" + $('#promo_to_delete').text(),
 		data : data,
 		beforeSend : function() {
 			// TO INSERT - loading animation
@@ -273,9 +301,7 @@ function updateList(){
 
 
 $(document).ready(function() {
-// 	$('.btnUpdate').click(function(){
-// 	    $('input').click();
-// 	});
+
 
 	$('#ImageMod').click(function(){
 		$("#changeImage").attr("value","1");
@@ -341,16 +367,76 @@ $(document).ready(function() {
         $('#fileToUp').click();
     });
   
-// 	$('.btnUpdate').click(function(){
-// 	    $('input').click();
-// 	});
+
+
+//SUBMIT MOD PROMO
+	$("#formModPromo").submit(function(e){
+		e.preventDefault();
+		
+		var self = $(this);
+		var form = self.closest("#formModPromo");
+		
+		var primary_key = self.closest("body").find("#pkmodPromo");
+		var promo = form.find("#selectPromo");
+		
+		var date_debut = form.find("#date_debut");
+		var date_fin = form.find("#date_fin");
+
+		var code = form.find("#code");
+
+		if(promo.val() != "Choisissez une promotion" && date_debut.val() != '' &&  date_fin.val() != '' && date_debut.val() < date_fin.val()){
+		
+    		var data = "";
+    		var lol = "promo=" + promo.val() + "&date_debut=" + date_debut.val() + "&date_fin=" + date_fin.val() + "&code=" + code.val() + "&primary_key=" + primary_key.text();
+        	console.log(lol);
+    		$.ajax({method : "POST",
+    			url : "AjaxRelated/edit-object_process.php?promo=" + promo.val() + "&date_debut=" + date_debut.val() + "&date_fin=" + date_fin.val() + "&code=" + code.val() + "&primary_key=" +  primary_key.text(),
+    			data : data,
+    			beforeSend : function() {
+    				// TO INSERT - loading animation
+    			},
+    			success : function(response) {
+    				$('#pkmodPromo').text("");
+    				$('#modifPromo').addClass('none');    
+					updateList();
+    			}
+    		
+			});
+    	} else{
+			alert('Veuillez remplir tous les champs requis adéquatemment');
+    	}
+	});
 
 	$('#selectPromo').change(function(){
+		
 		var self = $(this);
 
 		var newValue = $(this).val();
 		
 		var span = self.closest("#formModifPromo").find(".spanRabais");
+
+		var data = '';
+		$.ajax({method : "POST",
+			url : "MVC/view/getRabais.php?id=" + newValue,
+			data : data,
+			beforeSend : function() {
+				// TO INSERT - loading animation
+			},
+			success : function(response) {
+				span.html(response + "%");
+			}
+		
+		});
+		
+	});
+
+	 $(document).on('change','#selectPromo',function(){
+		
+		var self = $(this);
+
+		var newValue = $(this).val();
+		
+		var span = self.closest("#formModPromo").find(".spanRabais");
 
 		var data = '';
 		$.ajax({method : "POST",
@@ -404,8 +490,11 @@ $(document).ready(function() {
 			});
 	});
 
+	
+
 	//SUBMIT ADD PROMO
-	$('.buttonConfirmer').click(function(){
+	$('#ajouterPromo').click(function(){
+		
 		var self = $(this);
 		var form = self.closest("#formModifPromo");
 
