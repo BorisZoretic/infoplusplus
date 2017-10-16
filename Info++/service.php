@@ -114,6 +114,8 @@ en: {
     }
 }
 };
+
+
 </script>
         
         <script> 
@@ -183,6 +185,19 @@ $(document).on("click", "#mod", function(e){
 $(document).on("click", "#deac", function(){
 	var idService = $(this).closest(".divTable").find("#pk").text(); 
 	$(location).attr('href', 'MVC/view/getService.php?id='+idService+'&deac=1');
+	data = '';
+	$.ajax({method : "POST",
+		url : "MVC/view/getService.php?id="+idService+"&deac=1",
+		data : data,
+		beforeSend : function() {
+			// TO INSERT - loading animation
+		},
+		success : function(response) {
+			updateList();
+			
+		}
+	
+	});
 });
 
 
@@ -251,6 +266,8 @@ function updateList(){
 		}
 	});
 }
+
+
 
 
 
@@ -353,6 +370,7 @@ $(document).ready(function() {
 	//SUBMIT MODIF SERVICE
 	$("#formModServ").submit(function(e){
 		e.preventDefault();
+		
 		var self = $(this);
 		var form = $("#formModServ")[0];
 	

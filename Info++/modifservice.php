@@ -50,13 +50,22 @@ if (isset($_SESSION['admin']) == false){
     	function validate(){
     	 	
     		var ck_num = /^[0-9]*$/;
-    		
-    		
+    		var ck_empty /^$|\s+/;
+
+		var desc = document.getElementById("desc").value;
+		var titre = document.getElementById("titre").value;
     	var duree = document.getElementById("dur").value;
     	var tarif = document.getElementById("tar").value;
 
     	var errors = [];
-    	 
+    	if (!ck_empty.test(desc)) {
+      	  errors[errors.length] = "Entrez une description";
+      	  
+      	 }
+    	if (!ck_empty.test(titre)) {
+        	  errors[errors.length] = "Entrez un titre";
+        	  
+        	 }
     	 if (!ck_num.test(duree)) {
     	  errors[errors.length] = "La durée doit être numérique.";
     	  

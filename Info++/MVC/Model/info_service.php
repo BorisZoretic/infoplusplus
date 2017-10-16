@@ -168,16 +168,16 @@ class InfoService extends InfoModel {
                 echo "<input type='button' id='ImageMod' class='btnUpdate' value='Mettre à jour la photo'></div>";
                 echo "<input id='changeImage' name='chgImg' class='none' value=''>";
                 echo "<div id='formServ'>";
-                echo "<input id='titre' name='title' class='inputMarginWidthService' value='". $anObject['service_titre'] ."'></input>";
+                echo "<input id='titre' name='title' class='inputMarginWidthService' value='". $anObject['service_titre'] ."' required='true'></input>";
                 echo "<br>";
-                echo "<textarea type='textarea' id='desc' name='description' class='inputMarginWidthServiceDesc' placeholder='Description'>" . $anObject['service_description'] . "</textarea>
+                echo "<textarea type='textarea' id='desc' name='description' class='inputMarginWidthServiceDesc' placeholder='Description' required='true'>" . $anObject['service_description'] . "</textarea>
                 <br> ";
                 echo "<input type='number' min='1' max='1000' name='duree' id='dur' class='inputMarginWidthService2'
-                    value='" . $anObject['duree'] . "'></input>";
+                    value='" . $anObject['duree'] . "' required='true'></input>";
                 echo "<input type='number' min='1' max='1000' id='tar' name='tarif'
-                        class='inputMarginWidthService2' value='" . $anObject['tarif'] . "'></input><br>";
+                        class='inputMarginWidthService2' value='" . $anObject['tarif'] . "' required='true'></input><br>";
                 if ($anObject['actif']=='1'){
-                    echo "<div class='inputMarginWidthService3' ><input type='checkbox' id='act' checked='checked' name='active'></input><label>Activer dans le catalogue</label></div>";
+                    echo "<div class='inputMarginWidthService3' ><input type='checkbox' id='act' checked='checked' name='active' ></input><label>Activer dans le catalogue</label></div>";
                 }
                 else{
                 echo "<div class='inputMarginWidthService3' ><input type='checkbox' id='act' name='active'></input><label>Activer dans le catalogue</label></div>

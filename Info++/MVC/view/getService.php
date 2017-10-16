@@ -23,8 +23,8 @@ if (isset($_GET['deac'])){
         $InfoService->updateObjectDynamically($field, '1', $_GET['id']);
     }
     
-    header("Location: http://localhost/infoplusplus/Info++/service.php");
-    exit();
+//     header("Location: http://localhost/infoplusplus/Info++/service.php");
+//     exit();
 }
 
 
