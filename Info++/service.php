@@ -31,7 +31,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 		<h4>Complétez le formulaire pour ajouter un service</h4>
 		<h5>Tous les champs sont obligatoires</h5>
 
-		<form id="formIns" class="inscription" onsubmit="return validate()">
+		<form id="formIns" class="inscription" >
 			<div name='imageUpload' id='uploads'>
 				<img class='imgHolder' src=''> <input type='file'
 					name='fileToUpload' class='imgUpload' id='fileToUp'> <input
@@ -47,7 +47,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 					type='number' min='1' max='1000' id="tar" name='tarif'
 					class='inputMarginWidthService2' placeholder='Tarif' required="true"></input><br>
 				<div class='inputMarginWidthService3'>
-					<input type='checkbox' id='act' name='active' required="true"></input><label>Activer
+					<input type='checkbox' id='act' name='active' ></input><label>Activer
 						dans le catalogue</label>
 				</div>
 
@@ -58,41 +58,73 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 	</div>       
         
 </div>
-<!--         <script -->
-<!-- 			  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" -->
-<!-- 			  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" -->
-<!-- 			  crossorigin="anonymous"></script> -->
+
+
+<div class="iframe none" id="addTaPromo">
+    <div class='formcenter'>
+    	
+        <h4>Ajouter la période et un code pour appliquer la promotion choisie</h4>
+        <h5 class='h5modif'>Le code n'est pas obligatoire et ne sera pas exigé si le champ est vide</h5>
+            
+		<form id='formModifPromo' class='inscription' method='post'>
+		<label id='fk' class='none'></label>
+			<div id='uploads'>
+			<div class='imgPromoModif'><span class='spanRabais'>0%</span></div>
+		<select id='selectPromo' class='selectPromo'></select>
+		</div>
+			    
+			<div class='formPromo'>
+				<label class='labelPromo' for='date_debut'>Période de la promotion</label></br>
+    			<input id='date_debut' type='date' name='date_debut' placeholder='Date de début' value=''></input>
+    			<input id='date_fin' type='date' name='date_fin' placeholder='Date de fin' value=''></input></br></br>
+    			<label class='labelPromo' for='code'>Entre un code s'il est requis pour appliquer<br>la promotion lors de la création de la facture</label></br>
+    			<input id='code' name='code' value=''></input>
+			</div>
+			<div class='buttonConfirmer'><a class='btnBob btnBobAjout'>Ajouter</a></div>
+		</form>
+	</div>
+        
+</div>
+
+        
+        
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
+<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+<script>
+webshims.setOptions('forms-ext', {types: 'date'});
+webshims.polyfill('forms forms-ext');
+$.webshims.formcfg = {
+en: {
+    dFormat: '-',
+    dateSigns: '-',
+    patterns: {
+        d: "yy-mm-dd"
+    }
+}
+};
+</script>
+        
         <script> 
 
+        //ouverture des modales
         $(document).on("click", "#openiframe", function(e){
             e.stopPropagation;
             $('#somediv').removeClass('none');
         	});
-        
+
+        $(document).on("click", ".buttonPlus", function(e){
+            e.stopPropagation;
+            alert($(this).attr('id'));
+            $('#fk').append($(this).attr('id'));
+            
+            $('#addTaPromo').removeClass('none');
+        	});
+
+//         $(document).on("click", ".buttonPlus", function(){
+//         	$(location).attr('href', 'ajoutTaPromo.php?fk_service=' + $(this).attr('id'));
+//         	});
+                
        
-
-//         	function opendialog(page) {
-        	
-//         	  var $dialog = $('#somediv')
-//         	  .html('<iframe id="frame" style="border: 0px; " src="' + page + '" width="100%" height="100%"></iframe>')
-//         	  .dialog({
-//         	    title: "Ajout",
-//         	    autoOpen: false,
-//         	    dialogClass: 'dialog_fixed,ui-widget-header',
-//         	    modal: true,
-//         	    height: 600,
-//         	    minWidth: 600,
-//         	    minHeight: 400,
-//         	    draggable:true,
-//         	    close: function () { $(this).remove(); },
-//         	    buttons: { "Ok": function () {       
-            	      
-//             	    $(this).dialog("close");
-//             	    location.reload(); } }
-//         	  });        	 
-//         	  $dialog.dialog('open');
-//         	} 
-
 
 
         	
@@ -161,9 +193,6 @@ $(document).on("click", "#deleteDeny", function(){
 });
 
 
-$(document).on("click", ".buttonPlus", function(){
-	$(location).attr('href', 'ajoutTaPromo.php?fk_service=' + $(this).attr('id'));
-	});
 
 $(document).on("click", ".content", function(){
 	$( "#myDropdownBob" ).each(function( index ) {
@@ -212,6 +241,8 @@ $(document).ready(function() {
 	});
 
 
+	$("#selectPromo").load("MVC/view/getPromoSelect.php");
+	
 	var activePage = window.location.pathname;
 	console.log(activePage);
     //var activePage = url.substring(url.lastIndexOf('/') + 1);
@@ -227,47 +258,45 @@ $(document).ready(function() {
         }
     });
 
-    $('.buttonConfirmer').click(function(e){
+    $("#formIns").submit(function(e){
     	e.preventDefault();
 		var self = $(this);
-		var form = $("#formIns");
+		var form = $("#formIns")[0];
 	
-		var formData = new FormData();
-		jQuery.each(jQuery('#fileToUp')[0].files, function(i, file) {
-		    formData.append('file-'+i, file);
-		});
-		var titre = form.find('#titre').val();
-		var desc = form.find("#desc").val();
-		var dur = form.find("#dur").val();
-		var tar = form.find("#tar").val();
-		var act = form.find("#act").val();
-		var img = formData;
-		alert(titre + " " + desc  + " " + dur  + " " + tar + " " + act  + " " + img);
+		var formData = new FormData(form);
 		
-			var data = {
-	       			title:titre,
-	       			description:desc,
-	       			duree:dur,
-	       			tarif:tar,
-	       			active:act,
-	       			fileToUpload:img
-	       			};
+// 		var titre = form.find('#titre').val();
+// 		var desc = form.find("#desc").val();
+// 		var dur = form.find("#dur").val();
+// 		var tar = form.find("#tar").val();
+// 		var act = form.find("#act").val();
+// 		var img = formData;
+		
+		
+// 			var data = {
+// 	       			title:titre,
+// 	       			description:desc,
+// 	       			duree:dur,
+// 	       			tarif:tar,
+// 	       			active:act,
+// 	       			fileToUpload:img
+// 	       			};
     		
     		$.ajax({method : "POST",
     			url : "MVC/Controller/service_controller.php",
-    			data : data,
+    			data : formData,
     			async: false,
 		       	cache: false,
 		       	contentType: false,
-		       	enctype: 'multipart/form-data',
+		       	
 		       	processData: false,
     			beforeSend : function() {
     				// TO INSERT - loading animation
     			},
     			success : function(response) {
         			console.log(response);
-        			
-					//$(location).attr('href', 'service.php');
+        			$('#somediv').addClass('none');
+					$(location).attr('href', 'service.php');
     			},
     			error : function(xhr, title, trace) {
         			console.error(title + trace);
@@ -278,10 +307,82 @@ $(document).ready(function() {
     	
 	});
 
+   
+    	
+    	
+  
+	$('.btnUpdate').click(function(){
+	    $('input').click();
+	});
+
+	$('#selectPromo').change(function(){
+		var self = $(this);
+
+		var newValue = $(this).val();
+		
+		var span = self.closest("#formModifPromo").find(".spanRabais");
+
+		var data = '';
+		$.ajax({method : "POST",
+			url : "MVC/view/getRabais.php?id=" + newValue,
+			data : data,
+			beforeSend : function() {
+				// TO INSERT - loading animation
+			},
+			success : function(response) {
+				span.html(response + "%");
+			}
+		
+		});
+		
+	});
+
+	$('.buttonConfirmer').click(function(){
+		var self = $(this);
+		var form = self.closest("#formModifPromo");
+
+		var fk_service = self.closest("#formModifPromo").find("#fk");
+		var promo = form.find("#selectPromo");
+		
+		var date_debut = form.find("#date_debut");
+		var date_fin = form.find("#date_fin");
+
+		var code = form.find("#code");
+		
+		if(promo.val() != "Choisissez une promotion" && date_debut.val() != '' &&  date_fin.val() != '' && date_debut.val() < date_fin.val()){
+		
+    		var data = "";
+    		/*var lol = "promo=" + promo.val() + "&date_debut=" + date_debut.val() + "&date_fin=" + date_fin.val() + "&code=" + code.val() + "&primary_key=" + primary_key.text();
+        	console.log(lol);*/
+    		$.ajax({method : "POST",
+    			url : "AjaxRelated/ajout-object_process.php?promo=" + promo.val() + "&date_debut=" + date_debut.val() + "&date_fin=" + date_fin.val() + "&code=" + code.val() + "&fk_service=" +  fk_service.text(),
+    			data : data,
+    			beforeSend : function() {
+    				// TO INSERT - loading animation
+    			},
+    			success : function(response) {
+        			console.log(response);
+					$(location).attr('href', 'service.php');
+    			}
+    		
+			});
+    	} else{
+			alert('Veuillez remplir tous les champs requis adéquatemment');
+    	}
+	});
+
+	$(function() {
+	     $( "#date_fin" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+	});
+	$(function() {
+	     $( "#date_debut" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+	});
+
 	
 	
 });
 
+</script>
 
 
 
