@@ -45,6 +45,23 @@ select {
     cursor:pointer;
 } 
 
+.buttonConfirmer2 {
+	background-size: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+    background-image: url('../images/icones/bouton.png');
+    background-color: transparent;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 10px;
+    float:right;
+    width: 115px;
+    height: 37px;
+    cursor:pointer;
+} 
+
 .ajoutService {
     color: #09AAC1;    
     font-size: 16px;

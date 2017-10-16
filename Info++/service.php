@@ -52,7 +52,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 				</div>
 
 			</div>
-			<input type="submit" id="add" name="submit" class='buttonConfirmer'
+			<input type="submit" id="add" name="submit" class='buttonConfirmer2'
 				value="Confirmer">
 		</form>
 	</div>       
@@ -296,7 +296,7 @@ $(document).ready(function() {
     			success : function(response) {
         			console.log(response);
         			$('#somediv').addClass('none');
-					$(location).attr('href', 'service.php');
+        			updateList();
     			},
     			error : function(xhr, title, trace) {
         			console.error(title + trace);
@@ -362,7 +362,8 @@ $(document).ready(function() {
     			},
     			success : function(response) {
         			console.log(response);
-					$(location).attr('href', 'service.php');
+        			$('#addTaPromo').addClass('none');
+					updateList();
     			}
     		
 			});
