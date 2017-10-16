@@ -188,6 +188,7 @@ $(document).on("click", "#mod", function(e){
 	 $('#formModServ').load('MVC/view/getService.php?id='+pk_service);
      $('#modifService').removeClass('none');
 
+     
 	 
 	
 });
@@ -303,10 +304,10 @@ function updateList(){
 $(document).ready(function() {
 
 
-	$('#ImageMod').click(function(){
-		$("#changeImage").attr("value","1");
-	    $('input').click();
-	});
+// 	$('#ImageMod').click(function(){
+// 		$("#changeImage").attr("value","1");
+// 	    $('input').click();
+// 	});
 
 
 	$("#selectPromo").load("MVC/view/getPromoSelect.php");
@@ -360,11 +361,21 @@ $(document).ready(function() {
     	
 	});
 
-   
+	
     	
     $('#addImg').bind('click', function(e){
         
         $('#fileToUp').click();
+    });
+
+    $(document).on("click",'#ImageMod', function(e){
+    	$("#changeImage").attr("value","1");
+        $('#fileToUp2').click();
+    });
+
+	$('#fileToUp2').on('click', function(e){
+        e.stopPropagation();
+        
     });
   
 

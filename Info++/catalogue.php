@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['admin']) == false){
+if (isset($_SESSION['id']) == false){
     header("Location: http://localhost/infoplusplus/Info++/index.php?erreur=2");
     exit();
 }

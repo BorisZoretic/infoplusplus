@@ -164,7 +164,7 @@ class InfoService extends InfoModel {
     function getService($idservice){
         $anObject = $this->getObjectFromDB($idservice);       
                 echo "<div name='imageUpload' id='uploads'><img class='imgHolder' src='". $anObject['image'] ."'>";
-                echo "<input type='file' name='fileToUpload' class='imgUpload' id='fileToUp'>";
+                echo "<input type='file' name='fileToUpload' class='imgUpload' id='fileToUp2'>";
                 echo "<input type='button' id='ImageMod' class='btnUpdate' value='Mettre à jour la photo'></div>";
                 echo "<input id='changeImage' name='chgImg' class='none' value=''>";
                 echo "<div id='formServ'>";
@@ -232,7 +232,7 @@ class InfoService extends InfoModel {
                 //echo "<img class='imgPromo' src='images/promotions/grid.png' title='grid' alt='grid'>";
                 echo "<button class='buttonPlus' id='". $anObject['pk_service'] ."'>+</button>";
                 echo "<img class='mediasSociaux' src='images/icones/medias sociaux.jpeg' title='mediasSociaux' alt='mediasSociaux'>";
-                echo "<div class='centerDiv'><label id='promo_to_delete'></label><span>Voulez-vous vraiment supprimer cette promotion?<span><br><a class='cursorPointer confirmationButtons' id='deleteConfirm'>Oui</a><a class='cursorPointer confirmationButtons' id='deleteDeny'>Non</a></div>";
+                echo "<div class='centerDiv'><label class='none' id='promo_to_delete'></label><span>Voulez-vous vraiment supprimer cette promotion?<span><br><a class='cursorPointer confirmationButtons' id='deleteConfirm'>Oui</a><a class='cursorPointer confirmationButtons' id='deleteDeny'>Non</a></div>";
                 
                 echo "</div>";
                 

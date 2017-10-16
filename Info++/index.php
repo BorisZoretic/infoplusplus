@@ -21,24 +21,55 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php
 <title>Info++ - Connexion</title>
 </head>
 <body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2061445707422818',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+  };
 
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/fr_CA/sdk.js#xfbml=1&version=v2.10&appId=1954371348221676";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
 
 function test(){
-    FB.login(function(response) {
-    	  if (response.status === 'connected') {
-    		  //$(location).attr('href', 'catalogue.php');
-    	  } else {
-    	    // The person is not logged into this app or we are unable to tell. 
-    	  }
-    	});
+  FB.getLoginStatus(function(response) {
+	  //alert(response.status);
+	    //statusChangeCallback(response);
+	    if (response.status === 'connected') {
+	    	$(location).attr('href', 'MVC/Controller/login_controller.php?userID='+response.authResponse.userID + '&courriel=facebook@hotmail.com&mot_de_passe=facebook');
+      		
+  	  } else {
+  	    // The person is not logged into this app or we are unable to tell. 
+  	  }
+	});
 }
+</script>
+<script>
+// (function(d, s, id) {
+//   var js, fjs = d.getElementsByTagName(s)[0];
+//   if (d.getElementById(id)) return;
+//   js = d.createElement(s); js.id = id;
+//   js.src = "//connect.facebook.net/fr_CA/sdk.js#xfbml=1&version=v2.10&appId=1954371348221676";
+//   fjs.parentNode.insertBefore(js, fjs);
+// }(document, 'script', 'facebook-jssdk'));
+
+// function test(){
+//     FB.login(function(response) {
+//     	  if (response.status === 'connected') {
+//     		  //$(location).attr('href', 'catalogue.php');
+//     	  } else {
+//     	    // The person is not logged into this app or we are unable to tell. 
+//     	  }
+//     	});
+// }
 </script>
 
 	<div class="headerbg">
@@ -77,7 +108,12 @@ function test(){
 		</form>
 		<div onlogin='test()' class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
 	</div>
-	
+	<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
 	
 
 		  
