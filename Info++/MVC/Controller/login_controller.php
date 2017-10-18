@@ -89,13 +89,13 @@ class login_controller
         $_SESSION['admin'] = $typeuser;
         $_SESSION['panier'] = array();
         echo $typeuser;
-// if ($_SESSION['admin'] == 1)
-//     header("Location: http://localhost/infoplusplus/Info++/service.php");
-// else 
-//     header("Location: http://localhost/infoplusplus/Info++/catalogue.php");
-// exit();
-    }
-    else{
+        if ($_SESSION['admin'] == 1){
+            header("Location: http://localhost/infoplusplus/Info++/service.php");
+        }else{
+            header("Location: http://localhost/infoplusplus/Info++/catalogue.php");
+            exit();
+        }
+    } else{
         header("Location: http://localhost/infoplusplus/Info++/index.php?erreur=1");
         exit();
     }
