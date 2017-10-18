@@ -147,10 +147,11 @@ class InfoService extends InfoModel {
     function getDynamicList(){
         $aListOfObjects = $this->getListOfActiveBDObjects();
         if ($aListOfObjects != null) {
+            echo "<div class='allpage'><div class='serviceForPanier'></div></div>";
             foreach ( $aListOfObjects as $anObject ) {
                 if ($anObject['actif']==1) {
-                    echo "<div class='border divTable' onclick='drop()'>";
-                    
+                    echo "<div class='border divTable'>";
+                    echo "<p id='pk_service' style='display:none'>" . $anObject['pk_service'] . "</p>";
                     echo "<img class='excel' src='" . $anObject['image'] . "' title='" . $anObject['image'] . "' alt='" . $anObject['image'] . "'>";
                     echo "<h4>". $anObject['service_titre'] ."</h4><br>";
                     echo "<p class='textExcel'>" . $anObject['service_description'] . "</p>";

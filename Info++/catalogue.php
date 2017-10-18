@@ -24,6 +24,10 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
         <?php 
             require_once $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/footer.php';
         ?>
+        <pre>
+        <?php
+            var_dump($_SESSION);?>
+        </pre>
     </body>
     
      <script> 
@@ -50,6 +54,68 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
             	
             });
 
+            $(document).on("click", ".panier", function(e){
+            	e.stopPropagation();
+            	var div = $(this).closest("body").find(".serviceForPanier");
+            	var lol = $(this).closest("body").find(".allpage");
+            	var pk = $(this).closest(".divTable").find("#pk_service");
+            	
+        		data = "pk_service=" + pk.text();
+        		
+            	$.ajax({method : "POST",
+        			url : "MVC/view/get_serviceForPanier.php",
+        			data : data,
+        			beforeSend : function() {
+        				// TO INSERT - loading animation
+        			},
+        			success : function(response) {
+        				div.css("display", "block");
+        				lol.css("display", "block");
+        				div.append(response);
+        			}
+        		
+    			});
+            	
+        	});
+
+            $(document).mouseup(function(e) {
+    		    var container = $(".serviceForPanier");
+    		    var container2 = $(".allpage");
+
+    		    // if the target of the click isn't the container nor a descendant of the container
+    		    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    		    {
+    		    	container.html('');
+    		        container.hide();
+    		        container2.hide();
+    		    }
+    		});
+            
+            $(document).on("click", ".buttonAjoutPanier", function(e){
+                var pk = $(this).closest(".serviceForPanier").find("#pk_service");
+                
+                var div = $(this).closest("body").find(".serviceForPanier");
+            	var lol = $(this).closest("body").find(".allpage");
+                
+				data = "pk_service=" + pk.text();
+        		
+            	$.ajax({method : "POST",
+        			url : "MVC/view/pushToArraySession.php",
+        			data : data,
+        			beforeSend : function() {
+        				// TO INSERT - loading animation
+        			},
+        			success : function(response) {
+        				div.html('');
+        				div.css("display", "none");
+        				lol.css("display", "none");
+        				//update Mon panier(x)
+        			}
+        		
+    			});
+            });
+
+            
 
 		</script>
     

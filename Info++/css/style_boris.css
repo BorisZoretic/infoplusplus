@@ -25,6 +25,7 @@ h3{
 }
 
 .excel{
+	width: 120px;
 	position: relative;
     max-width: 30%;
     max-height:120px;
@@ -60,6 +61,7 @@ h3{
 	margin-top: -12px;
     margin-right: 20px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .promotion{
@@ -387,4 +389,68 @@ h3{
     color: #FF9F07;
     padding: 12px;
     display: block;
+}
+
+.serviceForPanier{
+    display: none;
+    border: solid 2px #FF9F07;
+    width: 400px;
+    position: fixed;
+    top: 40%;
+    background-color: #FFFFFF;
+    left: 35%;
+    z-index: 1;
+    overflow:auto;
+}
+
+.spanServiceForPanierTitle{
+   	padding: 15px;
+    display: block;
+    font-weight: 600;
+    float: left;
+    max-width: 200px;
+}
+
+.spanServiceForPanierTarif{
+    color: #09AAC1;
+    display: block;
+    padding: 17px;
+    float: right;
+    margin-right: 15px;
+}
+
+.spanServiceForPanierVendeur{
+    float: left;
+    display: block;
+    padding-left: 15px;
+    color: #FF9F07;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.buttonAjoutPanier{
+	background-size: 100%;
+    margin-bottom: 20px;
+    background-image: url(../images/icones/bouton.png);
+    background-color: transparent;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    float: right;
+    width: 130px;
+    height: 41px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 32px;
+}
+
+.allpage{
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    position: fixed;
+    top: 0;
 }
