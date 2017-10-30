@@ -24,10 +24,6 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
         <?php 
             require_once $_SERVER ["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/footer.php';
         ?>
-        <pre>
-        <?php
-            var_dump($_SESSION);?>
-        </pre>
     </body>
     
      <script> 
@@ -109,6 +105,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
         				div.html('');
         				div.css("display", "none");
         				lol.css("display", "none");
+        				$("a#panierAJAX").html("Mon panier ( " + response + ")");
         				//update Mon panier(x)
         			}
         		
