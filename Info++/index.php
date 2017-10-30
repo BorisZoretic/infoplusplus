@@ -114,6 +114,64 @@ function test(){
   data-width="450"
   data-show-faces="true">
 </div>
+<div id='TRUC'><label id='paypal'></label></div>
+<div id="paypal-button"></div>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+<script>
+	var totalpayment = "0.01";
+    paypal.Button.render({
+		
+        env: 'sandbox', // Or 'sandbox'
+
+        style: {
+            label: 'checkout',
+            size:  'medium',    // small | medium | large | responsive
+            shape: 'rect',     // pill | rect
+            color: 'blue'      // gold | blue | silver | black
+        },
+		
+        client: {
+            sandbox:    'Aa9S-q7EMtLecAILmrMVM5QHD_ZNVsIrf_-y61n2sP0Is4T-5u4ueolTGtPHJGqFTr6Gf_O028e5A7yq'
+        },
+
+        commit: true, // Show a 'Pay Now' button
+
+        payment: function(data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: totalpayment, currency: 'CAD' }
+                        }
+                    ]
+                }
+            });
+        },
+
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function(payment) {
+
+               var data = {transId : payment.transactions[0].related_resources[0].sale.id}; 
+			$.ajax({method : "POST",
+    			url : "MVC/Controller/payment_controller.php",
+    			
+    			data : data,
+    			beforeSend : function() {
+    				// TO INSERT - loading animation
+    			},
+    			success : function(response) {
+    				$('#paypal').text(response);
+    			}
+    		
+			});payment;
+            });
+        }
+
+    }, '#paypal-button');
+</script>
+
 	
 
 		  
