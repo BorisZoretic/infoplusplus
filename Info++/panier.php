@@ -80,15 +80,13 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 
         	var totalrab= $('#tot').text();
         	var totalrabais2 = totalrab.split('$')[0]; 
-        	var totalrabais = totalrabais2.split(' ')[1];
+        	var totalrabais = totalrabais2.split(' ')[2];
         	
 			var servicesPks = $("div *").filter(function() {return(this.id == "pkS");});
 			var services = [];
 			$(servicesPks).each(function( index ) {
 				  services.push( $( this ).text() );
 				});
-			
-
 
         	
             return actions.payment.create({
@@ -105,7 +103,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
         onAuthorize: function(data, actions) {
             return actions.payment.execute().then(function(payment) {
 
-               var data = {transId : payment.transactions[0].related_resources[0].sale.id, services : services, tarif : totalpayment, rabais : }; 
+               var data = {transId : payment.transactions[0].related_resources[0].sale.id, services : services, tarif : totalpayment, rabais : totalrabais}; 
 			$.ajax({method : "POST",
     			url : "MVC/Controller/payment_controller.php",
     			
