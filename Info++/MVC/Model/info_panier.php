@@ -21,6 +21,7 @@ class InfoPanier {
                 foreach ( $aListOfObjects as $anObject ) {
                     if($id == $anObject['pk_service']){
                         echo "<div class='border divTable'>";
+                        echo "<label id='pkS' class='none'>". $anObject['pk_service'] . "</label>";
                         echo "<img class='excel' src='" . $anObject['image'] . "' title='" . $anObject['image'] . "' alt='" . $anObject['image'] . "'>";
                         echo "<span class='servicePanier'><h4>". $anObject['service_titre'] ."</h4></span>";
                         echo "<span class='tarifPanier'>Tarif: " . $anObject['tarif'] . "$</span><br><br>";
@@ -42,13 +43,15 @@ class InfoPanier {
                         
                         if(sizeof($_SESSION['panier']) <= $compt){
                             $sousTotal -= $allRabais;
+                            $taxes = 1.14975;
+                            $total = $sousTotal * $taxes;
                             echo "<div class='divTotal divTable'>";
                             //echo "<div class='divRabaisAditionnel divTable'></div>";
                             echo "<span class='sousTotal'>sous-total: ".number_format((float)$sousTotal, 2, '.', '')."$</span><br>";
                             echo "<span class='rabaisAdditionnel'>rabais aditionnel: ".number_format((float)0, 2, '.', '')."$</span><br><br>";
                             echo "<div class='divTotal divTable'><span class='borderTotal'></span></div>";
                             
-                            echo "<span class='total'>Total: ".number_format((float)$total, 2, '.', '')."$</span>";
+                            echo "<span id='tot' value=".number_format((float)$total, 2, '.', '')." class='total'>Total: ".number_format((float)$total, 2, '.', '')."$</span>";
                             echo "<div class='divTotal divTable'><span class='borderTotal'></span></div>";
                             echo "</div>";
                         }

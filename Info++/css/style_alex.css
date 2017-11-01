@@ -218,3 +218,10 @@ input[type='file'] {
     margin: 0 auto;
     
 }
+
+.bouton{
+	display: block;
+	float: none;
+	margin: 0 auto;
+	width: 0px;
+}
