@@ -43,6 +43,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 				div.html(response);
 				var count = div.find("#count");
 				$("a#panierAJAX").html("Mon panier ( " + count.text() + " )");
+				checkIfEmpty();
 			}
 		
 		});
@@ -106,6 +107,16 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 			});
 		}
     });
+function checkIfEmpty(){
+	var servicesPanier = document.getElementsByClassName('divTable');
+	if (servicesPanier.length <= 0) {
+		$('#paypal-button').addClass('none');
+	}
+}
+    $(document).ready(function() { 
+    	checkIfEmpty();
+
+        });
     </script>
     
     <div class="bouton" id="paypal-button"></div>
