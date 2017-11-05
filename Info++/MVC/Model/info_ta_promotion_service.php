@@ -187,6 +187,50 @@ class InfoTaPromotionService extends InfoModel {
                 <input type='submit' id='modifierPromo' name='submit' class='buttonConfirmer' value='Modifier'>";
     			
     }
+    
+    function checkIfCodeExist($code, $date, $soustotal){
+    	$listOfPromo = $this->getListOfAllDBObjectsWithPromo($code);
+    	if($listOfPromo != null){
+    		foreach($listOfPromo as $aPromo){
+    			if($code == $aPromo['code'] && $aPromo['date_debut'] < $date && $aPromo['date_fin'] > $date){
+    				$rabaisAdd = $soustotal*$aPromo['rabais'];
+    				echo "rabais aditionnel: " . round($rabaisAdd, 2) . "$";
+    			} else{
+    				echo "fail";
+    			}
+    		}
+    	}else{
+    		echo "fail";
+    	}
+    }
+    
+    function getListOfAllDBObjectsWithPromo($code){
+    	include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
+    	
+    	$internalAttributes = get_object_vars($this);
+    	
+    	$sql = "SELECT tps.date_debut, tps.date_fin, tps.code, p.rabais 
+		FROM `" . $this->table_name . "` tps
+		JOIN promotion p ON p.pk_promotion = tps.fk_promotion 
+		WHERE tps.code = '" . $code . "'";
+    	$result = $conn->query($sql);
+    	
+    	if ($result->num_rows > 0) {
+    		$fastechObjects = array();
+    		while ($row = $result->fetch_assoc()) {
+    			$anObject = Array();
+    			foreach ($row as $aRowName => $aValue) {
+    				$anObject[$aRowName] = $aValue;
+    			}
+    			array_push($fastechObjects, $anObject);
+    		}
+    		
+    		$conn->close();
+    		return $fastechObjects;
+    	}
+    	$conn->close();
+    	return null;
+    }
 
 }
 

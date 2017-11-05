@@ -47,6 +47,62 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 		
 		});
     });
+
+    $(document).on("click", "#validerAdd", function(e){
+        var code = $(this).closest("form").find(".codePromoInput");
+        var soustotal = $(this).closest(".divTotal").find(".sousTotal");
+        var total = $(this).closest(".divTotal").find(".total");
+        var rabais = $(this).closest(".divTotal").find(".rabaisAdditionnel");
+        
+
+		if(code.val() != ""){
+			data = "code=" + code.val() + "&soustotal=" + soustotal.html();
+	    	$.ajax({method : "POST",
+				url : "MVC/view/checkIfExist.php",
+				data : data,
+				beforeSend : function() {
+					// TO INSERT - loading animation
+				},
+				success : function(response) {
+					console.log(response);
+					if(response ==  "fail"){
+						alert('Ce code promotionnel est inexistant ou expiré');
+					} else{
+						rabais.html(response);
+						var leSousTotal = soustotal.html();
+	
+						var ancienSousTotal = leSousTotal.replace('sous-total: ','');
+						ancienSousTotal = ancienSousTotal.replace('$','');
+						
+						var leRabais = response.replace('rabais aditionnel: ','');
+						leRabais = leRabais.replace('$','');
+						
+						var taxes = 1.14975;
+	
+						var nouveauTotal = 0;
+						nouveauTotal = (ancienSousTotal - leRabais) * taxes;
+						
+						total.html("Total: " + nouveauTotal.toFixed(2) + "$");
+					}
+				}
+			
+			});
+		} else {
+	        var div = $("#content");
+	        data = '';
+	    	$.ajax({method : "POST",
+				url : "MVC/view/getPanier.php",
+				data : data,
+				beforeSend : function() {
+					// TO INSERT - loading animation
+				},
+				success : function(response) {
+					div.html(response);
+				}
+			
+			});
+		}
+    });
     </script>
     
     <div class="bouton" id="paypal-button"></div>

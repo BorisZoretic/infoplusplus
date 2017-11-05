@@ -508,6 +508,7 @@ h3{
 
 .total{
     float: right;
+    margin-top: 12px;
     margin-right: 15px;
     margin-bottom: 15px;
     font-size: 18px;
@@ -526,3 +527,40 @@ h3{
     color: red;
     margin-right:15px;
 }
+
+.spanRabaisAditionnel{
+	display: block;
+	float: left;
+	padding: 5px;
+	border: 2px solid #8B4513;
+	width: 250px;
+	height: 100px;
+}
+
+.codePromoLabel{
+	font-size: 12px;
+	font-weight: 600;
+	float: left;
+}
+
+.codePromoInput{
+	width: 95px;
+    float: right;
+    margin-top: -16px;
+}
+
+.buttonValider {
+	background-size: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+    background-image: url('../images/icones/bouton.png');
+    background-color: transparent;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    float:right;
+    width: 92px;
+    height: 30px;
+    cursor:pointer;
+} 

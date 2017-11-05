@@ -44,15 +44,17 @@ class InfoPanier {
                         if(sizeof($_SESSION['panier']) <= $compt){
                             $sousTotal -= $allRabais;
                             $taxes = 1.14975;
+                            $rabaisAdd = 0;
                             $total = $sousTotal * $taxes;
                             echo "<div class='divTotal divTable'>";
-                            //echo "<div class='divRabaisAditionnel divTable'></div>";
+                            echo "<span class='spanRabaisAditionnel'><label class='codePromoLabel'>Entrer le code promotionnel pour profiter<br><br>d'un rabais aditionnel</label>
+							<form><input class='codePromoInput' type='text'></input><br><br><a id='validerAdd' name='submit' class='buttonValider'>Valider</a></form></span>";
                             echo "<span class='sousTotal'>sous-total: ".number_format((float)$sousTotal, 2, '.', '')."$</span><br>";
-                            echo "<span class='rabaisAdditionnel'>rabais aditionnel: ".number_format((float)0, 2, '.', '')."$</span><br><br>";
-                            echo "<div class='divTotal divTable'><span class='borderTotal'></span></div>";
+                            echo "<span class='rabaisAdditionnel'>rabais aditionnel: ".number_format((float)$rabaisAdd, 2, '.', '')."$</span><br><br>";
+                            echo "<span class='borderTotal'></span>";
                             
                             echo "<span id='tot' value=".number_format((float)$total, 2, '.', '')." class='total'>Total: ".number_format((float)$total, 2, '.', '')."$</span>";
-                            echo "<div class='divTotal divTable'><span class='borderTotal'></span></div>";
+                            echo "<span class='borderTotal'></span>";
                             echo "</div>";
                         }
                         $compt++;
