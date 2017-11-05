@@ -564,3 +564,10 @@ h3{
     height: 30px;
     cursor:pointer;
 } 
+
+.validA{
+    display: block;
+    margin-top: 5px;
+    margin-left: 20px;
+    font-weight: 600;
+}

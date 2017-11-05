@@ -56,25 +56,28 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
         
 
 		if(code.val() != ""){
-			data = "code=" + code.val() + "&soustotal=" + soustotal.html();
+			dataToSend = "code=" + code.val() + "&soustotal=" + soustotal.html();
 	    	$.ajax({method : "POST",
 				url : "MVC/view/checkIfExist.php",
-				data : data,
+				data : dataToSend,
 				beforeSend : function() {
 					// TO INSERT - loading animation
 				},
-				success : function(response) {
-					console.log(response);
-					if(response ==  "fail"){
+				success : function(data) {
+					//alert(data);
+					var result = data.toString();
+					if(result.indexOf("fail")>-1){
 						alert('Ce code promotionnel est inexistant ou expiré');
+						code.val('');
+						code.focus();
 					} else{
-						rabais.html(response);
+						rabais.html(data);
 						var leSousTotal = soustotal.html();
 	
 						var ancienSousTotal = leSousTotal.replace('sous-total: ','');
 						ancienSousTotal = ancienSousTotal.replace('$','');
 						
-						var leRabais = response.replace('rabais aditionnel: ','');
+						var leRabais = data.replace('rabais aditionnel: ','');
 						leRabais = leRabais.replace('$','');
 						
 						var taxes = 1.14975;
