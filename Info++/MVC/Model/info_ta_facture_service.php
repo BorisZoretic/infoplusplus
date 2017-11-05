@@ -5,7 +5,7 @@ class Infota_facture_service extends InfoModel {
 	protected $table_name = 'ta_facture_service';
 	protected $primary_key = "pk_ta_facture_service";
 	
-	protected $pk_ta_facture_service = 0;
+	protected $pk_facture_service = 0;
 	protected $fk_facture = 0;
 	protected $fk_service = '';
 	protected $tarif_facture = 0;

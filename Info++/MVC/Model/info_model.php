@@ -51,7 +51,7 @@ class InfoModel
         
         //echo $sql . "<br>";
         
-        // echo $sql;
+        echo $sql;
         if (! $result = $conn->query($sql)) {
             // Oh no! The query failed.
             //echo "fail";

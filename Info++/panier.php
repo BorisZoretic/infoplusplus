@@ -110,8 +110,9 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 <script>
-
-	
+var totalpayment ="";
+var totalrabais ="";	
+var services = [];
     paypal.Button.render({
 		
         env: 'sandbox', // Or 'sandbox'
@@ -128,18 +129,18 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
         },
 
         commit: true, // Show a 'Pay Now' button
-
+        
         payment: function(data, actions) {
         	var total = $('#tot').text();
         	var total2 = total.split('$')[0]; 
-        	var totalpayment = total2.split(' ')[1];
+        	totalpayment = total2.split(' ')[1];
 
         	var totalrab= $('#tot').text();
         	var totalrabais2 = totalrab.split('$')[0]; 
-        	var totalrabais = totalrabais2.split(' ')[2];
+        	totalrabais = totalrabais2.split(' ')[2];
         	
 			var servicesPks = $("div *").filter(function() {return(this.id == "pkS");});
-			var services = [];
+			
 			$(servicesPks).each(function( index ) {
 				  services.push( $( this ).text() );
 				});
@@ -158,20 +159,21 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/MVC/view/navigate
 
         onAuthorize: function(data, actions) {
             return actions.payment.execute().then(function(payment) {
-
+            	
                var data = {transId : payment.transactions[0].related_resources[0].sale.id, services : services, tarif : totalpayment, rabais : totalrabais}; 
 			$.ajax({method : "POST",
-    			url : "MVC/Controller/payment_controller.php",
-    			
-    			data : data,
-    			beforeSend : function() {
-    				// TO INSERT - loading animation
-    			},
-    			success : function(response) {
-    				$('#paypal').text(response);
-    			}
-    		
-			});payment;
+        			url : "MVC/Controller/payment_controller.php",
+        			
+        			data : data,
+        			beforeSend : function() {
+        				// TO INSERT - loading animation
+        			},
+        			success : function(response) {
+        				console.log(response);
+        			}
+        		
+    			});payment;
+			
             });
         }
 
