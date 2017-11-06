@@ -50,7 +50,7 @@ class InfoPanier {
                             echo "<span class='spanRabaisAditionnel'><label class='codePromoLabel'>Entrer le code promotionnel pour profiter<br><br>d'un rabais aditionnel</label>
 							<form><input class='codePromoInput' type='text'></input><br><br><div class='buttonValider'><a id='validerAdd' name='submit' class='validA'>Valider</a></div></form></span>";
                             echo "<span class='sousTotal'>sous-total: ".number_format((float)$sousTotal, 2, '.', '')."$</span><br>";
-                            echo "<span class='rabaisAdditionnel'>rabais aditionnel: ".number_format((float)$rabaisAdd, 2, '.', '')."$</span><br><br>";
+                            echo "<span id='rabTot' class='rabaisAdditionnel'>rabais aditionnel: ".number_format((float)$rabaisAdd, 2, '.', '')."$</span><br><br>";
                             echo "<span class='borderTotal'></span>";
                             
                             echo "<span id='tot' value=".number_format((float)$total, 2, '.', '')." class='total'>Total: ".number_format((float)$total, 2, '.', '')."$</span>";

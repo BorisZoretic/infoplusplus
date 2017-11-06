@@ -4,6 +4,12 @@ if (isset($_SESSION['id']) == false){
     header("Location: http://localhost/infoplusplus/Info++/index.php?erreur=2");
     exit();
 }
+if(isset($_GET['success']) && $_GET['success'] == 1){
+    $_SESSION['panier'] = array();
+}
+if(isset($_GET['vide']) && $_GET['vide'] == 1){
+    echo '<script>alert("Panier vide");</script>';
+}
 include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php';
 ?>

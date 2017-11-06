@@ -72,9 +72,11 @@ class payment_controller
 $payment = new payment_controller();
 $payment->addFacture();
 
+echo "success";
 
-header("Location: http://localhost/infoplusplus/Info++/catalogue.php");
-exit();
+
+/*header("Location: http://localhost/infoplusplus/Info++/catalogue.php");
+exit();*/
 
 
 

@@ -220,8 +220,8 @@ input[type='file'] {
 }
 
 .bouton{
-	display: block;
-	float: none;
-	margin: 0 auto;
-	width: 0px;
+    display: block;
+    width: 500px;
+    margin: auto;
+    text-align: right;
 }

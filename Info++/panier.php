@@ -4,6 +4,11 @@ if (isset($_SESSION['id']) == false){
     header("Location: http://localhost/infoplusplus/Info++/index.php?erreur=2");
     exit();
 }
+if (count($_SESSION['panier']) == 0){
+    
+    header("Location: http://localhost/infoplusplus/Info++/catalogue.php?vide=1");
+    exit();
+}
 include $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/database_connect.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/infoplusplus/Info++/system/header.php';
 ?>
@@ -133,7 +138,7 @@ var services = [];
 
         style: {
             label: 'checkout',
-            size:  'medium',    // small | medium | large | responsive
+            size:  'small',    // small | medium | large | responsive
             shape: 'rect',     // pill | rect
             color: 'blue'      // gold | blue | silver | black
         },
@@ -149,7 +154,7 @@ var services = [];
         	var total2 = total.split('$')[0]; 
         	totalpayment = total2.split(' ')[1];
 
-        	var totalrab= $('#tot').text();
+        	var totalrab= $('#rabTot').text();
         	var totalrabais2 = totalrab.split('$')[0]; 
         	totalrabais = totalrabais2.split(' ')[2];
         	
@@ -183,7 +188,9 @@ var services = [];
         				// TO INSERT - loading animation
         			},
         			success : function(response) {
-        				console.log(response);
+        				//console.log(response);
+        				alert("Paiement réussi");
+        				$(location).attr('href',"http://localhost/infoplusplus/Info++/catalogue.php?success=1");
         			}
         		
     			});payment;
